@@ -1,0 +1,13 @@
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
