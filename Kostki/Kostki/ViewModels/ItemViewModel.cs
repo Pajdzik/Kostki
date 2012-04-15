@@ -1,90 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
-namespace Kostki
+namespace Kostki.ViewModels
 {
-    public class ItemViewModel : INotifyPropertyChanged
+    public class ItemViewModel
     {
-        private string _lineOne;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public string LineOne
+        private string _firstItem;
+
+        public string firstItem
         {
             get
             {
-                return _lineOne;
+                return _firstItem;
             }
             set
             {
-                if (value != _lineOne)
+                if (value != _firstItem)
                 {
-                    _lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                    _firstItem = value;
                 }
             }
         }
 
-        private string _lineTwo;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public string LineTwo
+        private string _secondItem;
+
+        public string secondItem
         {
             get
             {
-                return _lineTwo;
+                return _secondItem;
             }
             set
             {
-                if (value != _lineTwo)
+                if (value != _secondItem)
                 {
-                    _lineTwo = value;
-                    NotifyPropertyChanged("LineTwo");
+                    _secondItem = value;
                 }
             }
         }
 
-        private string _lineThree;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public string LineThree
+        private string _color;
+
+        public string  color
         {
             get
             {
-                return _lineThree;
+                return _color;
             }
             set
             {
-                if (value != _lineThree)
+                if (value != _color)
                 {
-                    _lineThree = value;
-                    NotifyPropertyChanged("LineThree");
+                    _color = value;
                 }
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

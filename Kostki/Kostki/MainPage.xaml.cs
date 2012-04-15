@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Kostki;
+using System.Diagnostics;
 
 namespace Kostki
 {
@@ -22,17 +23,14 @@ namespace Kostki
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
+            DataContext = App.MainMenuItemModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
 
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+            App.MainMenuItemModel.LoadData();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
