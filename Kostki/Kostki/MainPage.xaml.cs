@@ -31,11 +31,8 @@ namespace Kostki
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             App.MainMenuItemModel.LoadData();
-        }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            NavigationService.Navigate(new Uri("/GamePage.xaml", UriKind.Relative));
         }
     }
 }
