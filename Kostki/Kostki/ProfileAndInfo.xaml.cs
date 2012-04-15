@@ -13,17 +13,11 @@ using Microsoft.Phone.Controls;
 
 namespace Kostki
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class ProfileAndInfo : PhoneApplicationPage
     {
-        // Constructor
-        public MainPage()
+        public ProfileAndInfo()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/ProfileAndInfo.xaml", UriKind.Relative));
         }
     }
 }
