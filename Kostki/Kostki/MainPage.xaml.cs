@@ -32,7 +32,15 @@ namespace Kostki
         {
             App.MainMenuItemModel.LoadData();
 
+           // NavigationService.Navigate(new Uri("/GamePage.xaml", UriKind.Relative));
+        }
+
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxItem listBoxItem = ((sender as ListBox).SelectedItem as ListBoxItem);
+
             NavigationService.Navigate(new Uri("/GamePage.xaml", UriKind.Relative));
+
         }
     }
 }

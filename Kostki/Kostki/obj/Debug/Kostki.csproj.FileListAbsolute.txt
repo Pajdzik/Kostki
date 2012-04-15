@@ -15,7 +15,6 @@ I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
 I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Background.png
-C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\clubs.png
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
