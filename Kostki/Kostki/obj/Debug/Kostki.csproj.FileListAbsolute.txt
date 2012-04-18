@@ -24,6 +24,7 @@ C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Ph
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
