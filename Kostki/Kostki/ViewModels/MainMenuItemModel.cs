@@ -25,8 +25,11 @@ namespace Kostki.ViewModels
 
         public void LoadData()
         {
-            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Prosty Poziom", color = "Red" });
-            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Trudny Poziom", color = "Green" });
+            if (this.Items1.Count == 0)
+            {
+                this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Prosty Poziom", color = "Red" });
+                this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Trudny Poziom", color = "Green" });
+            }
         }
     }
 }
