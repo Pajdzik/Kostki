@@ -24,7 +24,7 @@ namespace Kostki
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
-        /// <returns>The MainViewModel object.</returns>
+        /// <returns>The MainMenuItemModel object.</returns>
         /// 
         public static MainMenuItemModel MainMenuItemModel
         {
@@ -92,10 +92,10 @@ namespace Kostki
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            //if (!App.ViewModel.IsDataLoaded)
-            //{
+            if (!App.MainMenuItemModel.IsDataLoaded)
+            {
                 App.MainMenuItemModel.LoadData();
-            //}
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
