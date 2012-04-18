@@ -29,4 +29,3 @@ C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.res
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
 C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
-I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs

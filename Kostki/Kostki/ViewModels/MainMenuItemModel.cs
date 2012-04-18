@@ -17,19 +17,34 @@ namespace Kostki.ViewModels
     {
 
         public ObservableCollection<ItemViewModel> Items1 { get; private set; }
+        private Boolean _isDataLoaded;
+
+        public Boolean IsDataLoaded
+        {
+            get
+            {
+                return _isDataLoaded;
+            }
+            set
+            {
+                if (value != _isDataLoaded)
+                {
+                    _isDataLoaded = value;
+                }
+            }
+        }
 
         public MainMenuItemModel()
         {
+            this.IsDataLoaded = false;
             this.Items1 = new ObservableCollection<ItemViewModel>();
         }
 
         public void LoadData()
         {
-            if (this.Items1.Count == 0)
-            {
-                this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Prosty Poziom", color = "Red" });
-                this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Trudny Poziom", color = "Green" });
-            }
+            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Prosty Poziom", color = "Red" });
+            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Trudny Poziom", color = "Green" });
+            this.IsDataLoaded = true;
         }
     }
 }
