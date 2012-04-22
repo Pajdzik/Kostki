@@ -99,16 +99,25 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="PanoramaBackground.png" />
-    <Content Include="img\clubs.png" />
-    <Content Include="img\clubs.svg" />
-    <Content Include="img\diamond.png" />
-    <Content Include="img\diamond.svg" />
-    <Content Include="img\heart.png" />
-    <Content Include="img\heart.svg" />
-    <Content Include="img\spade.png" />
-    <Content Include="img\spade.svg" />
+    <Content Include="img\clubs\blue.png" />
+    <Content Include="img\diamond\blue.png" />
+    <Content Include="img\clubs\green.png" />
+    <Content Include="img\diamond\green.png" />
+    <Content Include="img\diamond\red.png" />
+    <Content Include="img\diamond\yellow.png" />
+    <Content Include="img\heart\blue.png" />
+    <Content Include="img\heart\green.png" />
+    <Content Include="img\clubs\red.png" />
+    <Content Include="img\heart\red.png" />
+    <Content Include="img\heart\yellow.png" />
+    <Content Include="img\spade\blue.png" />
+    <Content Include="img\spade\green.png" />
+    <Content Include="img\spade\red.png" />
+    <Content Include="img\clubs\yellow.png" />
+    <Content Include="img\spade\yellow.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

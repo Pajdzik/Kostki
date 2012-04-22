@@ -15,11 +15,32 @@ using System.Diagnostics;
 
 namespace Kostki
 {
+    enum Colors
+    {
+        Blue,
+        Green,
+        Red,
+        Yellow
+    }
+
+    enum Figures
+    {
+        Club,
+        Diamond,
+        Heart,
+        Spade
+    }
+
+
+
     public partial class GamePage : PhoneApplicationPage
     {
 
         private List<Image> listOfImages = new List<Image>();
         private Image clubs, diamond, heart, spade;
+
+        private Image[] currentCards;
+        private Image[,] cards;
 
         public GamePage()
         {
@@ -35,6 +56,9 @@ namespace Kostki
             this.heart = new Image();
             this.spade = new Image();
             this.diamond = new Image();
+
+            currentCards = new Image[4];
+            cards = new Image[4, 4];
         }
 
         private void GamePageLoaded(object sender, RoutedEventArgs e)
@@ -48,16 +72,36 @@ namespace Kostki
         /// 
         public void LoadCardsImage()
         {
-            this.clubs.Source = new BitmapImage(new Uri("/img/clubs.png", UriKind.Relative));
+            //cards[(int) Figures.Club, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/clubs/blue.png", UriKind.Relative));
+            //cards[(int) Figures.Club, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/clubs/green.png", UriKind.Relative));
+            //cards[(int) Figures.Club, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
+            //cards[(int) Figures.Club, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/clubs/yellow.png", UriKind.Relative));
+
+            //cards[(int) Figures.Diamond, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
+            //cards[(int) Figures.Diamond, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/diamond/green.png", UriKind.Relative));
+            //cards[(int) Figures.Diamond, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/diamond/red.png", UriKind.Relative));
+            //cards[(int) Figures.Diamond, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/diamond/yellow.png", UriKind.Relative));
+
+            //cards[(int) Figures.Heart, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/heart/blue.png", UriKind.Relative));
+            //cards[(int) Figures.Heart, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
+            //cards[(int) Figures.Heart, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/heart/red.png", UriKind.Relative));
+            //cards[(int) Figures.Heart, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/heart/yellow.png", UriKind.Relative));
+
+            //cards[(int) Figures.Spade, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/spade/blue.png", UriKind.Relative));
+            //cards[(int) Figures.Spade, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
+            //cards[(int) Figures.Spade, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
+            //cards[(int) Figures.Spade, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
+
+            this.clubs.Source = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
             this.clubs.Height = 70;
             this.clubs.Width = 70;
-            this.diamond.Source = new BitmapImage(new Uri("/img/diamond.png", UriKind.Relative));
+            this.diamond.Source = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
             this.diamond.Height = 70;
             this.diamond.Width = 70;
-            this.heart.Source = new BitmapImage(new Uri("/img/heart.png", UriKind.Relative));
+            this.heart.Source = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
             this.heart.Height = 70;
             this.heart.Width = 70;
-            this.spade.Source = new BitmapImage(new Uri("/img/spade.png", UriKind.Relative));
+            this.spade.Source = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
             this.spade.Height = 70;
             this.spade.Width = 70;
         }
@@ -110,14 +154,22 @@ namespace Kostki
             Canvas.SetLeft(image, x + e.DeltaManipulation.Translation.X);
             Canvas.SetTop(image, y + e.DeltaManipulation.Translation.Y); 
 
-
             Debug.WriteLine("w trakcie");
 
         }
 
         private void ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            Image image = (Image)sender;
+            Image image = (Image) sender;
+            double x = Canvas.GetLeft(image);
+            double y = Canvas.GetTop(image);
+
+            x = 50 * ((int)x / 50);             // pseudozaokrąglanie do "siatki"
+            y = 50 * ((int)y / 50);
+
+            Canvas.SetLeft(image, x);
+            Canvas.SetTop(image, y); 
+
             Debug.WriteLine("end");
 
         }
