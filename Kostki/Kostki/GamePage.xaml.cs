@@ -40,7 +40,7 @@ namespace Kostki
         private Image clubs, diamond, heart, spade;
 
         private Image[] currentCards;
-        private Image[,] cards;
+        private BitmapImage[,] cards;
 
         public GamePage()
         {
@@ -58,7 +58,7 @@ namespace Kostki
             this.diamond = new Image();
 
             currentCards = new Image[4];
-            cards = new Image[4, 4];
+            cards = new BitmapImage[4, 4];
         }
 
         private void GamePageLoaded(object sender, RoutedEventArgs e)
@@ -72,36 +72,38 @@ namespace Kostki
         /// 
         public void LoadCardsImage()
         {
-            //cards[(int) Figures.Club, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/clubs/blue.png", UriKind.Relative));
-            //cards[(int) Figures.Club, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/clubs/green.png", UriKind.Relative));
-            //cards[(int) Figures.Club, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
-            //cards[(int) Figures.Club, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/clubs/yellow.png", UriKind.Relative));
+            cards[(int) Figures.Club, (int) Colors.Blue] = new BitmapImage(new Uri("/img/clubs/blue.png", UriKind.Relative));
+            cards[(int) Figures.Club, (int) Colors.Green] = new BitmapImage(new Uri("/img/clubs/green.png", UriKind.Relative));
+            cards[(int) Figures.Club, (int) Colors.Red] = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
+            cards[(int) Figures.Club, (int) Colors.Yellow] = new BitmapImage(new Uri("/img/clubs/yellow.png", UriKind.Relative));
 
-            //cards[(int) Figures.Diamond, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
-            //cards[(int) Figures.Diamond, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/diamond/green.png", UriKind.Relative));
-            //cards[(int) Figures.Diamond, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/diamond/red.png", UriKind.Relative));
-            //cards[(int) Figures.Diamond, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/diamond/yellow.png", UriKind.Relative));
+            cards[(int) Figures.Diamond, (int) Colors.Blue] = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
+            cards[(int) Figures.Diamond, (int) Colors.Green] = new BitmapImage(new Uri("/img/diamond/green.png", UriKind.Relative));
+            cards[(int) Figures.Diamond, (int) Colors.Red] = new BitmapImage(new Uri("/img/diamond/red.png", UriKind.Relative));
+            cards[(int) Figures.Diamond, (int) Colors.Yellow] = new BitmapImage(new Uri("/img/diamond/yellow.png", UriKind.Relative));
 
-            //cards[(int) Figures.Heart, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/heart/blue.png", UriKind.Relative));
-            //cards[(int) Figures.Heart, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
-            //cards[(int) Figures.Heart, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/heart/red.png", UriKind.Relative));
-            //cards[(int) Figures.Heart, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/heart/yellow.png", UriKind.Relative));
+            cards[(int) Figures.Heart, (int) Colors.Blue] = new BitmapImage(new Uri("/img/heart/blue.png", UriKind.Relative));
+            cards[(int) Figures.Heart, (int) Colors.Green] = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
+            cards[(int) Figures.Heart, (int) Colors.Red] = new BitmapImage(new Uri("/img/heart/red.png", UriKind.Relative));
+            cards[(int) Figures.Heart, (int) Colors.Yellow] = new BitmapImage(new Uri("/img/heart/yellow.png", UriKind.Relative));
 
-            //cards[(int) Figures.Spade, (int) Colors.Blue].Source = new BitmapImage(new Uri("/img/spade/blue.png", UriKind.Relative));
-            //cards[(int) Figures.Spade, (int) Colors.Green].Source = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
-            //cards[(int) Figures.Spade, (int) Colors.Red].Source = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
-            //cards[(int) Figures.Spade, (int) Colors.Yellow].Source = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
+            cards[(int) Figures.Spade, (int) Colors.Blue]= new BitmapImage(new Uri("/img/spade/blue.png", UriKind.Relative));
+            cards[(int) Figures.Spade, (int) Colors.Green ] = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
+            cards[(int) Figures.Spade, (int) Colors.Red] = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
+            cards[(int) Figures.Spade, (int) Colors.Yellow] = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
 
-            this.clubs.Source = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
+            Random r = new Random();
+
+            this.clubs.Source = cards[r.Next(4), r.Next(4)];
             this.clubs.Height = 70;
             this.clubs.Width = 70;
-            this.diamond.Source = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
+            this.diamond.Source = cards[r.Next(4), r.Next(4)];
             this.diamond.Height = 70;
             this.diamond.Width = 70;
-            this.heart.Source = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
+            this.heart.Source = cards[r.Next(4), r.Next(4)];
             this.heart.Height = 70;
             this.heart.Width = 70;
-            this.spade.Source = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
+            this.spade.Source = cards[r.Next(4), r.Next(4)];
             this.spade.Height = 70;
             this.spade.Width = 70;
         }
