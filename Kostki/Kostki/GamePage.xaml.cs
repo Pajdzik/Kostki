@@ -45,9 +45,11 @@ namespace Kostki
 
         public void showCards() //tymczasowa funkcja
         {
-            for (int i = 0; i < 20; i++) 
+            Random r = new Random();
+
+            for (int i = 0; i < 16; i++) 
             {
-                Image image = this.controlPanel.GetImageByColorAndId(Figures.Diamond, CardColors.Blue);
+                Image image = this.controlPanel.GetImageByColorAndId(r.Next(4), r.Next(4));
                 image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
                 image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
                 image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
@@ -72,7 +74,7 @@ namespace Kostki
         private void ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
             Image image = (Image) sender;
-            Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize())); //pseudozaokrąglenie do 70
+            Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
             Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
         }
     }

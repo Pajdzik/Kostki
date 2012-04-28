@@ -30,8 +30,8 @@ namespace Kostki.Class
 
     public class ControlPanel
     {
-        public int cardSize = 70;
-        public int borderSize = 5;
+        public readonly int cardSize = 96;
+        public readonly int borderSize = 5;
         private BitmapImage[,] cards;
 
         public ControlPanel()
@@ -72,6 +72,15 @@ namespace Kostki.Class
         {
             Image image = new Image();
             image.Source = this.cards[(int)figure, (int)cardColor];
+            image.Height = this.cardSize;
+            image.Width = this.cardSize;
+            return image;
+        }
+
+        public Image GetImageByColorAndId(int figure, int cardColor)
+        {
+            Image image = new Image();
+            image.Source = this.cards[figure, cardColor];
             image.Height = this.cardSize;
             image.Width = this.cardSize;
             return image;
