@@ -1,7 +1,7 @@
-﻿<xapCache source="F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2012-04-29 00:11:43">
+﻿<xapCache source="F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2012-04-29 16:53:26">
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="2012-04-28 22:28:31" />
-  <file source="F:\Programowanie\Kostki\Kostki\Kostki\Background.png" archivePath="Background.png" lastWriteTime="2012-04-28 22:28:31" />
-  <file source="F:\Programowanie\Kostki\Kostki\Kostki\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="2012-04-28 22:28:31" />
+  <file source="F:\Programowanie\Kostki\Kostki\Kostki\Background.png" archivePath="Background.png" lastWriteTime="2012-04-29 16:53:14" />
+  <file source="F:\Programowanie\Kostki\Kostki\Kostki\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="2012-04-29 16:52:02" />
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll" archivePath="Kostki.dll" lastWriteTime="2012-04-29 00:11:42" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="2011-09-15 15:36:26" />
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\img\clubs\blue.png" archivePath="img\clubs\blue.png" lastWriteTime="2012-04-28 22:28:32" />
@@ -20,6 +20,6 @@
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\img\spade\red.png" archivePath="img\spade\red.png" lastWriteTime="2012-04-28 22:28:32" />
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\img\clubs\yellow.png" archivePath="img\clubs\yellow.png" lastWriteTime="2012-04-28 22:28:32" />
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\img\spade\yellow.png" archivePath="img\spade\yellow.png" lastWriteTime="2012-04-28 22:28:32" />
-  <file source="F:\Programowanie\Kostki\Kostki\Kostki\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="2012-04-28 22:28:32" />
+  <file source="F:\Programowanie\Kostki\Kostki\Kostki\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="2012-04-29 16:41:43" />
   <file source="F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="2012-04-28 22:38:28" />
 </xapCache>
