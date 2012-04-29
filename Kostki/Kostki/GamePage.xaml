@@ -21,9 +21,6 @@
         </Grid.RowDefinitions>
 
         <Canvas Grid.Row="1" x:Name="canvas">
-            <Canvas.Background>
-                <ImageBrush ImageSource="/img/siatka.png" Stretch="None" />
-            </Canvas.Background>
         </Canvas>
         <!--ContentPanel - place additional content here-->
     </Grid>

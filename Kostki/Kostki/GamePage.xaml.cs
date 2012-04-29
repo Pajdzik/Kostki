@@ -21,12 +21,15 @@ namespace Kostki
         private Image clubs, diamond, heart, spade;
 
         private ControlPanel controlPanel;
+        private Point currentPosition = new Point();
+        private Point startPosition = new Point();
 
         public GamePage()
         {
             this.controlPanel = new ControlPanel();
             InitializeComponent();
             this.Init();
+            this.ShowRectangle();
             this.Loaded += new RoutedEventHandler(GamePageLoaded);
         }
 
@@ -41,6 +44,57 @@ namespace Kostki
         private void GamePageLoaded(object sender, RoutedEventArgs e)
         {
             this.showCards();
+        }
+
+        public void ShowRectangle() 
+        {
+            this.ShowRectangleForJoker();
+            this.ShowRectangleForGrid();
+            this.ShowRectangleForRand();
+        }
+
+        public void ShowRectangleForJoker()
+        {
+            currentPosition = startPosition = controlPanel.GetTopJoker();
+            for (int j = 0; j < 2; j++)
+            {
+                Rectangle rect = controlPanel.GetRectangle();
+                this.canvas.Children.Add(rect);
+                Canvas.SetLeft(rect, currentPosition.X);
+                Canvas.SetTop(rect, currentPosition.Y);
+                currentPosition.X += 100;
+            }
+        }
+
+        public void ShowRectangleForGrid()
+        {
+            currentPosition = startPosition = controlPanel.GetTopGrid();
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Rectangle rect = controlPanel.GetRectangle();
+                    this.canvas.Children.Add(rect);
+                    Canvas.SetLeft(rect, currentPosition.X);
+                    Canvas.SetTop(rect, currentPosition.Y);
+                    currentPosition.X += 100;
+                }
+                currentPosition.X = startPosition.X;
+                currentPosition.Y += 100;
+            }
+        }
+
+        public void ShowRectangleForRand()
+        {
+            currentPosition = startPosition = controlPanel.GetTopRand();
+            for (int j = 0; j < 4; j++)
+            {
+                Rectangle rect = controlPanel.GetRectangle();
+                this.canvas.Children.Add(rect);
+                Canvas.SetLeft(rect, currentPosition.X);
+                Canvas.SetTop(rect, currentPosition.Y);
+                currentPosition.X += 100;
+            }
         }
 
         public void showCards() //tymczasowa funkcja
@@ -64,9 +118,10 @@ namespace Kostki
 
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
-            Debug.WriteLine("start");
-
             Image image = (Image)sender;
+
+            Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) - 0.15 * image.Width)));
+            Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) - 0.15 * image.Width)));
 
             image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
             image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
@@ -82,6 +137,9 @@ namespace Kostki
         private void ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
             Image image = (Image) sender;
+
+            Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) + 0.15 * image.Width)));
+            Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) + 0.15 * image.Width)));
 
             image.Opacity = 1.0;                    // ustawienie pełnej widoczności z powrotem
             image.Height = image.Width = controlPanel.cardSize;     // ustawienie rozmiarów z powrotem

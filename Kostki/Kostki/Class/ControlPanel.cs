@@ -34,8 +34,11 @@ namespace Kostki.Class
 
         private BitmapImage[,] cards;
 
-        public readonly int cardSize = 90;
-        public readonly int borderSize = 4;
+        public readonly int addPanel = 60;
+        public readonly int leftAndRight = 42;
+        public readonly int cardSize = 86;
+        public readonly int borderSize = 3;
+        public readonly int spaceSize = 4;
         public readonly double opacityCoefficient = 0.5;
         public readonly double resizeCoefficient = 1.3;
         public readonly Point newCardGrid;
@@ -75,7 +78,7 @@ namespace Kostki.Class
 
         public int GetFieldSize()
         {
-            return this.cardSize + this.borderSize;
+            return this.cardSize + this.borderSize * 2 + this.spaceSize;
         }
 
         public Image GetImageByColorAndId(Figures figure, CardColors cardColor)
@@ -94,6 +97,35 @@ namespace Kostki.Class
             image.Height = this.cardSize;
             image.Width = this.cardSize;
             return image;
+        }
+
+        public Point GetTopJoker()
+        {
+            return new Point((double)this.leftAndRight,(double)this.addPanel + 4);
+        }
+
+        public Point GetTopGrid()
+        {
+            Point point = this.GetTopJoker();
+            point.Y += 112;
+            return point;
+        }
+
+        public Point GetTopRand()
+        {
+            Point point = this.GetTopGrid();
+            point.Y += 412;
+            return point;
+        }
+
+        public Rectangle GetRectangle()
+        {
+            Rectangle rect = new Rectangle();
+            rect.Fill = new SolidColorBrush(Colors.Gray);
+            rect.Height = 96;
+            rect.Width = 96;
+
+            return rect;
         }
     }
 }
