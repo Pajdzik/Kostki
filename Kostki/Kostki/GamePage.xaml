@@ -21,6 +21,9 @@
         </Grid.RowDefinitions>
 
         <Canvas Grid.Row="1" x:Name="canvas">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/img/siatka.png" Stretch="None" />
+            </Canvas.Background>
         </Canvas>
         <!--ContentPanel - place additional content here-->
     </Grid>
@@ -30,8 +33,8 @@
     
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBarIconButton IconUri="/img/icons/next.png" Text="roll"/>
+            <shell:ApplicationBarIconButton IconUri="/img/icons/cancel.png" Text="cancel"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="New game"/>
                 <shell:ApplicationBarMenuItem Text="Options"/>

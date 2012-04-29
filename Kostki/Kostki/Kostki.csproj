@@ -111,6 +111,9 @@
     <Content Include="img\clubs\red.png" />
     <Content Include="img\heart\red.png" />
     <Content Include="img\heart\yellow.png" />
+    <Content Include="img\icons\cancel.png" />
+    <Content Include="img\icons\next.png" />
+    <Content Include="img\siatka.png" />
     <Content Include="img\spade\blue.png" />
     <Content Include="img\spade\green.png" />
     <Content Include="img\spade\red.png" />

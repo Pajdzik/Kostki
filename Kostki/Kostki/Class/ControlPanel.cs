@@ -30,13 +30,23 @@ namespace Kostki.Class
 
     public class ControlPanel
     {
-        public readonly int cardSize = 96;
-        public readonly int borderSize = 5;
+        
+
         private BitmapImage[,] cards;
+
+        public readonly int cardSize = 90;
+        public readonly int borderSize = 4;
+        public readonly double opacityCoefficient = 0.5;
+        public readonly double resizeCoefficient = 1.3;
+        public readonly Point newCardGrid;
+        public readonly Point grid4x4;
 
         public ControlPanel()
         {
             cards = new BitmapImage[4, 4];
+            newCardGrid = new Point(45, 565);
+            grid4x4 = new Point(45, 153);
+
             this.LoadCards();
         }
 
