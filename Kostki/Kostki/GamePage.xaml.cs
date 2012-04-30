@@ -23,6 +23,8 @@ namespace Kostki
         private ControlPanel controlPanel;
         private Point currentPosition = new Point();
         private Point startPosition = new Point();
+        private Point startPoint = new Point(); // punkt startowy karty, przed wciśnięciem
+        private Rectangle opacityRect = new Rectangle();
 
         public GamePage()
         {
@@ -120,6 +122,8 @@ namespace Kostki
         {
             Image image = (Image)sender;
 
+            this.startPoint = new Point(Canvas.GetLeft(image), Canvas.GetTop(image));
+
             Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) - 0.15 * image.Width)));
             Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) - 0.15 * image.Width)));
 
@@ -131,8 +135,26 @@ namespace Kostki
         {
             Image image = (Image)sender;
             Canvas.SetLeft(image, Canvas.GetLeft(image) + e.DeltaManipulation.Translation.X);
-            Canvas.SetTop(image, Canvas.GetTop(image) + e.DeltaManipulation.Translation.Y); 
-        }
+            Canvas.SetTop(image, Canvas.GetTop(image) + e.DeltaManipulation.Translation.Y);
+
+            try
+            {
+                canvas.Children.Remove(this.opacityRect);
+                Point point = controlPanel.GetRowAndColumnFromViewportPoint(new Point(Canvas.GetLeft(image), Canvas.GetTop(image)));
+                Debug.WriteLine("Mam poiunt = " + point.X + " " + point.Y);
+                this.opacityRect = controlPanel.GetMarkRectangle();
+                canvas.Children.Add(opacityRect);
+                Point point2 = controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y);
+                Debug.WriteLine("Mam poiunt = " + point2.X + " " + point2.Y);
+                Canvas.SetLeft(opacityRect, controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y).X);
+                Canvas.SetTop(opacityRect, controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y).Y);
+            }
+            catch (NullReferenceException ex)
+            {
+                this.opacityRect = null;
+                Debug.WriteLine("Null reference");
+            }
+       }
 
         private void ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
@@ -144,8 +166,20 @@ namespace Kostki
             image.Opacity = 1.0;                    // ustawienie pełnej widoczności z powrotem
             image.Height = image.Width = controlPanel.cardSize;     // ustawienie rozmiarów z powrotem
 
-            Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
-            Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
+            if (this.opacityRect != null)
+            {
+                Canvas.SetLeft(image, Canvas.GetLeft(this.opacityRect)+3);
+                Canvas.SetTop(image, Canvas.GetTop(this.opacityRect)+3);
+                canvas.Children.Remove(this.opacityRect);
+            }
+            else
+            {
+                Canvas.SetLeft(image, this.startPoint.X);
+                Canvas.SetTop(image, this.startPoint.Y);
+            }
+            
+            //Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
+            //Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
         }
     }
 }

@@ -78,7 +78,7 @@ namespace Kostki.Class
 
         public int GetFieldSize()
         {
-            return this.cardSize + this.borderSize * 2 + this.spaceSize;
+            return this.cardSize + this.borderSize * 2 ;
         }
 
         public Image GetImageByColorAndId(Figures figure, CardColors cardColor)
@@ -126,6 +126,60 @@ namespace Kostki.Class
             rect.Width = 96;
 
             return rect;
+        }
+
+        public Rectangle GetMarkRectangle()
+        {
+            Rectangle rect = new Rectangle();
+            rect.Fill = new SolidColorBrush(Colors.White);
+            rect.Opacity = 0.35;
+            rect.Height = this.GetFieldSize();
+            rect.Width = this.GetFieldSize();
+            return rect;
+        }
+
+        public Point GetCoordsForMarkRectangle(int x, int y)
+        {
+            Point resultPoint = this.GetTopGrid();
+            resultPoint.X += (x - 1) * 100 + 3;
+            resultPoint.Y += (y - 1) * 100 + 3;
+
+            return resultPoint;
+        }
+
+        public Point GetRowAndColumnFromViewportPoint(Point current)
+        {
+            Point point = new Point();
+            double top, bottom;
+            top = this.GetTopGrid().Y;
+            bottom = top + 396;
+            if (!this.InsideRange(top, bottom, current.Y) || !this.InsideRange(this.leftAndRight,
+                   this.leftAndRight+396, current.X))
+            {
+                throw new NullReferenceException();
+            }
+
+            point.Y = this.CalculateRowAndColumn((int)(current.Y - top));
+            point.X = this.CalculateRowAndColumn((int)(current.X - this.leftAndRight));
+            return point;
+        }
+
+        public Boolean InsideRange(double first, double second, double value)
+        {
+            if (value > first && value < second)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int CalculateRowAndColumn(int y)
+        {
+            int result = (int)(y / 100);
+            return result + 1;
         }
     }
 }
