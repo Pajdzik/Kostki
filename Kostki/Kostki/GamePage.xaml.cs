@@ -140,7 +140,7 @@ namespace Kostki
             try
             {
                 canvas.Children.Remove(this.opacityRect);
-                Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+controlPanel.cardSize/2, Canvas.GetTop(image)+controlPanel.cardSize/2));
+                Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
                 this.opacityRect = controlPanel.GetMarkRectangle();
                 canvas.Children.Add(opacityRect);
                 Canvas.SetLeft(opacityRect, point.X);
