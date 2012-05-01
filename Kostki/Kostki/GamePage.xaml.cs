@@ -24,7 +24,7 @@ namespace Kostki
         private Point currentPosition = new Point();
         private Point startPosition = new Point();
         private Point startPoint = new Point(); // punkt startowy karty, przed wciśnięciem
-        private Rectangle opacityRect = new Rectangle();
+        private Rectangle opacityRect = null;
 
         public GamePage()
         {
@@ -101,7 +101,8 @@ namespace Kostki
 
         public void showCards() //tymczasowa funkcja
         {
-            Random r = new Random();           
+            Random r = new Random();
+            Point point = new Point();
 
             for (int i = 0; i < 4; i++) 
             {
@@ -110,9 +111,9 @@ namespace Kostki
                 image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
                 image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
                 this.canvas.Children.Add(image);
-
-                Canvas.SetLeft(image, controlPanel.newCardGrid.X + (i * 100));
-                Canvas.SetTop(image, controlPanel.newCardGrid.Y);
+                point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
+                Canvas.SetLeft(image, point.X + 3);
+                Canvas.SetTop(image, point.Y + 3);
             }
         }
 
@@ -121,7 +122,6 @@ namespace Kostki
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
             Image image = (Image)sender;
-
             this.startPoint = new Point(Canvas.GetLeft(image), Canvas.GetTop(image));
 
             Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) - 0.15 * image.Width)));
@@ -140,19 +140,15 @@ namespace Kostki
             try
             {
                 canvas.Children.Remove(this.opacityRect);
-                Point point = controlPanel.GetRowAndColumnFromViewportPoint(new Point(Canvas.GetLeft(image), Canvas.GetTop(image)));
-                Debug.WriteLine("Mam poiunt = " + point.X + " " + point.Y);
+                Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+controlPanel.cardSize/2, Canvas.GetTop(image)+controlPanel.cardSize/2));
                 this.opacityRect = controlPanel.GetMarkRectangle();
                 canvas.Children.Add(opacityRect);
-                Point point2 = controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y);
-                Debug.WriteLine("Mam poiunt = " + point2.X + " " + point2.Y);
-                Canvas.SetLeft(opacityRect, controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y).X);
-                Canvas.SetTop(opacityRect, controlPanel.GetCoordsForMarkRectangle((int)point.X, (int)point.Y).Y);
+                Canvas.SetLeft(opacityRect, point.X);
+                Canvas.SetTop(opacityRect, point.Y);
             }
             catch (NullReferenceException ex)
             {
                 this.opacityRect = null;
-                Debug.WriteLine("Null reference");
             }
        }
 
@@ -171,15 +167,13 @@ namespace Kostki
                 Canvas.SetLeft(image, Canvas.GetLeft(this.opacityRect)+3);
                 Canvas.SetTop(image, Canvas.GetTop(this.opacityRect)+3);
                 canvas.Children.Remove(this.opacityRect);
+                this.opacityRect = null;
             }
             else
             {
                 Canvas.SetLeft(image, this.startPoint.X);
                 Canvas.SetTop(image, this.startPoint.Y);
             }
-            
-            //Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
-            //Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) / this.controlPanel.GetFieldSize()) * this.controlPanel.GetFieldSize()));
         }
     }
 }

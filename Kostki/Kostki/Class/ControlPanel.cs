@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace Kostki.Class
 {
@@ -18,6 +19,13 @@ namespace Kostki.Class
         Green,
         Red,
         Yellow
+    }
+
+    public enum PlaceType
+    {
+        Joker,
+        Grid,
+        Rand
     }
 
     public enum Figures
@@ -138,7 +146,27 @@ namespace Kostki.Class
             return rect;
         }
 
-        public Point GetCoordsForMarkRectangle(int x, int y)
+        public Point GetViewportPointFromActualPoint(Point point)
+        {
+            PlaceType place = this.RecognizePlace(point);
+            Point p = new Point();
+            if (place == PlaceType.Grid)
+            {
+                p = this.GetRowAndColumnFromViewportPoint(point, this.GetTopGrid().Y);
+                return this.GetGridCoordsForMarkRectangle((int)p.X, (int)p.Y);
+            }
+            else if (place == PlaceType.Rand)
+            {
+                p = this.GetRowAndColumnFromViewportPoint(point, this.GetTopRand().Y);
+                return this.GetRandCoordsForMarkRectangle((int)p.X, (int)p.Y);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public Point GetGridCoordsForMarkRectangle(int x, int y)
         {
             Point resultPoint = this.GetTopGrid();
             resultPoint.X += (x - 1) * 100 + 3;
@@ -147,20 +175,42 @@ namespace Kostki.Class
             return resultPoint;
         }
 
-        public Point GetRowAndColumnFromViewportPoint(Point current)
+        public Point GetRandCoordsForMarkRectangle(int x, int y)
         {
-            Point point = new Point();
+            Point resultPoint = this.GetTopRand();
+            resultPoint.X += (x - 1) * 100 + 2;
+            resultPoint.Y += (y - 1) * 100 + 2;
+
+            return resultPoint;
+        }
+
+        public PlaceType RecognizePlace(Point current)
+        {
             double top, bottom;
             top = this.GetTopGrid().Y;
             bottom = top + 396;
-            if (!this.InsideRange(top, bottom, current.Y) || !this.InsideRange(this.leftAndRight,
-                   this.leftAndRight+396, current.X))
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
+                   this.leftAndRight + 396, current.X))
             {
-                throw new NullReferenceException();
+                return PlaceType.Grid;
             }
+            top = this.GetTopRand().Y;
+            bottom = top + 96;
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
+                this.leftAndRight + 396, current.X))
+            {
+                return PlaceType.Rand;
+            }
+            return PlaceType.Joker;
+            //to do placeTypejoker
+                
+        }
 
-            point.Y = this.CalculateRowAndColumn((int)(current.Y - top));
-            point.X = this.CalculateRowAndColumn((int)(current.X - this.leftAndRight));
+        public Point GetRowAndColumnFromViewportPoint(Point current, double top)
+        {
+            Point point = new Point();
+            point.Y = this.CalculateGridRowAndColumn((int)(current.Y - top));
+            point.X = this.CalculateGridRowAndColumn((int)(current.X - this.leftAndRight));
             return point;
         }
 
@@ -176,7 +226,7 @@ namespace Kostki.Class
             }
         }
 
-        public int CalculateRowAndColumn(int y)
+        public int CalculateGridRowAndColumn(int y)
         {
             int result = (int)(y / 100);
             return result + 1;
