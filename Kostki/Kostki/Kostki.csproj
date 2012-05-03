@@ -123,6 +123,7 @@
     <Content Include="img\spade\red.png" />
     <Content Include="img\clubs\yellow.png" />
     <Content Include="img\spade\yellow.png" />
+    <Content Include="README.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
