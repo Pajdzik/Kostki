@@ -146,6 +146,22 @@ namespace Kostki.Class
             return rect;
         }
 
+        public Point GetCoordsFromActualPoint(Point point, PlaceType place)
+        {
+            if (place == PlaceType.Grid)
+            {
+                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopGrid().Y);
+            }
+            else if (place == PlaceType.Rand)
+            {
+                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopRand().Y);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
         public Point GetViewportPointFromActualPoint(Point point)
         {
             PlaceType place = this.RecognizePlace(point);

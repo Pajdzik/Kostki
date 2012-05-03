@@ -24,23 +24,18 @@ namespace Kostki
         private Point currentPosition = new Point();
         private Point startPosition = new Point();
         private Point startPoint = new Point(); // punkt startowy karty, przed wciśnięciem
+        private Point startCoords = new Point();
+        private PlaceType startPlaceType;
         private Rectangle opacityRect = null;
+        private Game game = null;
 
         public GamePage()
         {
             this.controlPanel = new ControlPanel();
+            this.game = new Game(controlPanel);
             InitializeComponent();
-            this.Init();
             this.ShowRectangle();
             this.Loaded += new RoutedEventHandler(GamePageLoaded);
-        }
-
-        public void Init()
-        {
-            this.clubs = this.controlPanel.GetImageByColorAndId(Figures.Diamond, CardColors.Blue);
-            this.heart = this.controlPanel.GetImageByColorAndId(Figures.Diamond, CardColors.Blue);
-            this.spade = this.controlPanel.GetImageByColorAndId(Figures.Diamond, CardColors.Blue);
-            this.diamond = this.controlPanel.GetImageByColorAndId(Figures.Diamond, CardColors.Blue);
         }
 
         private void GamePageLoaded(object sender, RoutedEventArgs e)
@@ -104,16 +99,17 @@ namespace Kostki
             Random r = new Random();
             Point point = new Point();
 
-            for (int i = 0; i < 4; i++) 
+            CardImage[] cardImage = this.game.RandNewCards();
+
+            for (int i = 0; i < cardImage.Count(); i++)
             {
-                Image image = this.controlPanel.GetImageByColorAndId(r.Next(4), r.Next(4));
-                image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
-                this.canvas.Children.Add(image);
+                cardImage[i].image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                cardImage[i].image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                cardImage[i].image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                this.canvas.Children.Add(cardImage[i].image);
                 point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
-                Canvas.SetLeft(image, point.X + 3);
-                Canvas.SetTop(image, point.Y + 3);
+                Canvas.SetLeft(cardImage[i].image, point.X + 3);
+                Canvas.SetTop(cardImage[i].image, point.Y + 3);
             }
         }
 
@@ -126,6 +122,19 @@ namespace Kostki
 
             Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) - 0.15 * image.Width)));
             Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) - 0.15 * image.Width)));
+
+            PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+
+            Debug.WriteLine("moje place t " + place);
+            try
+            {
+                this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+            }
+            catch (NullReferenceException ex)
+            {
+
+            }
+            Debug.WriteLine("mój placa = " + place + " " + this.startCoords.X + " " + this.startCoords.Y);
 
             image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
             image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
