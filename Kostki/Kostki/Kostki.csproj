@@ -67,6 +67,7 @@
     <Compile Include="Class\Game.cs" />
     <Compile Include="Class\Id.cs" />
     <Compile Include="Exceptions\AlreadyDoneException.cs" />
+    <Compile Include="Exceptions\AlreadyTakenException.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

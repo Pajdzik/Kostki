@@ -16,14 +16,14 @@ namespace Kostki.Class
 {
     public class Game
     {
-        private Id[,] GameBoard;
+        private Id[,,] GameBoard;
         private Id[] RandBoard;
         private ControlPanel controlPanel;
 
         public Game(ControlPanel controlPanel)
         {
             this.controlPanel = controlPanel;
-            this.GameBoard = new Id[4, 4];
+            this.GameBoard = new Id[4, 4, 4];
             this.RandBoard = new Id[4];
         }
 
@@ -33,22 +33,23 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    this.GameBoard[i, j] = null;
+                    this.GameBoard[(int)PlaceType.Grid,i, j] = null;
                 }
             }
 
             for (int i = 0; i < 4; i++)
             {
-                this.RandBoard[i] = null;
+                this.GameBoard[(int)PlaceType.Rand, i, 0] = null;
             }
         }
 
-        private Boolean IsRandBoardClear()
+        public Boolean IsRandBoardClear() //tymczasowo public
         {
             for (int i = 0; i < 4; i++)
             {
-                if (this.RandBoard[i] != null)
+                if (this.GameBoard[(int)PlaceType.Rand,i, 0] != null)
                 {
+                    Debug.WriteLine(PlaceType.Rand+" " + i + " " + 0 + " nie jest nullem");
                     return false;
                 }
             }
@@ -62,8 +63,9 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (this.GameBoard[i, j] == null)
+                    if (this.GameBoard[(int)PlaceType.Grid, i, j] == null)
                     {
+                        Debug.WriteLine("game" + (int)PlaceType.Grid + " " + i + " " + j + " null");
                         result++;
                     }
                 }
@@ -89,6 +91,8 @@ namespace Kostki.Class
                     randImages[i] = null;
                 }
 
+                Debug.WriteLine("howmuch = " + HowMuch);
+
                 for (int i = 0; i < Math.Min(HowMuch,4); i++)
                 {
                     FigureType = random.Next(4);
@@ -96,6 +100,8 @@ namespace Kostki.Class
                     CardImage cardImage = new CardImage(FigureType, CardColor);
                     cardImage.SetImage(this.controlPanel.GetImageByColorAndId(FigureType, CardColor));
                     randImages[i] = cardImage;
+                    this.GameBoard[(int)PlaceType.Rand, i, 0] = new Id((Figures)FigureType, (CardColors)CardColor);
+                    Debug.WriteLine("Wrzucam do randa " + i + " " + 0);
                 }
                 return randImages;
             }
@@ -103,9 +109,11 @@ namespace Kostki.Class
 
         public Boolean IsFieldFree(int x, int y, PlaceType placeType)
         {
-            if (placeType == PlaceType.Grid && !(x > 4 || x < 1 || y > 4 || y < 1))
+            x--;
+            y--;
+            if (placeType == PlaceType.Grid && !(x > 3 || x < 0 || y > 3 || y < 0))
             {
-                if (this.GameBoard[x, y] != null)
+                if (this.GameBoard[(int)PlaceType.Grid,x, y] != null)
                 {
                     return false;
                 }
@@ -114,9 +122,9 @@ namespace Kostki.Class
                     return true;
                 }
             }
-            else if (placeType == PlaceType.Rand && !(x > 4 || x < 1 || y != 1))
+            else if (placeType == PlaceType.Rand && !(x > 3 || x < 0 || y != 0))
             {
-                if (this.RandBoard[x] != null)
+                if (this.GameBoard[(int)PlaceType.Rand,x,y] != null)
                 {
                     return false;
                 }
@@ -129,6 +137,32 @@ namespace Kostki.Class
             {
                 return false;
             }
+        }
+
+        public void MoveCards(PlaceType start, int startX, int startY, PlaceType end, int endX, int endY)
+        {
+            if (this.GameBoard[(int)end, endX, endY] != null)
+            {
+                throw new AlreadyTakenException();
+            }
+
+            Debug.WriteLine("oDczytuje " + startX + " " + startY);
+            Id id = this.GameBoard[(int)start, startX, startY];
+            if (start == PlaceType.Rand)
+            {
+                this.GameBoard[(int)start, startX, startY] = null;
+            }
+            else
+            {
+                this.GameBoard[(int)start, startX, startY] = null;
+            }
+            this.GameBoard[(int)end, endX, endY] = id;
+            Debug.WriteLine("gameDOAJE" + (int)end + " " + endX + " " + endY + " null");
+            if (this.GameBoard[(int)end, endX, endY] == null)
+            {
+                Debug.WriteLine("O Kurwa");
+            }
+            return;
         }
     }
 }

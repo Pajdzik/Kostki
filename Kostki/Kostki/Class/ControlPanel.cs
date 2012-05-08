@@ -23,9 +23,9 @@ namespace Kostki.Class
 
     public enum PlaceType
     {
-        Joker,
         Grid,
-        Rand
+        Rand,
+        Joker
     }
 
     public enum Figures
@@ -38,8 +38,6 @@ namespace Kostki.Class
 
     public class ControlPanel
     {
-        
-
         private BitmapImage[,] cards;
 
         public readonly int addPanel = 60;
@@ -158,7 +156,7 @@ namespace Kostki.Class
             }
             else
             {
-                throw new NullReferenceException();
+                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopJoker().Y);
             }
         }
 

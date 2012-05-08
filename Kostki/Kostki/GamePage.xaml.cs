@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using Kostki.Class;
+using Kostki.Exceptions;
 
 namespace Kostki
 {
@@ -25,7 +26,9 @@ namespace Kostki
         private Point startPosition = new Point();
         private Point startPoint = new Point(); // punkt startowy karty, przed wciśnięciem
         private Point startCoords = new Point();
+        private Point endCoords = new Point();
         private PlaceType startPlaceType;
+        private PlaceType endPlaceType;
         private Rectangle opacityRect = null;
         private Game game = null;
 
@@ -123,18 +126,12 @@ namespace Kostki
             Canvas.SetLeft(image, (double)((int)(Canvas.GetLeft(image) - 0.15 * image.Width)));
             Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) - 0.15 * image.Width)));
 
+            //testowy fragment kodu
             PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+            this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+            this.startPlaceType = place;
 
-            Debug.WriteLine("moje place t " + place);
-            try
-            {
-                this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
-            }
-            catch (NullReferenceException ex)
-            {
-
-            }
-            Debug.WriteLine("mój placa = " + place + " " + this.startCoords.X + " " + this.startCoords.Y);
+            //koniec testowego fragmentu
 
             image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
             image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
@@ -145,6 +142,15 @@ namespace Kostki
             Image image = (Image)sender;
             Canvas.SetLeft(image, Canvas.GetLeft(image) + e.DeltaManipulation.Translation.X);
             Canvas.SetTop(image, Canvas.GetTop(image) + e.DeltaManipulation.Translation.Y);
+
+            // partia testowa kodu
+
+            PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+            this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+            this.endPlaceType = place;
+            //koniec partii testowej kodu
+
+            Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
 
             try
             {
@@ -173,6 +179,19 @@ namespace Kostki
 
             if (this.opacityRect != null)
             {
+                try
+                {
+                    this.game.MoveCards(this.startPlaceType, (int)this.startCoords.X - 1, (int)this.startCoords.Y - 1, this.endPlaceType, (int)this.endCoords.X - 1, (int)this.endCoords.Y - 1);
+                }
+                catch (AlreadyTakenException ex)
+                {
+                    Canvas.SetLeft(image, this.startPoint.X);
+                    Canvas.SetTop(image, this.startPoint.Y);
+                    canvas.Children.Remove(this.opacityRect);
+                    this.opacityRect = null;
+                    return;
+                }
+                //odejmowanie 
                 Canvas.SetLeft(image, Canvas.GetLeft(this.opacityRect)+3);
                 Canvas.SetTop(image, Canvas.GetTop(this.opacityRect)+3);
                 canvas.Children.Remove(this.opacityRect);
@@ -183,6 +202,38 @@ namespace Kostki
                 Canvas.SetLeft(image, this.startPoint.X);
                 Canvas.SetTop(image, this.startPoint.Y);
             }
+        }
+
+        private void NextAndAccept(object sender, EventArgs e)
+        {
+            Boolean pop = false;
+            pop = this.game.IsRandBoardClear();
+
+            if (pop == true)
+            {
+                CardImage[] cardImage = this.game.RandNewCards();
+                Point point = new Point();
+                for (int i = 0; i < cardImage.Count(); i++)
+                {
+                    if (cardImage[i] == null)
+                    {
+                        break;
+                    }
+                    cardImage[i].image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                    cardImage[i].image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                    cardImage[i].image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                    this.canvas.Children.Add(cardImage[i].image);
+                    point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
+                    Canvas.SetLeft(cardImage[i].image, point.X + 3);
+                    Canvas.SetTop(cardImage[i].image, point.Y + 3);
+                }
+            }
+
+        }
+
+        private void BackToPanorama(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
     }
 }

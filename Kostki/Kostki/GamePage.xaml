@@ -30,8 +30,8 @@
     
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/img/icons/next.png" Text="roll"/>
-            <shell:ApplicationBarIconButton IconUri="/img/icons/cancel.png" Text="cancel"/>
+            <shell:ApplicationBarIconButton IconUri="/img/icons/next.png" Text="roll" Click="NextAndAccept" />
+            <shell:ApplicationBarIconButton IconUri="/img/icons/cancel.png" Text="cancel" Click="BackToPanorama"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="New game"/>
                 <shell:ApplicationBarMenuItem Text="Options"/>
