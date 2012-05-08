@@ -111,6 +111,7 @@ namespace Kostki.Class
         {
             x--;
             y--;
+
             if (placeType == PlaceType.Grid && !(x > 3 || x < 0 || y > 3 || y < 0))
             {
                 if (this.GameBoard[(int)PlaceType.Grid,x, y] != null)
@@ -163,6 +164,32 @@ namespace Kostki.Class
                 Debug.WriteLine("O Kurwa");
             }
             return;
+        }
+
+        /// <summary>
+        /// Funkcja blokująca podany kafelek. Wykorzystywana po wciśnięciu przyciski next [apply] na appbarze.
+        /// </summary>
+        /// <param name="x">Współrzędna X</param>
+        /// <param name="y">Współrzędna Y</param>
+
+        public void BlockField(int x, int y)
+        {
+            if (x < 4 && y < 4)
+            {
+                this.GameBoard[(int)PlaceType.Grid, x, y].Blocked = true;
+            }
+        }
+
+        /// <summary>
+        /// Funkcja zwracająca stan zablokowania danego kafelka. 
+        /// </summary>
+        /// <param name="x">Współrzędna X</param>
+        /// <param name="y">Współrzędna Y</param>
+        /// <returns>False, gdy kafelkiem możemy poruszać. True w przeciwnym wypadku</returns>
+
+        public Boolean IsFieldBlocked(int x, int y)
+        {
+            return this.GameBoard[(int) PlaceType.Grid, x, y].Blocked;
         }
     }
 }

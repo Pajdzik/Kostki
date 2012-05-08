@@ -15,10 +15,19 @@ namespace Kostki.Class
     {
         private Figures figure;
         private CardColors color;
+        private Boolean blocked;
+
+        public Boolean Blocked
+        {
+            get { return blocked; }
+            set { blocked = value; }
+        }
+
         public Id(Figures figure, CardColors color)
         {
             this.color = color;
             this.figure = figure;
+            this.blocked = false;
         }
     }
 }

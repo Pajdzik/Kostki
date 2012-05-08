@@ -120,6 +120,7 @@ namespace Kostki
 
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
+          
             Image image = (Image)sender;
             this.startPoint = new Point(Canvas.GetLeft(image), Canvas.GetTop(image));
 
@@ -131,10 +132,16 @@ namespace Kostki
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.startPlaceType = place;
 
+            Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
+
             //koniec testowego fragmentu
 
-            image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
-            image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
+           // if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int) startCoords.X, (int) startCoords.Y) == false)) {
+                Canvas.SetZIndex((UIElement) sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
+
+                image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
+                image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
+           // }
         }
 
         private void ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
@@ -156,10 +163,14 @@ namespace Kostki
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-                this.opacityRect = controlPanel.GetMarkRectangle();
-                canvas.Children.Add(opacityRect);
-                Canvas.SetLeft(opacityRect, point.X);
-                Canvas.SetTop(opacityRect, point.Y);
+
+                if (this.game.IsFieldFree((int) endCoords.X, (int) endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
+                {
+                    this.opacityRect = controlPanel.GetMarkRectangle();
+                    canvas.Children.Add(opacityRect);
+                    Canvas.SetLeft(opacityRect, point.X);
+                    Canvas.SetTop(opacityRect, point.Y);
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -176,6 +187,7 @@ namespace Kostki
 
             image.Opacity = 1.0;                    // ustawienie pełnej widoczności z powrotem
             image.Height = image.Width = controlPanel.cardSize;     // ustawienie rozmiarów z powrotem
+            Canvas.SetZIndex((UIElement)sender, 0);         // przesunięcie kafelka wartstwę niżej
 
             if (this.opacityRect != null)
             {
@@ -204,24 +216,48 @@ namespace Kostki
             }
         }
 
+
         private void NextAndAccept(object sender, EventArgs e)
         {
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
 
-            if (pop == true)
+
+
+
+            /*for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (game.IsFieldFree(i, j, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
+                    {
+                        game.BlockField(i, j);                    
+                    }
+
+                }
+            }*/
+
+
+
+
+            if (pop == true)                // sprawdzenie czy cała plansza jest zajęta (wg mnie niepotrzebnie)
             {
                 CardImage[] cardImage = this.game.RandNewCards();
                 Point point = new Point();
+
                 for (int i = 0; i < cardImage.Count(); i++)
                 {
                     if (cardImage[i] == null)
                     {
                         break;
                     }
+
+                    // dodanie eventów do nowych kafelków na belce rand
                     cardImage[i].image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
                     cardImage[i].image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
                     cardImage[i].image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+
+                    // wyświetlenie kafelków na belce
                     this.canvas.Children.Add(cardImage[i].image);
                     point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
                     Canvas.SetLeft(cardImage[i].image, point.X + 3);
@@ -234,6 +270,11 @@ namespace Kostki
         private void BackToPanorama(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
