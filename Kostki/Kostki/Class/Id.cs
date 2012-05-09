@@ -16,6 +16,7 @@ namespace Kostki.Class
         private Figures figure;
         private CardColors color;
         private Boolean blocked;
+        private Image image;
 
         public Boolean Blocked
         {
@@ -23,8 +24,15 @@ namespace Kostki.Class
             set { blocked = value; }
         }
 
+        public Image Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
         public Id(Figures figure, CardColors color)
         {
+            this.image = null;
             this.color = color;
             this.figure = figure;
             this.blocked = false;

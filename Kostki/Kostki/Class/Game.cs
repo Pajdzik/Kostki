@@ -176,7 +176,7 @@ namespace Kostki.Class
         {
             if (x < 4 && y < 4)
             {
-                this.GameBoard[(int)PlaceType.Grid, x, y].Blocked = true;
+                this.GameBoard[(int) PlaceType.Grid, x, y].Blocked = true;
             }
         }
 
@@ -190,6 +190,16 @@ namespace Kostki.Class
         public Boolean IsFieldBlocked(int x, int y)
         {
             return this.GameBoard[(int) PlaceType.Grid, x, y].Blocked;
+        }
+
+        public void SetImageOnCoords(PlaceType place, int x, int y, Image image)
+        {
+            this.GameBoard[(int)place, x, y].Image = image;
+        }
+
+        public Image DisableImageOnCoords(int x, int y)
+        {
+            return this.GameBoard[(int)PlaceType.Grid, x, y].Image;
         }
     }
 }

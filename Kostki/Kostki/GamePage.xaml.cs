@@ -135,13 +135,14 @@ namespace Kostki
             Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
 
             //koniec testowego fragmentu
+            //if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int)startCoords.X, (int)startCoords.Y) == false)) { }
 
-           // if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int) startCoords.X, (int) startCoords.Y) == false)) {
+            
                 Canvas.SetZIndex((UIElement) sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
 
                 image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
                 image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
-           // }
+            
         }
 
         private void ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
@@ -163,7 +164,7 @@ namespace Kostki
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-
+                Debug.WriteLine("Ciekawe co to jest " + point.X + " " + point.Y);
                 if (this.game.IsFieldFree((int) endCoords.X, (int) endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
                     this.opacityRect = controlPanel.GetMarkRectangle();
@@ -194,6 +195,7 @@ namespace Kostki
                 try
                 {
                     this.game.MoveCards(this.startPlaceType, (int)this.startCoords.X - 1, (int)this.startCoords.Y - 1, this.endPlaceType, (int)this.endCoords.X - 1, (int)this.endCoords.Y - 1);
+                    this.game.SetImageOnCoords(this.endPlaceType, (int)(this.endCoords.X - 1), (int)(this.endCoords.Y - 1), image);
                 }
                 catch (AlreadyTakenException ex)
                 {
@@ -222,20 +224,22 @@ namespace Kostki
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
 
-
-
-
-            /*for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
+            for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (game.IsFieldFree(i, j, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
+                    // TODO: zmiana na i i j
+                    if (game.IsFieldFree(i+1, j+1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
                     {
-                        game.BlockField(i, j);                    
+                        game.BlockField(i, j);
+                        Image imageTemp = this.game.DisableImageOnCoords(i, j);
+                        imageTemp.ManipulationStarted -= ManipulationStarted;
+                        imageTemp.ManipulationDelta -= ManipulationDelta;
+                        imageTemp.ManipulationCompleted -= ManipulationCompleted;
                     }
 
                 }
-            }*/
+            }
 
 
 
