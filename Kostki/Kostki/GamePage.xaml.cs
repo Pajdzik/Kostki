@@ -32,9 +32,11 @@ namespace Kostki
         private Rectangle opacityRect = null;
         private Game game = null;
         private Checker checker;
+        private Calculate calculate;
 
         public GamePage()
         {
+            this.calculate = new Calculate();
             this.checker = new Checker();
             this.controlPanel = new ControlPanel();
             this.game = new Game(controlPanel);
@@ -160,19 +162,29 @@ namespace Kostki
             this.endPlaceType = place;
             //koniec partii testowej kodu
 
-            //Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
+            Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
+            Debug.WriteLine("endplace " + place);
 
             try
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
                 //Debug.WriteLine("Ciekawe co to jest " + point.X + " " + point.Y);
-                if (this.game.IsFieldFree((int) endCoords.X, (int) endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
+                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
+                    Debug.WriteLine("Mam wolny ");
+                    Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
+                    Debug.WriteLine("endplace " + place);
                     this.opacityRect = controlPanel.GetMarkRectangle();
                     canvas.Children.Add(opacityRect);
                     Canvas.SetLeft(opacityRect, point.X);
                     Canvas.SetTop(opacityRect, point.Y);
+                }
+                else
+                {
+                    Debug.WriteLine("nie mam wolnego");
+                    Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
+                    Debug.WriteLine("endplace " + place);
                 }
             }
             catch (NullReferenceException ex)
@@ -232,26 +244,19 @@ namespace Kostki
             ///Sprawdź sobie Pajdziu, jak to najlepiej obsłuzyc (:
 
             this.checker.GameBoard = this.game.GetGameBoard();
-            List<List<Id>> listaLista = this.checker.GetCollection();
-            List<CheckerType> listaListaLista = this.checker.GetCollectionInfo();
-            /*
-            for (int i = 0; i < listaLista.Count; i++)
+            List<List<Id>> collection = this.checker.GetCollection();
+            List<CheckerType> infoCollection = this.checker.GetCollectionInfo();
+            List<int> Index = new List<int>();
+
+            calculate.ListOfCards = collection;
+
+            for (int i = 0; i < collection.Count; i++)
             {
-                Debug.WriteLine("CARD Mam ("+i+"): ");
-                for (int j = 0; j < listaLista[i].Count; j++)
+                if (calculate.GetFourResult(collection[i]) != 0)
                 {
-                    Debug.WriteLine(listaLista[i][j].Color + " " + listaLista[i][j].Figure);
+                    Index.Add(i);
                 }
             }
-
-            for (int i = 0; i < listaListaLista.Count; i++)
-            {
-                Debug.WriteLine("INFO Mam (" + i + "): ");
-                Debug.WriteLine(listaListaLista[i].fourcardtype + " " + listaListaLista[i].x + " " + listaListaLista[i].y);
-            }*/
-
-           /// koniec testowania
-           /// 
 
             for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
             {
@@ -269,9 +274,6 @@ namespace Kostki
 
                 }
             }
-
-
-
 
             if (pop == true)                // sprawdzenie czy cała plansza jest zajęta (wg mnie niepotrzebnie)
             {
