@@ -17,6 +17,7 @@ namespace Kostki.Class
     {
         private List<List<Id>> listOfCards;
         private Int64 globalResult;
+        private Boolean[,] system;
 
         public List<List<Id>> ListOfCards 
         {
@@ -32,6 +33,7 @@ namespace Kostki.Class
         /// pomyśleć czy konstruktor jest w ogóle potrzebny 
         public Calculate()
         {
+            system = new Boolean[4, 4];
             globalResult = 0;
         }
         /// <summary>
@@ -59,9 +61,23 @@ namespace Kostki.Class
             Int64 result = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                /// obsługa
+                system[(int)list[i].Figure, (int)list[i].Color] = true;
             }
+
+
+
             return result;
+        }
+
+        public void ClearSystem()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    system[i, j] = false;
+                }
+            }
         }
 
     }
