@@ -234,7 +234,7 @@ namespace Kostki
             this.checker.GameBoard = this.game.GetGameBoard();
             List<List<Id>> listaLista = this.checker.GetCollection();
             List<CheckerType> listaListaLista = this.checker.GetCollectionInfo();
-
+            /*
             for (int i = 0; i < listaLista.Count; i++)
             {
                 Debug.WriteLine("CARD Mam ("+i+"): ");
@@ -248,7 +248,7 @@ namespace Kostki
             {
                 Debug.WriteLine("INFO Mam (" + i + "): ");
                 Debug.WriteLine(listaListaLista[i].fourcardtype + " " + listaListaLista[i].x + " " + listaListaLista[i].y);
-            }
+            }*/
 
            /// koniec testowania
            /// 
