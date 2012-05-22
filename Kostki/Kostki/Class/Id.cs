@@ -24,6 +24,18 @@ namespace Kostki.Class
             set { blocked = value; }
         }
 
+        public Figures Figure
+        {
+            get { return figure; }
+            set { figure = value; }
+        }
+
+        public CardColors Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
         public Image Image
         {
             get { return image; }

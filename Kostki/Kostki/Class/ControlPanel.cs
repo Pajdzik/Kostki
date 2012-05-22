@@ -13,6 +13,15 @@ using System.Diagnostics;
 
 namespace Kostki.Class
 {
+    public enum FourcardType 
+    {
+        Row,
+        Column,
+        Cross,
+        Rectangle,
+        Corners
+    }
+
     public enum CardColors
     {
         Blue,

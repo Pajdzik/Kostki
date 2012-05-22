@@ -63,9 +63,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\CardImage.cs" />
+    <Compile Include="Class\Checker.cs" />
+    <Compile Include="Class\CheckerType.cs" />
     <Compile Include="Class\ControlPanel.cs" />
     <Compile Include="Class\Game.cs" />
-    <Compile Include="Class\GameLogic.cs" />
     <Compile Include="Class\Id.cs" />
     <Compile Include="Exceptions\AlreadyDoneException.cs" />
     <Compile Include="Exceptions\AlreadyTakenException.cs" />

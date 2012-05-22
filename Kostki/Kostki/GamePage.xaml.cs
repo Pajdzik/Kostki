@@ -31,9 +31,11 @@ namespace Kostki
         private PlaceType endPlaceType;
         private Rectangle opacityRect = null;
         private Game game = null;
+        private Checker checker;
 
         public GamePage()
         {
+            this.checker = new Checker();
             this.controlPanel = new ControlPanel();
             this.game = new Game(controlPanel);
             InitializeComponent();
@@ -132,7 +134,7 @@ namespace Kostki
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.startPlaceType = place;
 
-            Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
+           // Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
 
             //koniec testowego fragmentu
             //if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int)startCoords.X, (int)startCoords.Y) == false)) { }
@@ -158,13 +160,13 @@ namespace Kostki
             this.endPlaceType = place;
             //koniec partii testowej kodu
 
-            Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
+            //Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
 
             try
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-                Debug.WriteLine("Ciekawe co to jest " + point.X + " " + point.Y);
+                //Debug.WriteLine("Ciekawe co to jest " + point.X + " " + point.Y);
                 if (this.game.IsFieldFree((int) endCoords.X, (int) endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
                     this.opacityRect = controlPanel.GetMarkRectangle();
@@ -223,6 +225,33 @@ namespace Kostki
         {
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
+
+
+            ///Testowanie checkera
+            ///Wszystko działa poprawnie
+            ///Sprawdź sobie Pajdziu, jak to najlepiej obsłuzyc (:
+
+            this.checker.GameBoard = this.game.GetGameBoard();
+            List<List<Id>> listaLista = this.checker.GetCollection();
+            List<CheckerType> listaListaLista = this.checker.GetCollectionInfo();
+
+            for (int i = 0; i < listaLista.Count; i++)
+            {
+                Debug.WriteLine("CARD Mam ("+i+"): ");
+                for (int j = 0; j < listaLista[i].Count; j++)
+                {
+                    Debug.WriteLine(listaLista[i][j].Color + " " + listaLista[i][j].Figure);
+                }
+            }
+
+            for (int i = 0; i < listaListaLista.Count; i++)
+            {
+                Debug.WriteLine("INFO Mam (" + i + "): ");
+                Debug.WriteLine(listaListaLista[i].fourcardtype + " " + listaListaLista[i].x + " " + listaListaLista[i].y);
+            }
+
+           /// koniec testowania
+           /// 
 
             for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
             {

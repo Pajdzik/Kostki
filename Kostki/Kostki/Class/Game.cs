@@ -27,6 +27,11 @@ namespace Kostki.Class
             this.RandBoard = new Id[4];
         }
 
+        public Id[,,] GetGameBoard() 
+        {
+            return this.GameBoard;
+        }
+
         private void ClearBoards()
         {
             for (int i = 0; i < 4; i++)
@@ -49,7 +54,6 @@ namespace Kostki.Class
             {
                 if (this.GameBoard[(int)PlaceType.Rand,i, 0] != null)
                 {
-                    Debug.WriteLine(PlaceType.Rand+" " + i + " " + 0 + " nie jest nullem");
                     return false;
                 }
             }
@@ -65,7 +69,7 @@ namespace Kostki.Class
                 {
                     if (this.GameBoard[(int)PlaceType.Grid, i, j] == null)
                     {
-                        Debug.WriteLine("game" + (int)PlaceType.Grid + " " + i + " " + j + " null");
+                        //Debug.WriteLine("game" + (int)PlaceType.Grid + " " + i + " " + j + " null");
                         result++;
                     }
                 }
@@ -91,8 +95,6 @@ namespace Kostki.Class
                     randImages[i] = null;
                 }
 
-                Debug.WriteLine("howmuch = " + HowMuch);
-
                 for (int i = 0; i < Math.Min(HowMuch,4); i++)
                 {
                     FigureType = random.Next(4);
@@ -101,7 +103,6 @@ namespace Kostki.Class
                     cardImage.SetImage(this.controlPanel.GetImageByColorAndId(FigureType, CardColor));
                     randImages[i] = cardImage;
                     this.GameBoard[(int)PlaceType.Rand, i, 0] = new Id((Figures)FigureType, (CardColors)CardColor);
-                    Debug.WriteLine("Wrzucam do randa " + i + " " + 0);
                 }
                 return randImages;
             }
@@ -147,7 +148,6 @@ namespace Kostki.Class
                 throw new AlreadyTakenException();
             }
 
-            Debug.WriteLine("oDczytuje " + startX + " " + startY);
             Id id = this.GameBoard[(int)start, startX, startY];
             if (start == PlaceType.Rand)
             {
@@ -158,11 +158,6 @@ namespace Kostki.Class
                 this.GameBoard[(int)start, startX, startY] = null;
             }
             this.GameBoard[(int)end, endX, endY] = id;
-            Debug.WriteLine("gameDOAJE" + (int)end + " " + endX + " " + endY + " null");
-            if (this.GameBoard[(int)end, endX, endY] == null)
-            {
-                Debug.WriteLine("O Kurwa");
-            }
             return;
         }
 
