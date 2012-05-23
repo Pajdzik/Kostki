@@ -60,7 +60,7 @@ namespace Kostki.Class
             return true;
         }
 
-        private int HowMuchFreeSpaceOnGameBoard()
+        public int HowMuchFreeSpaceOnGameBoard()
         {
             int result = 0;
             for (int i = 0; i < 4; i++)
@@ -69,7 +69,6 @@ namespace Kostki.Class
                 {
                     if (this.GameBoard[(int)PlaceType.Grid, i, j] == null)
                     {
-                        //Debug.WriteLine("game" + (int)PlaceType.Grid + " " + i + " " + j + " null");
                         result++;
                     }
                 }
@@ -148,8 +147,6 @@ namespace Kostki.Class
                 throw new AlreadyTakenException();
             }
 
-            Debug.WriteLine("Przesuwam " + start + " " + startX + " " + startY);
-
             Id id = this.GameBoard[(int)start, startX, startY];
             if (start == PlaceType.Rand)
             {
@@ -194,9 +191,18 @@ namespace Kostki.Class
             this.GameBoard[(int)place, x, y].Image = image;
         }
 
-        public Image DisableImageOnCoords(int x, int y)
+        public Image GetImageOnCoords(int x, int y)
         {
             return this.GameBoard[(int)PlaceType.Grid, x, y].Image;
+        }
+
+        public Image DeleteImageOnCoords(int x, int y)
+        {
+            Debug.WriteLine("Usuwam " + x + "  " + y);
+            Image image = this.GameBoard[(int)PlaceType.Grid, x, y].Image;
+            this.GameBoard[(int)PlaceType.Grid, x, y] = null;
+            return image;
+
         }
     }
 }

@@ -73,11 +73,13 @@ namespace Kostki.Class
                 result += GetRowOrColumnCount(i, true);
             }
 
+            //same figure, same color
             if (result == 1)
             {
                 return 400;
             }
 
+            //same figure, each color
             for (int i = 0; i < 4; i++)
             {
                 if (GetRowOrColumnCount(i, false) == 4)
@@ -86,6 +88,7 @@ namespace Kostki.Class
                 }
             }
 
+            //same color, each figure
             for (int i = 0; i < 4; i++)
             {
                 if (GetRowOrColumnCount(i, true) == 4)
@@ -106,10 +109,88 @@ namespace Kostki.Class
                 if (GetRowOrColumnCount(i, false) != 1) notCross = true;
             }
 
+            //each color, each figure
             if (!notCross)
             {
                 return 100;
             }
+
+            Boolean []colors = new Boolean[4];
+            int howMuchRowsNotClear = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                colors[i] = (GetRowOrColumnCount(i, true) > 0) ? true : false;
+            }
+
+            for (int i = 0; i < 4; i++) 
+            {
+                howMuchRowsNotClear += (colors[i]) ? 1 : 0;
+            }
+
+            //same color
+            if (howMuchRowsNotClear == 1)
+            {
+                return 60;
+            }
+
+            Boolean[] figures = new Boolean[4];
+            int howMuchColumnsNotClear = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                figures[i] = (GetRowOrColumnCount(i, false) > 0) ? true : false;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                howMuchColumnsNotClear += (figures[i]) ? 1 : 0;
+            }
+
+            //same figure
+            if (howMuchColumnsNotClear == 1)
+            {
+                return 50;
+            }
+
+            figures = new Boolean[4];
+            int howMuchFigures = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                figures[i] = (GetRowOrColumnCount(i, false) > 0) ? true : false;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                howMuchFigures += (figures[i]) ? 1 : 0;
+            }
+
+            //each figure
+            if (howMuchFigures == 4)
+            {
+                return 40;
+            }
+
+            colors = new Boolean[4];
+            int howMuchColors = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                colors[i] = (GetRowOrColumnCount(i, true) > 0) ? true : false;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                howMuchColors += (colors[i]) ? 1 : 0;
+            }
+
+            //each color
+            if (howMuchColors == 4)
+            {
+                return 30;
+            }
+
 
             return 0; // tymczasowo
         }

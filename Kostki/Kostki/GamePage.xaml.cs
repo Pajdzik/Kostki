@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using Kostki.Class;
 using Kostki.Exceptions;
+using System.Reflection.Emit;
 
 namespace Kostki
 {
@@ -31,6 +32,7 @@ namespace Kostki
         private Game game = null;
         private Checker checker;
         private Calculate calculate;
+        private TextBlock textblock;
 
         public GamePage()
         {
@@ -41,6 +43,17 @@ namespace Kostki
             InitializeComponent();
             this.ShowRectangle();
             this.Loaded += new RoutedEventHandler(GamePageLoaded);
+            CreateTextBlockForResult();
+        }
+
+        public void CreateTextBlockForResult()
+        {
+            textblock = new TextBlock();
+            textblock.Text = "0";
+            textblock.FontSize = 40;
+            canvas.Children.Add(textblock);
+            Canvas.SetLeft(textblock, (double)(this.controlPanel.GetTopJoker().X + 220));
+            Canvas.SetTop(textblock, (double)(this.controlPanel.GetTopJoker().Y + 15));
         }
 
         private void GamePageLoaded(object sender, RoutedEventArgs e)
@@ -139,11 +152,11 @@ namespace Kostki
             //koniec testowego fragmentu
             //if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int)startCoords.X, (int)startCoords.Y) == false)) { }
 
-            
-                Canvas.SetZIndex((UIElement) sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
 
-                image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
-                image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
+            Canvas.SetZIndex((UIElement)sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
+
+            image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
+            image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
             
         }
 
@@ -153,15 +166,10 @@ namespace Kostki
             Canvas.SetLeft(image, Canvas.GetLeft(image) + e.DeltaManipulation.Translation.X);
             Canvas.SetTop(image, Canvas.GetTop(image) + e.DeltaManipulation.Translation.Y);
 
-            // partia testowa kodu
 
             PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
             this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.endPlaceType = place;
-            //koniec partii testowej kodu
-
-            Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
-            Debug.WriteLine("endplace " + place);
 
             try
             {
@@ -220,7 +228,6 @@ namespace Kostki
             }
         }
 
-
         private void NextAndAccept(object sender, EventArgs e)
         {
             Boolean pop = false;
@@ -238,12 +245,20 @@ namespace Kostki
 
             calculate.ListOfCards = collection;
 
+            calculate.GetActResult();
+
             for (int i = 0; i < collection.Count; i++)
             {
-                if (calculate.GetFourResult(collection[i]) != 0)
+                if (calculate.GetFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
                 }
+            }
+
+            for (int i = 0; i < Index.Count; i++)
+            {
+                Debug.WriteLine("bede usuwal " + infoCollection[Index[i]].x + " " + infoCollection[Index[i]].y + " " + infoCollection[Index[i]].fourcardtype);
+                ClearFour(infoCollection[Index[i]].x, infoCollection[Index[i]].y, infoCollection[Index[i]].fourcardtype);  
             }
 
             for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
@@ -254,7 +269,7 @@ namespace Kostki
                     if (game.IsFieldFree(i+1, j+1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
                     {
                         game.BlockField(i, j);
-                        Image imageTemp = this.game.DisableImageOnCoords(i, j);
+                        Image imageTemp = this.game.GetImageOnCoords(i, j);
                         imageTemp.ManipulationStarted -= ManipulationStarted;
                         imageTemp.ManipulationDelta -= ManipulationDelta;
                         imageTemp.ManipulationCompleted -= ManipulationCompleted;
@@ -288,6 +303,15 @@ namespace Kostki
                 }
             }
 
+            Int64 tempResult = Convert.ToInt64(this.textblock.Text);
+            tempResult = calculate.GlobalResult;
+            this.textblock.Text = Convert.ToString(tempResult);
+
+            if (this.game.HowMuchFreeSpaceOnGameBoard() == 16)
+            {
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
+
         }
 
         private void BackToPanorama(object sender, EventArgs e)
@@ -299,5 +323,68 @@ namespace Kostki
         {
 
         }
+
+        private void ClearFour(int x, int y, FourcardType fourcardType)
+        {
+            // cross
+
+            if (fourcardType == FourcardType.Cross)
+            {
+                if (x == 3)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Image image = this.game.DeleteImageOnCoords(3 - i, i);
+                        canvas.Children.Remove(image);
+                    }
+                } else
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Image image = this.game.DeleteImageOnCoords(i, i); 
+                        canvas.Children.Remove(image);
+                    }
+                }
+
+            }
+
+            // column
+
+            else if (fourcardType == FourcardType.Column)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Image image = this.game.DeleteImageOnCoords(x, i);
+                    canvas.Children.Remove(image);
+                }
+            }
+
+            // row
+
+            else if (fourcardType == FourcardType.Row)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Image image = this.game.DeleteImageOnCoords(i, y);
+                    canvas.Children.Remove(image);
+                }
+            }
+
+            // rectangle
+
+            else if (fourcardType == FourcardType.Rectangle)
+            {
+                for (int i = x; i < x+2; i++)
+                {
+                    for (int j = y; j < y + 2; j++)
+                    {
+                        Debug.WriteLine("Usuwam " + x + " " + y);
+                        Image image = this.game.DeleteImageOnCoords(i, j);
+                        canvas.Children.Remove(image);
+                    }
+                }
+            }
+        }
+
     }
 }
