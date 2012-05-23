@@ -19,8 +19,6 @@ namespace Kostki
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private Image clubs, diamond, heart, spade;
-
         private ControlPanel controlPanel;
         private Point currentPosition = new Point();
         private Point startPosition = new Point();
@@ -169,22 +167,12 @@ namespace Kostki
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-                //Debug.WriteLine("Ciekawe co to jest " + point.X + " " + point.Y);
-                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, PlaceType.Grid) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
+                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
-                    Debug.WriteLine("Mam wolny ");
-                    Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
-                    Debug.WriteLine("endplace " + place);
                     this.opacityRect = controlPanel.GetMarkRectangle();
                     canvas.Children.Add(opacityRect);
                     Canvas.SetLeft(opacityRect, point.X);
                     Canvas.SetTop(opacityRect, point.Y);
-                }
-                else
-                {
-                    Debug.WriteLine("nie mam wolnego");
-                    Debug.WriteLine("end " + endCoords.X + " " + endCoords.Y);
-                    Debug.WriteLine("endplace " + place);
                 }
             }
             catch (NullReferenceException ex)

@@ -148,6 +148,8 @@ namespace Kostki.Class
                 throw new AlreadyTakenException();
             }
 
+            Debug.WriteLine("Przesuwam " + start + " " + startX + " " + startY);
+
             Id id = this.GameBoard[(int)start, startX, startY];
             if (start == PlaceType.Rand)
             {
