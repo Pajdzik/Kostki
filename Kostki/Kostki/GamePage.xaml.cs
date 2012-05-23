@@ -147,7 +147,9 @@ namespace Kostki
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.startPlaceType = place;
 
-           // Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
+            //Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
+
+            Debug.WriteLine(this.startPlaceType);
 
             //koniec testowego fragmentu
             //if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int)startCoords.X, (int)startCoords.Y) == false)) { }

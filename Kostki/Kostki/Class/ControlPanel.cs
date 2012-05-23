@@ -224,8 +224,15 @@ namespace Kostki.Class
             {
                 return PlaceType.Rand;
             }
-            return PlaceType.Joker;
-            //to do placeTypejoker
+           // top = this.GetTopJoker().Y;
+           // bottom = top + 96;
+           // if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
+           //     this.leftAndRight + 188, current.X))
+           // {
+                return PlaceType.Joker;
+            //}
+
+            //return null;
                 
         }
 
