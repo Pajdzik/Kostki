@@ -191,7 +191,6 @@ namespace Kostki.Class
                 return 30;
             }
 
-
             return 0; // tymczasowo
         }
 
