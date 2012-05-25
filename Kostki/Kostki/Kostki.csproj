@@ -121,6 +121,9 @@
     <Content Include="img\heart\yellow.png" />
     <Content Include="img\icons\cancel.png" />
     <Content Include="img\icons\next.png" />
+    <Resource Include="img\joker_sun.png" />
+    <Resource Include="img\jokers\joker_sun.png" />
+    <Resource Include="img\jokers\joker_violet.png" />
     <Content Include="img\siatka.png" />
     <Content Include="img\spade\blue.png" />
     <Content Include="img\spade\green.png" />

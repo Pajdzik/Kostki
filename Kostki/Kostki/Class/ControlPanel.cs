@@ -48,6 +48,7 @@ namespace Kostki.Class
     public class ControlPanel
     {
         private BitmapImage[,] cards;
+        private BitmapImage Joker;
 
         public readonly int addPanel = 60;
         public readonly int leftAndRight = 42;
@@ -89,11 +90,22 @@ namespace Kostki.Class
             cards[(int) Figures.Spade, (int) CardColors.Green ] = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
             cards[(int) Figures.Spade, (int) CardColors.Red] = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
             cards[(int) Figures.Spade, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
+
+            Joker = new BitmapImage(new Uri("/img/jokers/joker_sun.png", UriKind.Relative));
         }
 
         public int GetFieldSize()
         {
             return this.cardSize + this.borderSize * 2 ;
+        }
+
+        public Image GetJoker()
+        {
+            Image image = new Image();
+            image.Source = this.Joker;
+            image.Height = this.cardSize;
+            image.Width = this.cardSize;
+            return image;
         }
 
         public Image GetImageByColorAndId(Figures figure, CardColors cardColor)
@@ -185,8 +197,18 @@ namespace Kostki.Class
             }
             else
             {
-                throw new NullReferenceException();
+                p = this.GetRowAndColumnFromViewportPoint(point, this.GetTopJoker().Y);
+                return this.GetJokerCoordsForMarkRectangle((int)p.X, (int)p.Y);
             }
+        }
+
+        public Point GetJokerCoordsForMarkRectangle(int x, int y)
+        {
+            Point resultPoint = this.GetTopGrid();
+            resultPoint.X += (x - 1) * 100 + 2;
+            resultPoint.Y += (y - 1) * 100 + 2;
+
+            return resultPoint;
         }
 
         public Point GetGridCoordsForMarkRectangle(int x, int y)

@@ -129,6 +129,33 @@ namespace Kostki
                 Canvas.SetLeft(cardImage[i].image, point.X + 3);
                 Canvas.SetTop(cardImage[i].image, point.Y + 3);
             }
+            
+
+             //test part
+            Image joker1 = this.controlPanel.GetJoker();
+            Image joker2 = this.controlPanel.GetJoker();
+            
+           // joker1.Source = this.controlPanel.JokerCard;
+            //joker2.Source = this.controlPanel.JokerCard;
+            //joker1.Height = 86;
+            //joker1.Width = 86;
+            //joker2.Height = 86;
+            //joker2.Width = 86;
+            
+            this.canvas.Children.Add(joker1);
+            this.canvas.Children.Add(joker2);
+            point = controlPanel.GetJokerCoordsForMarkRectangle(1, 1);
+            Debug.WriteLine("moj punkt to " + point.X + " " + point.Y);
+
+            Canvas.SetLeft(joker1, point.X + 3);
+            Canvas.SetTop(joker1, point.Y + 3);
+
+            point = controlPanel.GetJokerCoordsForMarkRectangle(2, 1);
+
+            Debug.WriteLine("moj punkt to " + point.X + " " + point.Y);
+            Canvas.SetLeft(joker2, point.X + 3);
+            Canvas.SetTop(joker2, point.Y + 3);
+            
         }
 
 
@@ -147,7 +174,8 @@ namespace Kostki
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.startPlaceType = place;
 
-            //Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
+            Debug.WriteLine("place type " + place);
+            Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
 
             Debug.WriteLine(this.startPlaceType);
 
@@ -210,6 +238,14 @@ namespace Kostki
                     this.game.SetImageOnCoords(this.endPlaceType, (int)(this.endCoords.X - 1), (int)(this.endCoords.Y - 1), image);
                 }
                 catch (AlreadyTakenException ex)
+                {
+                    Canvas.SetLeft(image, this.startPoint.X);
+                    Canvas.SetTop(image, this.startPoint.Y);
+                    canvas.Children.Remove(this.opacityRect);
+                    this.opacityRect = null;
+                    return;
+                }
+                catch (NullReferenceException ex2)
                 {
                     Canvas.SetLeft(image, this.startPoint.X);
                     Canvas.SetTop(image, this.startPoint.Y);

@@ -142,7 +142,14 @@ namespace Kostki.Class
 
         public void MoveCards(PlaceType start, int startX, int startY, PlaceType end, int endX, int endY)
         {
-            if (this.GameBoard[(int)end, endX, endY] != null)
+            try
+            {
+                if (this.GameBoard[(int)end, endX, endY] != null)
+                {
+                    throw new AlreadyTakenException();
+                }
+            }
+            catch (IndexOutOfRangeException e)
             {
                 throw new AlreadyTakenException();
             }
