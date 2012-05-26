@@ -149,7 +149,7 @@ namespace Kostki.Class
                     throw new AlreadyTakenException();
                 }
             }
-            catch (IndexOutOfRangeException e)
+            catch (IndexOutOfRangeException)
             {
                 throw new AlreadyTakenException();
             }

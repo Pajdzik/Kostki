@@ -33,6 +33,7 @@ namespace Kostki
         private Checker checker;
         private Calculate calculate;
         private TextBlock textblock;
+        private Image[] jokers;
 
         public GamePage()
         {
@@ -59,6 +60,7 @@ namespace Kostki
         private void GamePageLoaded(object sender, RoutedEventArgs e)
         {
             this.showCards();
+            AddJoker();
         }
 
         public void ShowRectangle() 
@@ -112,6 +114,24 @@ namespace Kostki
             }
         }
 
+        public void AddJoker()
+        {
+            jokers = new Image[2];
+            Point jokerPoint = new Point();
+
+            for (int i = 0; i < 2; i++)
+            {
+                jokers[i] = controlPanel.GetJoker();
+                canvas.Children.Add(jokers[i]);
+                jokerPoint = controlPanel.GetJokerCoordsForMarkRectangle(i + 1, 1);
+                Canvas.SetLeft(jokers[i], jokerPoint.X+3);
+                Canvas.SetTop(jokers[i], jokerPoint.Y + 3);
+                jokers[i].ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                jokers[i].ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                jokers[i].ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+            }
+        }
+
         public void showCards() //tymczasowa funkcja
         {
             Random r = new Random();
@@ -128,34 +148,7 @@ namespace Kostki
                 point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
                 Canvas.SetLeft(cardImage[i].image, point.X + 3);
                 Canvas.SetTop(cardImage[i].image, point.Y + 3);
-            }
-            
-
-             //test part
-            Image joker1 = this.controlPanel.GetJoker();
-            Image joker2 = this.controlPanel.GetJoker();
-            
-           // joker1.Source = this.controlPanel.JokerCard;
-            //joker2.Source = this.controlPanel.JokerCard;
-            //joker1.Height = 86;
-            //joker1.Width = 86;
-            //joker2.Height = 86;
-            //joker2.Width = 86;
-            
-            this.canvas.Children.Add(joker1);
-            this.canvas.Children.Add(joker2);
-            point = controlPanel.GetJokerCoordsForMarkRectangle(1, 1);
-            Debug.WriteLine("moj punkt to " + point.X + " " + point.Y);
-
-            Canvas.SetLeft(joker1, point.X + 3);
-            Canvas.SetTop(joker1, point.Y + 3);
-
-            point = controlPanel.GetJokerCoordsForMarkRectangle(2, 1);
-
-            Debug.WriteLine("moj punkt to " + point.X + " " + point.Y);
-            Canvas.SetLeft(joker2, point.X + 3);
-            Canvas.SetTop(joker2, point.Y + 3);
-            
+            }            
         }
 
 
@@ -195,25 +188,42 @@ namespace Kostki
             Image image = (Image)sender;
             Canvas.SetLeft(image, Canvas.GetLeft(image) + e.DeltaManipulation.Translation.X);
             Canvas.SetTop(image, Canvas.GetTop(image) + e.DeltaManipulation.Translation.Y);
-
-
-            PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
-            this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
-            this.endPlaceType = place;
+            PlaceType place;
+            try
+            {
+                place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+                this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+                this.endPlaceType = place;
+            }
+            catch (OutOfBoardException)
+            {
+                canvas.Children.Remove(this.opacityRect);
+                this.opacityRect = null;
+                return;
+            }
+            Debug.WriteLine(place + " " + endCoords.X + " " + endCoords.Y);
 
             try
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
+                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true || startPlaceType == PlaceType.Joker)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
                     this.opacityRect = controlPanel.GetMarkRectangle();
                     canvas.Children.Add(opacityRect);
                     Canvas.SetLeft(opacityRect, point.X);
                     Canvas.SetTop(opacityRect, point.Y);
                 }
+                else if (endPlaceType == PlaceType.Joker && startPlaceType == PlaceType.Joker)
+                {
+                    opacityRect = controlPanel.GetMarkRectangle();
+                    canvas.Children.Add(opacityRect);
+                    Point jokerPoint = controlPanel.GetJokerViewportPointFromCoords((int)(endCoords.X - 1), (int)(endCoords.Y));
+                    Canvas.SetLeft(opacityRect, jokerPoint.X + 3);
+                    Canvas.SetTop(opacityRect, jokerPoint.Y + 3);
+                }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 this.opacityRect = null;
             }
@@ -232,32 +242,45 @@ namespace Kostki
 
             if (this.opacityRect != null)
             {
-                try
+                if (startPlaceType == PlaceType.Joker)
                 {
-                    this.game.MoveCards(this.startPlaceType, (int)this.startCoords.X - 1, (int)this.startCoords.Y - 1, this.endPlaceType, (int)this.endCoords.X - 1, (int)this.endCoords.Y - 1);
-                    this.game.SetImageOnCoords(this.endPlaceType, (int)(this.endCoords.X - 1), (int)(this.endCoords.Y - 1), image);
-                }
-                catch (AlreadyTakenException ex)
-                {
+                    //obsługa jokera
                     Canvas.SetLeft(image, this.startPoint.X);
                     Canvas.SetTop(image, this.startPoint.Y);
                     canvas.Children.Remove(this.opacityRect);
                     this.opacityRect = null;
-                    return;
                 }
-                catch (NullReferenceException ex2)
+                else
                 {
-                    Canvas.SetLeft(image, this.startPoint.X);
-                    Canvas.SetTop(image, this.startPoint.Y);
+                    try
+                    {
+                        this.game.MoveCards(this.startPlaceType, (int)this.startCoords.X - 1, (int)this.startCoords.Y - 1, this.endPlaceType, (int)this.endCoords.X - 1, (int)this.endCoords.Y - 1);
+                        this.game.SetImageOnCoords(this.endPlaceType, (int)(this.endCoords.X - 1), (int)(this.endCoords.Y - 1), image);
+                    }
+                    catch (AlreadyTakenException)
+                    {
+                        Debug.WriteLine("AlreadyTaken");
+                        Canvas.SetLeft(image, this.startPoint.X);
+                        Canvas.SetTop(image, this.startPoint.Y);
+                        canvas.Children.Remove(this.opacityRect);
+                        this.opacityRect = null;
+                        return;
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Debug.WriteLine("Nullreference");
+                        Canvas.SetLeft(image, this.startPoint.X);
+                        Canvas.SetTop(image, this.startPoint.Y);
+                        canvas.Children.Remove(this.opacityRect);
+                        this.opacityRect = null;
+                        return;
+                    }
+                    //odejmowanie 
+                    Canvas.SetLeft(image, Canvas.GetLeft(this.opacityRect) + 3);
+                    Canvas.SetTop(image, Canvas.GetTop(this.opacityRect) + 3);
                     canvas.Children.Remove(this.opacityRect);
                     this.opacityRect = null;
-                    return;
                 }
-                //odejmowanie 
-                Canvas.SetLeft(image, Canvas.GetLeft(this.opacityRect)+3);
-                Canvas.SetTop(image, Canvas.GetTop(this.opacityRect)+3);
-                canvas.Children.Remove(this.opacityRect);
-                this.opacityRect = null;
             }
             else
             {

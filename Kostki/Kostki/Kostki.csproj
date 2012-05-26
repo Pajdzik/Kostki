@@ -71,6 +71,7 @@
     <Compile Include="Class\Id.cs" />
     <Compile Include="Exceptions\AlreadyDoneException.cs" />
     <Compile Include="Exceptions\AlreadyTakenException.cs" />
+    <Compile Include="Exceptions\OutOfBoardException.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -121,9 +122,9 @@
     <Content Include="img\heart\yellow.png" />
     <Content Include="img\icons\cancel.png" />
     <Content Include="img\icons\next.png" />
-    <Resource Include="img\joker_sun.png" />
-    <Resource Include="img\jokers\joker_sun.png" />
-    <Resource Include="img\jokers\joker_violet.png" />
+    <Content Include="img\joker_sun.png" />
+    <Content Include="img\jokers\joker_sun.png" />
+    <Content Include="img\jokers\joker_violet.png" />
     <Content Include="img\siatka.png" />
     <Content Include="img\spade\blue.png" />
     <Content Include="img\spade\green.png" />

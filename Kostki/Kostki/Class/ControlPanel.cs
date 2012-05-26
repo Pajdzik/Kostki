@@ -10,6 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
+using Kostki.Exceptions;
 
 namespace Kostki.Class
 {
@@ -91,7 +92,7 @@ namespace Kostki.Class
             cards[(int) Figures.Spade, (int) CardColors.Red] = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
             cards[(int) Figures.Spade, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
 
-            Joker = new BitmapImage(new Uri("/img/jokers/joker_sun.png", UriKind.Relative));
+            Joker = new BitmapImage(new Uri("/img/jokers/joker_violet.png", UriKind.Relative));
         }
 
         public int GetFieldSize()
@@ -202,9 +203,21 @@ namespace Kostki.Class
             }
         }
 
+        public Point GetJokerViewportPointFromCoords(int x, int y)
+        {
+            if (x == 0)
+            {
+                return new Point(GetTopJoker().X, GetTopJoker().Y);
+            }
+            else
+            {
+                return new Point(GetTopJoker().X + 100, GetTopJoker().Y);
+            }
+        }
+
         public Point GetJokerCoordsForMarkRectangle(int x, int y)
         {
-            Point resultPoint = this.GetTopGrid();
+            Point resultPoint = this.GetTopJoker();
             resultPoint.X += (x - 1) * 100 + 2;
             resultPoint.Y += (y - 1) * 100 + 2;
 
@@ -246,15 +259,15 @@ namespace Kostki.Class
             {
                 return PlaceType.Rand;
             }
-           // top = this.GetTopJoker().Y;
-           // bottom = top + 96;
-           // if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
-           //     this.leftAndRight + 188, current.X))
-           // {
+            top = this.GetTopJoker().Y;
+            bottom = top + 96;
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
+                this.leftAndRight + 188, current.X))
+            {
                 return PlaceType.Joker;
-            //}
+            }
 
-            //return null;
+            throw new OutOfBoardException();
                 
         }
 

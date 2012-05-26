@@ -1,8 +1,8 @@
-﻿<xapCache source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="5/25/2012 10:06:07 PM">
+﻿<xapCache source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="5/26/2012 6:49:08 PM">
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="5/21/2012 5:58:47 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Background.png" archivePath="Background.png" lastWriteTime="5/21/2012 5:58:46 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="5/21/2012 5:58:46 PM" />
-  <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll" archivePath="Kostki.dll" lastWriteTime="5/25/2012 10:06:07 PM" />
+  <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll" archivePath="Kostki.dll" lastWriteTime="5/26/2012 6:49:07 PM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="9/15/2011 3:36:26 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\clubs\blue.png" archivePath="img\clubs\blue.png" lastWriteTime="5/23/2012 10:36:22 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\diamond\blue.png" archivePath="img\diamond\blue.png" lastWriteTime="5/23/2012 10:37:29 PM" />
@@ -17,6 +17,9 @@
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\heart\yellow.png" archivePath="img\heart\yellow.png" lastWriteTime="5/23/2012 10:46:31 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\icons\cancel.png" archivePath="img\icons\cancel.png" lastWriteTime="5/21/2012 5:58:47 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\icons\next.png" archivePath="img\icons\next.png" lastWriteTime="5/21/2012 5:58:47 PM" />
+  <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\joker_sun.png" archivePath="img\joker_sun.png" lastWriteTime="5/23/2012 9:04:25 PM" />
+  <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\jokers\joker_sun.png" archivePath="img\jokers\joker_sun.png" lastWriteTime="5/25/2012 10:09:47 PM" />
+  <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\jokers\joker_violet.png" archivePath="img\jokers\joker_violet.png" lastWriteTime="5/23/2012 10:49:27 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\siatka.png" archivePath="img\siatka.png" lastWriteTime="5/21/2012 5:58:47 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\spade\blue.png" archivePath="img\spade\blue.png" lastWriteTime="5/23/2012 10:39:19 PM" />
   <file source="C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\img\spade\green.png" archivePath="img\spade\green.png" lastWriteTime="5/23/2012 10:42:50 PM" />
