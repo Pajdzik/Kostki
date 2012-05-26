@@ -34,6 +34,7 @@ namespace Kostki
         private Calculate calculate;
         private TextBlock textblock;
         private Image[] jokers;
+        private Boolean isItJoker;
 
         public GamePage()
         {
@@ -60,7 +61,7 @@ namespace Kostki
         private void GamePageLoaded(object sender, RoutedEventArgs e)
         {
             this.showCards();
-            AddJoker();
+            //AddJoker();
         }
 
         public void ShowRectangle() 
@@ -116,6 +117,11 @@ namespace Kostki
 
         public void AddJoker()
         {
+            if (jokers != null)
+            {
+                canvas.Children.Remove(jokers[0]);
+                canvas.Children.Remove(jokers[1]);
+            }
             jokers = new Image[2];
             Point jokerPoint = new Point();
 
@@ -129,7 +135,9 @@ namespace Kostki
                 jokers[i].ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
                 jokers[i].ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
                 jokers[i].ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                game.AddJoker(jokers[i], i);
             }
+
         }
 
         public void showCards() //tymczasowa funkcja
@@ -166,6 +174,8 @@ namespace Kostki
             PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
             this.startPlaceType = place;
+
+            isItJoker = game.GetJokerOnCoords(place,(int)(startCoords.X - 1), (int)(startCoords.Y - 1));
 
             Debug.WriteLine("place type " + place);
             Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
@@ -207,14 +217,14 @@ namespace Kostki
             {
                 canvas.Children.Remove(this.opacityRect);
                 Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image)+(controlPanel.cardSize*1.3)/2, Canvas.GetTop(image)+(controlPanel.cardSize*1.3)/2));
-                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true || startPlaceType == PlaceType.Joker)            // wyłączenie podświetlenia kafelka gdy jest zajęty
+                if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true || isItJoker == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
                     this.opacityRect = controlPanel.GetMarkRectangle();
                     canvas.Children.Add(opacityRect);
                     Canvas.SetLeft(opacityRect, point.X);
                     Canvas.SetTop(opacityRect, point.Y);
                 }
-                else if (endPlaceType == PlaceType.Joker && startPlaceType == PlaceType.Joker)
+                else if (endPlaceType == PlaceType.Joker && isItJoker == true)
                 {
                     opacityRect = controlPanel.GetMarkRectangle();
                     canvas.Children.Add(opacityRect);
@@ -242,11 +252,84 @@ namespace Kostki
 
             if (this.opacityRect != null)
             {
-                if (startPlaceType == PlaceType.Joker)
+                if (isItJoker == true)
                 {
-                    //obsługa jokera
-                    Canvas.SetLeft(image, this.startPoint.X);
-                    Canvas.SetTop(image, this.startPoint.Y);
+
+                    if ((int)(startCoords.X - 1) == (int)(endCoords.X - 1) && (int)(startCoords.Y - 1) == (int)(endCoords.Y - 1) && startPlaceType == endPlaceType)
+                    {
+                        Canvas.SetLeft(image, this.startPoint.X);
+                        Canvas.SetTop(image, this.startPoint.Y);
+                        canvas.Children.Remove(this.opacityRect);
+                        this.opacityRect = null;
+                        return;
+                    }
+
+                    Image forSwapFirst = game.GetImageOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1));
+                    Image forSwapSecond;
+                    canvas.Children.Remove(forSwapFirst);
+                    try
+                    {
+                        forSwapSecond = game.GetImageOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1));
+                        canvas.Children.Remove(forSwapSecond);
+                    }
+                    catch (NullReferenceException)
+                    {
+                    }
+                    
+                    game.MoveJoker(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1), endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1));
+
+                    if (game.GetBoardField(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1)) == null)
+                    {
+                        //do nothing
+                    }
+                    else if (game.GetJokerOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1)))
+                    {
+                        forSwapFirst = controlPanel.GetJoker();
+                        forSwapFirst.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                        forSwapFirst.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                        forSwapFirst.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        game.SetImageOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1), forSwapFirst);
+                        canvas.Children.Add(forSwapFirst);
+                        Canvas.SetLeft(forSwapFirst, this.startPoint.X);
+                        Canvas.SetTop(forSwapFirst, this.startPoint.Y);
+                    }
+                    else
+                    {
+                        Id id = game.GetBoardField(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1));
+                        forSwapFirst = controlPanel.GetImageByColorAndId(id.Figure, id.Color);
+                        forSwapFirst.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                        forSwapFirst.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                        forSwapFirst.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        game.SetImageOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1), forSwapFirst);
+                        canvas.Children.Add(forSwapFirst);
+                        Canvas.SetLeft(forSwapFirst, this.startPoint.X);
+                        Canvas.SetTop(forSwapFirst, this.startPoint.Y);
+                    }
+
+                    if (game.GetJokerOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1)))
+                    {
+                        Debug.WriteLine("czy na penwo?");
+                        forSwapSecond = controlPanel.GetJoker();
+                        forSwapSecond.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                        forSwapSecond.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                        forSwapSecond.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        game.SetImageOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1), forSwapSecond);
+                        canvas.Children.Add(forSwapSecond);
+                        Canvas.SetLeft(forSwapSecond, Canvas.GetLeft(this.opacityRect) + 3);
+                        Canvas.SetTop(forSwapSecond, Canvas.GetTop(this.opacityRect) + 3);
+                    }
+                    else
+                    {
+                        Id id = game.GetBoardField(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1));
+                        forSwapSecond = controlPanel.GetImageByColorAndId(id.Figure, id.Color);
+                        forSwapSecond.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+                        forSwapSecond.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+                        forSwapSecond.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        game.SetImageOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1), forSwapSecond);
+                        canvas.Children.Add(forSwapSecond);
+                        Canvas.SetLeft(forSwapSecond, Canvas.GetLeft(this.opacityRect) + 3);
+                        Canvas.SetTop(forSwapSecond, Canvas.GetTop(this.opacityRect) + 3);
+                    }
                     canvas.Children.Remove(this.opacityRect);
                     this.opacityRect = null;
                 }
@@ -294,11 +377,6 @@ namespace Kostki
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
 
-
-            ///Testowanie checkera
-            ///Wszystko działa poprawnie
-            ///Sprawdź sobie Pajdziu, jak to najlepiej obsłuzyc (:
-
             this.checker.GameBoard = this.game.GetGameBoard();
             List<List<Id>> collection = this.checker.GetCollection();
             List<CheckerType> infoCollection = this.checker.GetCollectionInfo();
@@ -308,9 +386,14 @@ namespace Kostki
 
             calculate.GetActResult();
 
+            if (calculate.GlobalResult > 300)
+            {
+                AddJoker();
+            }
+
             for (int i = 0; i < collection.Count; i++)
             {
-                if (calculate.GetFourResult(collection[i]) >= 100)
+                if (calculate.CalculateFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
                 }
@@ -318,7 +401,6 @@ namespace Kostki
 
             for (int i = 0; i < Index.Count; i++)
             {
-                Debug.WriteLine("bede usuwal " + infoCollection[Index[i]].x + " " + infoCollection[Index[i]].y + " " + infoCollection[Index[i]].fourcardtype);
                 ClearFour(infoCollection[Index[i]].x, infoCollection[Index[i]].y, infoCollection[Index[i]].fourcardtype);  
             }
 
@@ -368,7 +450,7 @@ namespace Kostki
             tempResult = calculate.GlobalResult;
             this.textblock.Text = Convert.ToString(tempResult);
 
-            if (this.game.HowMuchFreeSpaceOnGameBoard() == 16)
+            if (this.game.HowMuchFreeSpaceOnGameBoard() == 0)
             {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
@@ -395,15 +477,27 @@ namespace Kostki
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        Image image = this.game.DeleteImageOnCoords(3 - i, i);
-                        canvas.Children.Remove(image);
+                        try
+                        {
+                            Image image = this.game.DeleteImageOnCoords(3 - i, i);
+                            canvas.Children.Remove(image);
+                        }
+                        catch (NullReferenceException)
+                        {
+                        }
                     }
                 } else
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        Image image = this.game.DeleteImageOnCoords(i, i); 
-                        canvas.Children.Remove(image);
+                        try
+                        {
+                            Image image = this.game.DeleteImageOnCoords(i, i);
+                            canvas.Children.Remove(image);
+                        }
+                        catch (NullReferenceException)
+                        {
+                        }
                     }
                 }
 
@@ -415,8 +509,14 @@ namespace Kostki
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    Image image = this.game.DeleteImageOnCoords(x, i);
-                    canvas.Children.Remove(image);
+                    try
+                    {
+                        Image image = this.game.DeleteImageOnCoords(x, i);
+                        canvas.Children.Remove(image);
+                    }
+                    catch (NullReferenceException)
+                    {
+                    }
                 }
             }
 
@@ -426,8 +526,14 @@ namespace Kostki
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    Image image = this.game.DeleteImageOnCoords(i, y);
-                    canvas.Children.Remove(image);
+                    try
+                    {
+                        Image image = this.game.DeleteImageOnCoords(i, y);
+                        canvas.Children.Remove(image);
+                    }
+                    catch (NullReferenceException)
+                    {
+                    }
                 }
             }
 
@@ -439,9 +545,15 @@ namespace Kostki
                 {
                     for (int j = y; j < y + 2; j++)
                     {
-                        Debug.WriteLine("Usuwam " + x + " " + y);
-                        Image image = this.game.DeleteImageOnCoords(i, j);
-                        canvas.Children.Remove(image);
+                        try
+                        {
+                            Image image = this.game.DeleteImageOnCoords(i, j);
+                            canvas.Children.Remove(image);
+                        }
+                        catch (NullReferenceException)
+                        {
+
+                        }
                     }
                 }
             }

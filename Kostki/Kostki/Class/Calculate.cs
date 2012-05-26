@@ -20,7 +20,7 @@ namespace Kostki.Class
         private Int64 globalResult;
         private Boolean[,] system;
 
-        public List<List<Id>> ListOfCards 
+        public List<List<Id>> ListOfCards
         {
             get { return listOfCards; }
             set { listOfCards = value; }
@@ -44,16 +44,117 @@ namespace Kostki.Class
         public Int64 GetActResult()
         {
             Int64 result = 0;
+            Boolean isJoker = false;
 
             for (int i = 0; i < listOfCards.Count; i++)
             {
-                result += GetFourResult(listOfCards[i]);
+                isJoker = false;
+                for (int j = 0; j < listOfCards[i].Count; j++)
+                {
+                    if (listOfCards[i][j].Figure == Figures.Null)
+                    {
+                        isJoker = true;
+                    }
+                }
+                if (isJoker)
+                {
+                    result += GetEveryFourResult(listOfCards[i]);
+                }
+                else
+                {
+                    result += GetFourResult(listOfCards[i]);
+                }
             }
 
             this.globalResult += result;
 
             return result;
         }
+
+        public Int64 CalculateFourResult(List<Id> list)
+        {
+            Int64 result = 0;
+            Boolean isJoker = false;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Figure == Figures.Null)
+                {
+                    isJoker = true;
+                }
+            }
+            if (isJoker)
+            {
+                result += GetEveryFourResult(list);
+            }
+            else
+            {
+                result += GetFourResult(list);
+            }
+            return result;
+        }
+
+        public Int64 GetEveryFourResult(List<Id> list)
+        {
+            Int64 result = 0;
+            List<Id> newList = new List<Id>();
+            Id tempId;
+            Id tempIdSecond;
+            Int64 tempResult = 0;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Figure != Figures.Null)
+                {
+                    newList.Add(list[i]);
+                }
+            }
+
+            if (list.Count == 2) // 3
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        tempId = new Id((Figures)i, (CardColors)j);
+                        newList.Add(tempId);
+                        tempResult = GetFourResult(newList);
+                        if (tempResult > result)
+                        {
+                            result = tempResult;
+                        }
+                        newList.Remove(tempId);
+                    }
+                }
+            } else 
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        tempId = new Id((Figures)i, (CardColors)j);
+                        newList.Add(tempId);
+                        for (int k = 0; k < 4; k++)
+                        {
+                            for (int l = 0; l < 4; l++)
+                            {
+                                tempIdSecond = new Id((Figures)k, (CardColors)l);
+                                newList.Add(tempIdSecond);
+                                tempResult = GetFourResult(newList);
+                                if (tempResult > result)
+                                {
+                                    result = tempResult;
+                                }
+                                newList.Remove(tempIdSecond);
+                            }
+                        }
+                        newList.Remove(tempId);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Zwraca ilośc punktów za daną konfiguracje kart
         /// </summary>
@@ -115,7 +216,7 @@ namespace Kostki.Class
                 return 100;
             }
 
-            Boolean []colors = new Boolean[4];
+            Boolean[] colors = new Boolean[4];
             int howMuchRowsNotClear = 0;
 
             for (int i = 0; i < 4; i++)
@@ -123,7 +224,7 @@ namespace Kostki.Class
                 colors[i] = (GetRowOrColumnCount(i, true) > 0) ? true : false;
             }
 
-            for (int i = 0; i < 4; i++) 
+            for (int i = 0; i < 4; i++)
             {
                 howMuchRowsNotClear += (colors[i]) ? 1 : 0;
             }

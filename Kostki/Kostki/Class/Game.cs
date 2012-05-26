@@ -27,6 +27,11 @@ namespace Kostki.Class
             this.RandBoard = new Id[4];
         }
 
+        public Id GetBoardField(PlaceType place, int x, int y)
+        {
+            return GameBoard[(int)place, x, y];
+        }
+
         public Id[,,] GetGameBoard() 
         {
             return this.GameBoard;
@@ -153,6 +158,10 @@ namespace Kostki.Class
             {
                 throw new AlreadyTakenException();
             }
+            catch (AlreadyTakenException)
+            {
+                throw new AlreadyTakenException();
+            }
 
             Id id = this.GameBoard[(int)start, startX, startY];
             if (start == PlaceType.Rand)
@@ -203,13 +212,90 @@ namespace Kostki.Class
             return this.GameBoard[(int)PlaceType.Grid, x, y].Image;
         }
 
+        public Image GetImageOnCoords(PlaceType place,int x, int y)
+        {
+            return this.GameBoard[(int)place, x, y].Image;
+        }
+
         public Image DeleteImageOnCoords(int x, int y)
         {
-            Debug.WriteLine("Usuwam " + x + "  " + y);
             Image image = this.GameBoard[(int)PlaceType.Grid, x, y].Image;
             this.GameBoard[(int)PlaceType.Grid, x, y] = null;
             return image;
+        }
 
+        public void SetJokerOnCoords(int x, int y)
+        {
+            try
+            {
+                GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+            }
+            catch (NullReferenceException)
+            {
+                GameBoard[(int)PlaceType.Grid, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+            }
+        }
+
+        public void SetJokerOnCoords(PlaceType place, int x, int y)
+        {
+            try
+            {
+                GameBoard[(int)place, x, y].IsJoker = true;
+            }
+            catch (NullReferenceException)
+            {
+                GameBoard[(int)place, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)place, x, y].IsJoker = true;
+            }
+        }
+
+        public Boolean GetJokerOnCoords(PlaceType place, int x, int y)
+        {
+            return GameBoard[(int)place, x, y].IsJoker;
+        }
+
+        public void MoveJoker(PlaceType start, int startX, int startY, PlaceType end, int endX, int endY)
+        {
+            if (GameBoard[(int)end, endX, endY] == null)
+            {
+                Debug.WriteLine("end jest nullem");
+                if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
+                {
+                    Debug.WriteLine("start jest ylko jokerem");
+                    GameBoard[(int)end, endX, endY] = GameBoard[(int)start, startX, startY];
+                    GameBoard[(int)start, startX, startY] = null;
+                }
+                else
+                {
+                    Debug.WriteLine("start nie jest tylko jokerem");
+                    GameBoard[(int)start, startX, startY].IsJoker = false;
+                    SetJokerOnCoords(end,endX, endY);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("end nie jest nullem");
+                if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
+                {
+                    Debug.WriteLine("start jest ylko jokerem");
+                    GameBoard[(int)end, endX, endY].IsJoker = true;
+                    GameBoard[(int)start, startX, startY] = null;
+                }
+                else
+                {
+                    Debug.WriteLine("start nie jest ylko jokerem");
+                    GameBoard[(int)start, startX, startY].IsJoker = false;
+                    GameBoard[(int)end, endX, endY].IsJoker = true;
+                }
+            }
+        }
+
+        public void AddJoker(Image image, int x)
+        {
+            GameBoard[(int)PlaceType.Joker, x, 0] = new Id(Figures.Null, CardColors.Null);
+            GameBoard[(int)PlaceType.Joker, x, 0].Image = image;
+            GameBoard[(int)PlaceType.Joker, x, 0].IsJoker = true;
         }
     }
 }

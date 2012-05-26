@@ -28,14 +28,16 @@ namespace Kostki.Class
         Blue,
         Green,
         Red,
-        Yellow
+        Yellow,
+        Null
     }
 
     public enum PlaceType
     {
         Grid,
         Rand,
-        Joker
+        Joker,
+        Null
     }
 
     public enum Figures
@@ -43,7 +45,8 @@ namespace Kostki.Class
         Club,
         Diamond,
         Heart,
-        Spade
+        Spade,
+        Null
     }
 
     public class ControlPanel
