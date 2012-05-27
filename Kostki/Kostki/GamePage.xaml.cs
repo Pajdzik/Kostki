@@ -450,7 +450,7 @@ namespace Kostki
             tempResult = calculate.GlobalResult;
             this.textblock.Text = Convert.ToString(tempResult);
 
-            if (this.game.HowMuchFreeSpaceOnGameBoard() == 0)
+            if (this.game.HowMuchFreeSpaceOnGameBoard() == 0 && game.NoJokerOnBoard())
             {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }

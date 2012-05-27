@@ -297,5 +297,17 @@ namespace Kostki.Class
             GameBoard[(int)PlaceType.Joker, x, 0].Image = image;
             GameBoard[(int)PlaceType.Joker, x, 0].IsJoker = true;
         }
+
+        public Boolean NoJokerOnBoard()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (GameBoard[(int)PlaceType.Joker, i, 0] != null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
