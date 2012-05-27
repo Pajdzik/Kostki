@@ -374,6 +374,19 @@ namespace Kostki
 
         private void NextAndAccept(object sender, EventArgs e)
         {
+
+            for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (game.GetBoardField(PlaceType.Grid, i, j) != null)
+                    {
+                        Debug.WriteLine("i = " + i + " j = " + j + " " + game.GetBoardField(PlaceType.Grid, i, j).Blocked);
+                    }
+
+                }
+            }
+
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
 
@@ -393,6 +406,7 @@ namespace Kostki
 
             for (int i = 0; i < collection.Count; i++)
             {
+                Debug.WriteLine("coll");
                 if (calculate.CalculateFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
