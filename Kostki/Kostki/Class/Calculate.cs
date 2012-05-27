@@ -51,7 +51,7 @@ namespace Kostki.Class
                 isJoker = false;
                 for (int j = 0; j < listOfCards[i].Count; j++)
                 {
-                    if (listOfCards[i][j].Figure == Figures.Null)
+                    if (listOfCards[i][j].IsJoker == true)
                     {
                         isJoker = true;
                     }
@@ -77,7 +77,7 @@ namespace Kostki.Class
             Boolean isJoker = false;
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Figure == Figures.Null)
+                if (list[i].IsJoker == true)
                 {
                     isJoker = true;
                 }
@@ -101,15 +101,18 @@ namespace Kostki.Class
             Id tempIdSecond;
             Int64 tempResult = 0;
 
+            newList.Clear();
+            
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Figure != Figures.Null)
+                if (list[i].IsJoker != true)
                 {
                     newList.Add(list[i]);
                 }
             }
 
-            if (list.Count == 2) // 3
+
+            if (newList.Count == 3) // 3
             {
                 for (int i = 0; i < 4; i++)
                 {
@@ -125,7 +128,8 @@ namespace Kostki.Class
                         newList.Remove(tempId);
                     }
                 }
-            } else 
+            } 
+            else 
             {
                 for (int i = 0; i < 4; i++)
                 {

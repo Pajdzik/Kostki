@@ -18,6 +18,13 @@ namespace Kostki.Class
         private Boolean blocked;
         private Image image;
         private Boolean isJoker;
+        private Boolean isJokerBlocked;
+
+        public Boolean IsJokerBlocked
+        {
+            get { return isJokerBlocked; }
+            set { isJokerBlocked = value; }
+        }
 
         public Boolean IsJoker
         {
@@ -51,6 +58,7 @@ namespace Kostki.Class
 
         public Id(Figures figure, CardColors color)
         {
+            this.isJokerBlocked = true;
             this.isJoker = false;
             this.image = null;
             this.color = color;

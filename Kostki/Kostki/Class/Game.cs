@@ -229,11 +229,13 @@ namespace Kostki.Class
             try
             {
                 GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+                GameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked = true;
             }
             catch (NullReferenceException)
             {
                 GameBoard[(int)PlaceType.Grid, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
                 GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+                GameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked = true;
             }
         }
 
@@ -241,12 +243,14 @@ namespace Kostki.Class
         {
             try
             {
-                GameBoard[(int)place, x, y].IsJoker = true;
+                GameBoard[(int)place, x, y].IsJoker = true; 
+                GameBoard[(int)place, x, y].IsJokerBlocked = true;
             }
             catch (NullReferenceException)
             {
                 GameBoard[(int)place, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
                 GameBoard[(int)place, x, y].IsJoker = true;
+                GameBoard[(int)place, x, y].IsJokerBlocked = true;
             }
         }
 
@@ -259,7 +263,6 @@ namespace Kostki.Class
         {
             if (GameBoard[(int)end, endX, endY] == null)
             {
-                Debug.WriteLine("end jest nullem");
                 if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
                 {
                     GameBoard[(int)end, endX, endY] = GameBoard[(int)start, startX, startY];
@@ -267,24 +270,22 @@ namespace Kostki.Class
                 }
                 else
                 {
-                    Debug.WriteLine("start nie jest tylko jokerem");
                     GameBoard[(int)start, startX, startY].IsJoker = false;
+                    GameBoard[(int)start, startX, startY].IsJokerBlocked = false;
                     SetJokerOnCoords(end,endX, endY);
                 }
             }
             else
             {
-                Debug.WriteLine("end nie jest nullem");
                 if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
                 {
-                    Debug.WriteLine("start jest ylko jokerem");
                     GameBoard[(int)end, endX, endY].IsJoker = true;
                     GameBoard[(int)start, startX, startY] = null;
                 }
                 else
                 {
-                    Debug.WriteLine("start nie jest ylko jokerem");
                     GameBoard[(int)start, startX, startY].IsJoker = false;
+                    GameBoard[(int)start, startX, startY].IsJokerBlocked = false;
                     GameBoard[(int)end, endX, endY].IsJoker = true;
                 }
             }

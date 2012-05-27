@@ -163,7 +163,6 @@ namespace Kostki
 
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
-          
             Image image = (Image)sender;
             this.startPoint = new Point(Canvas.GetLeft(image), Canvas.GetTop(image));
 
@@ -176,15 +175,6 @@ namespace Kostki
             this.startPlaceType = place;
 
             isItJoker = game.GetJokerOnCoords(place,(int)(startCoords.X - 1), (int)(startCoords.Y - 1));
-
-            Debug.WriteLine("place type " + place);
-            Debug.WriteLine("X: " + startCoords.X + "Y : " + startCoords.Y);
-
-            Debug.WriteLine(this.startPlaceType);
-
-            //koniec testowego fragmentu
-            //if ((place == PlaceType.Rand) && (place == PlaceType.Grid && game.IsFieldBlocked((int)startCoords.X, (int)startCoords.Y) == false)) { }
-
 
             Canvas.SetZIndex((UIElement)sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
 
@@ -211,7 +201,6 @@ namespace Kostki
                 this.opacityRect = null;
                 return;
             }
-            Debug.WriteLine(place + " " + endCoords.X + " " + endCoords.Y);
 
             try
             {
@@ -308,7 +297,6 @@ namespace Kostki
 
                     if (game.GetJokerOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1)))
                     {
-                        Debug.WriteLine("czy na penwo?");
                         forSwapSecond = controlPanel.GetJoker();
                         forSwapSecond.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
                         forSwapSecond.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
@@ -342,7 +330,6 @@ namespace Kostki
                     }
                     catch (AlreadyTakenException)
                     {
-                        Debug.WriteLine("AlreadyTaken");
                         Canvas.SetLeft(image, this.startPoint.X);
                         Canvas.SetTop(image, this.startPoint.Y);
                         canvas.Children.Remove(this.opacityRect);
@@ -351,7 +338,6 @@ namespace Kostki
                     }
                     catch (NullReferenceException)
                     {
-                        Debug.WriteLine("Nullreference");
                         Canvas.SetLeft(image, this.startPoint.X);
                         Canvas.SetTop(image, this.startPoint.Y);
                         canvas.Children.Remove(this.opacityRect);
@@ -374,19 +360,6 @@ namespace Kostki
 
         private void NextAndAccept(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if (game.GetBoardField(PlaceType.Grid, i, j) != null)
-                    {
-                        Debug.WriteLine("i = " + i + " j = " + j + " " + game.GetBoardField(PlaceType.Grid, i, j).Blocked);
-                    }
-
-                }
-            }
-
             Boolean pop = false;
             pop = this.game.IsRandBoardClear();
 
@@ -399,15 +372,13 @@ namespace Kostki
 
             calculate.GetActResult();
 
-            if (calculate.GlobalResult > 300)
-            {
+           // if (calculate.GlobalResult > 300)
+            //{
                 AddJoker();
-            }
+//            }
 
             for (int i = 0; i < collection.Count; i++)
             {
-                Debug.WriteLine("coll");
-                Debug.WriteLine(collection[i][0].Figure + " " + collection[i][0].Color + " " + collection[i][1].Figure + " " + collection[i][1].Color + " " + collection[i][2].Figure + " " + collection[i][2].Color + " " + collection[i][3].Figure + " " + collection[i][3].Color);
                 if (calculate.CalculateFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
