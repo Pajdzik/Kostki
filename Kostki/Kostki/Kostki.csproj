@@ -62,6 +62,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppMemory.cs" />
     <Compile Include="Class\Calculate.cs" />
     <Compile Include="Class\CardImage.cs" />
     <Compile Include="Class\Checker.cs" />
