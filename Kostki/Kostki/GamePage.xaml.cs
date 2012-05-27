@@ -407,6 +407,7 @@ namespace Kostki
             for (int i = 0; i < collection.Count; i++)
             {
                 Debug.WriteLine("coll");
+                Debug.WriteLine(collection[i][0].Figure + " " + collection[i][0].Color + " " + collection[i][1].Figure + " " + collection[i][1].Color + " " + collection[i][2].Figure + " " + collection[i][2].Color + " " + collection[i][3].Figure + " " + collection[i][3].Color);
                 if (calculate.CalculateFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
