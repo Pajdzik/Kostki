@@ -446,6 +446,17 @@ namespace Kostki
         private void BackToPanorama(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            Debug.WriteLine("WYCHODZĘ");
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            Debug.WriteLine("WYCHODZĘ");
+
+            AppMemory appMemory = new AppMemory();
+            appMemory.SaveGameState(game.GetGameBoard());
+
+            base.OnBackKeyPress(e);
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)

@@ -17,14 +17,12 @@ namespace Kostki.Class
     public class Game
     {
         private Id[,,] GameBoard;
-        private Id[] RandBoard;
         private ControlPanel controlPanel;
 
         public Game(ControlPanel controlPanel)
         {
             this.controlPanel = controlPanel;
             this.GameBoard = new Id[4, 4, 4];
-            this.RandBoard = new Id[4];
         }
 
         public Id GetBoardField(PlaceType place, int x, int y)
