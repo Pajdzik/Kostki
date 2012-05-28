@@ -150,7 +150,7 @@ namespace Kostki.Class
                     rightCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, 3-1,i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true && this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJokerBlocked == false)
                 {
                     howMuchBlocked++;
                 }

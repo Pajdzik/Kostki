@@ -159,8 +159,6 @@ namespace Kostki
             }            
         }
 
-
-
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
             Image image = (Image)sender;

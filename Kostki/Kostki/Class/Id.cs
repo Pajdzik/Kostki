@@ -65,5 +65,13 @@ namespace Kostki.Class
             this.figure = figure;
             this.blocked = false;
         }
+
+        public override string ToString()
+        {
+            if (image != null)
+                return figure.ToString() + ' ' + color.ToString() + ' ' + isJokerBlocked.ToString();
+            else
+                return "";
+        }
     }
 }

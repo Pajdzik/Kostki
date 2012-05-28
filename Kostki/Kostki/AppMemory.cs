@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -45,27 +46,48 @@ namespace Kostki
                     StreamWriter sw = new StreamWriter(rawStream);
 
 
-                    // TODO: Zapisywanie do IS
+                    Debug.WriteLine("PLANSZA: ");
 
-                   /* foreach ( id in gameBoard)
+                    for (int i = 0; i < 4; i++)
                     {
-                        
-                    }*/
+                        for (int j = 0; j < 4; j++)
+                        {
+                            Debug.WriteLine(write(gameBoard[(int) PlaceType.Grid, i, j]));
+                            // Debug.WriteLine(gameBoard[(int) PlaceType.Grid, i, j].ToString());
+                        }
+                    }
+
+                    Debug.WriteLine("RAND: ");
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Debug.WriteLine(write(gameBoard[(int) PlaceType.Rand, i, 0]));
+                        // Debug.WriteLine(gameBoard[(int) PlaceType.Rand, i, 0]);
+                    }
+
+                    Debug.WriteLine("JOKER: ");
+                  //  Debug.WriteLine();
+                 // Debug.WriteLine(gameBoard[(int) PlaceType.Joker, i, 0]);
+                    
+
                 }
             }
+        }
 
+        private string write(Id id)
+        {
+            if (id != null)
+                return id.ToString();
+            else
+                return "";
         }
 
         public T GetValueOrDefault<T>(string key, T defaultValue)
         {
             if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
-            {
-                return (T)IsolatedStorageSettings.ApplicationSettings[key];
-            }
+                return (T) IsolatedStorageSettings.ApplicationSettings[key];
             else
-            {
                 return defaultValue;
-            }
         }
 
         private void SaveValue(string key, object value)
