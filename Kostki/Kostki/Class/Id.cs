@@ -68,10 +68,7 @@ namespace Kostki.Class
 
         public override string ToString()
         {
-            if (image != null)
-                return figure.ToString() + ' ' + color.ToString() + ' ' + isJokerBlocked.ToString();
-            else
-                return "";
+            return figure.ToString() + ' ' + color.ToString() + ' ' + isJoker.ToString() + ' ' + Blocked.ToString();
         }
     }
 }

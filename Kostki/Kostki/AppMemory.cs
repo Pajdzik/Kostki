@@ -1,15 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.IO.IsolatedStorage;
 using Kostki.Class;
 
@@ -20,16 +10,22 @@ namespace Kostki
         private const string folderName = "GameState";
         private const string fileName = "GameBoard";
 
-        public string playerName
+        public string PlayerName
         {
             get { return GetValueOrDefault<string>("playerName", "Player"); }
             set { SaveValue("playerName", value); }
         }
 
-        public uint highScore
+        public uint HighScore
         {
             get { return GetValueOrDefault<uint>("highScore", 0); }
             set { SaveValue("highScore", value); }
+        }
+
+        public Id[,,] LoadGameState()
+        {
+
+            return null;
         }
 
         public void SaveGameState(Id[,,] gameBoard)
@@ -45,36 +41,31 @@ namespace Kostki
                 {
                     StreamWriter sw = new StreamWriter(rawStream);
 
-
-                    Debug.WriteLine("PLANSZA: ");
-
+                    // zapisanie planszy
                     for (int i = 0; i < 4; i++)
                     {
                         for (int j = 0; j < 4; j++)
                         {
-                            Debug.WriteLine(write(gameBoard[(int) PlaceType.Grid, i, j]));
-                            // Debug.WriteLine(gameBoard[(int) PlaceType.Grid, i, j].ToString());
+                            sw.WriteLine(Write(gameBoard[(int) PlaceType.Grid, j, i]));
                         }
                     }
 
-                    Debug.WriteLine("RAND: ");
-
+                   
+                    // zapisanie randa
                     for (int i = 0; i < 4; i++)
                     {
-                        Debug.WriteLine(write(gameBoard[(int) PlaceType.Rand, i, 0]));
-                        // Debug.WriteLine(gameBoard[(int) PlaceType.Rand, i, 0]);
+                        sw.WriteLine(Write(gameBoard[(int) PlaceType.Rand, i, 0]));
                     }
 
-                    Debug.WriteLine("JOKER: ");
-                  //  Debug.WriteLine();
-                 // Debug.WriteLine(gameBoard[(int) PlaceType.Joker, i, 0]);
-                    
+                    // zapisanie jokerów
+                    sw.WriteLine(gameBoard[(int)PlaceType.Joker, 0, 0]);
+                    sw.WriteLine(gameBoard[(int)PlaceType.Joker, 1, 0]);
 
                 }
             }
         }
 
-        private string write(Id id)
+        private string Write(Id id)
         {
             if (id != null)
                 return id.ToString();
