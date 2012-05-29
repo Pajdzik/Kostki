@@ -457,9 +457,10 @@ namespace Kostki
             base.OnBackKeyPress(e);
         }
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        private void PhoneApplicationPageLoaded(object sender, RoutedEventArgs e)
         {
-
+            AppMemory appMemory = new AppMemory();
+            appMemory.LoadGameState();
         }
 
         private void ClearFour(int x, int y, FourcardType fourcardType)
