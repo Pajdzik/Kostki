@@ -74,7 +74,7 @@ namespace Kostki
                 }
             }
 
-            return null;
+            return gameBoard;
         }
 
         private Id Read(string s)
