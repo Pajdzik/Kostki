@@ -1,0 +1,80 @@
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.dll
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.xml
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+C:\Users\ProBookBaby\Windows Phone 7\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
+I:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.dll
+F:\Programowanie\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.xml
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+F:\Programowanie\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\ApplicationIcon.png
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Background.png
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.dll
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.pdb
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\AppManifest.xaml
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Kostki.xap
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.dll
+F:\Kostki\Kostki\Kostki\Kostki\Bin\Debug\Microsoft.Phone.Controls.xml
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\ResolveAssemblyReference.cache
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\App.g.i.cs
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\MainPage.g.i.cs
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\GamePage.g.i.cs
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.g.resources
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.dll
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\Kostki.pdb
+F:\Kostki\Kostki\Kostki\Kostki\obj\Debug\XapCacheFile.xml
