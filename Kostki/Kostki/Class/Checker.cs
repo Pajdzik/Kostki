@@ -98,7 +98,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -129,7 +130,8 @@ namespace Kostki.Class
                     leftCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i,i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true && 
+                    !this.gameBoard[(int)PlaceType.Grid, i,i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i,i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -150,7 +152,8 @@ namespace Kostki.Class
                     rightCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true && this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJokerBlocked == false)
+                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJoker)// !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJokerBlocked == false)
                 {
                     howMuchBlocked++;
                 }
@@ -215,7 +218,8 @@ namespace Kostki.Class
                     {
                         return null;
                     }
-                    else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i,j].IsJokerBlocked)
+                    else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true &&
+                        !this.gameBoard[(int)PlaceType.Grid, i,j].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i,j].IsJokerBlocked)
                     {
                         howMuchBlocked++;
                     }
@@ -273,7 +277,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true && 
+                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -283,6 +288,8 @@ namespace Kostki.Class
             {
                 return null;
             }
+
+            Debug.WriteLine("I on przechodzi");
 
             return result;
         }
@@ -329,7 +336,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -415,7 +423,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -443,7 +452,8 @@ namespace Kostki.Class
                     leftCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i, i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, i, i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -463,7 +473,8 @@ namespace Kostki.Class
                     rightCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, 3-i,i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, 3-i,i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, 3-i,i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -513,7 +524,8 @@ namespace Kostki.Class
                     {
                         return null;
                     }
-                    else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i, j].IsJokerBlocked)
+                    else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true &&
+                        !this.gameBoard[(int)PlaceType.Grid, i, j].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, j].IsJokerBlocked)
                     {
                         howMuchBlocked++;
                     }
@@ -557,7 +569,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }
@@ -598,7 +611,8 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true && !this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
+                else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true &&
+                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)//this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
                 }

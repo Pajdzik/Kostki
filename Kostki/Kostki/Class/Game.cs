@@ -227,13 +227,11 @@ namespace Kostki.Class
             try
             {
                 GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
-                GameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked = true;
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)PlaceType.Grid, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)PlaceType.Grid, x, y] = new Id(Figures.Null, CardColors.Null);
                 GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
-                GameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked = true;
             }
         }
 
@@ -242,13 +240,11 @@ namespace Kostki.Class
             try
             {
                 GameBoard[(int)place, x, y].IsJoker = true; 
-                GameBoard[(int)place, x, y].IsJokerBlocked = true;
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)place, x, y] = /*new Id(Figures.Club, CardColors.Green);//*/new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)place, x, y] = new Id(Figures.Null, CardColors.Null);
                 GameBoard[(int)place, x, y].IsJoker = true;
-                GameBoard[(int)place, x, y].IsJokerBlocked = true;
             }
         }
 
@@ -269,7 +265,6 @@ namespace Kostki.Class
                 else
                 {
                     GameBoard[(int)start, startX, startY].IsJoker = false;
-                    GameBoard[(int)start, startX, startY].IsJokerBlocked = false;
                     SetJokerOnCoords(end,endX, endY);
                 }
             }
@@ -283,7 +278,6 @@ namespace Kostki.Class
                 else
                 {
                     GameBoard[(int)start, startX, startY].IsJoker = false;
-                    GameBoard[(int)start, startX, startY].IsJokerBlocked = false;
                     GameBoard[(int)end, endX, endY].IsJoker = true;
                 }
             }

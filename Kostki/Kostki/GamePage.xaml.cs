@@ -401,7 +401,10 @@ namespace Kostki
                         imageTemp.ManipulationDelta -= ManipulationDelta;
                         imageTemp.ManipulationCompleted -= ManipulationCompleted;
                     }
-
+                    if (game.GetBoardField(PlaceType.Grid, i, j) != null)
+                    {
+                        game.GetBoardField(PlaceType.Grid, i, j).IsJoker = false;
+                    }
                 }
             }
 
@@ -466,7 +469,6 @@ namespace Kostki
         private void ClearFour(int x, int y, FourcardType fourcardType)
         {
             // cross
-
             if (fourcardType == FourcardType.Cross)
             {
                 if (x == 3)
