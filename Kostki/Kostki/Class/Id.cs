@@ -18,7 +18,6 @@ namespace Kostki.Class
         private Boolean blocked;
         private Image image;
         private Boolean isJoker;
-        private Boolean isJokerBlocked;
 
         public Boolean IsJoker
         {

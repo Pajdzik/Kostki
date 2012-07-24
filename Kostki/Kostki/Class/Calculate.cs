@@ -34,7 +34,7 @@ namespace Kostki.Class
         /// pomyśleć czy konstruktor jest w ogóle potrzebny 
         public Calculate()
         {
-            system = new Boolean[4, 4];
+            system = new Boolean[5, 5];
             globalResult = 0;
         }
         /// <summary>

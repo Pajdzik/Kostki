@@ -35,6 +35,11 @@ namespace Kostki.Class
             return this.GameBoard;
         }
 
+        public void SetGameBoard(Id[, ,] newGameBoard)
+        {
+            this.GameBoard = newGameBoard;
+        }
+
         private void ClearBoards()
         {
             for (int i = 0; i < 4; i++)
@@ -212,6 +217,7 @@ namespace Kostki.Class
 
         public Image GetImageOnCoords(PlaceType place,int x, int y)
         {
+            Debug.WriteLine("Pobieram Image z coordsów - " + x + " " + y + " place type " + place);
             return this.GameBoard[(int)place, x, y].Image;
         }
 

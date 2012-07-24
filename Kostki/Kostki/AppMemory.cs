@@ -74,7 +74,7 @@ namespace Kostki
                 }
             }
 
-            return null;
+            return gameBoard;
         }
 
         private Id Read(string s)
@@ -90,9 +90,9 @@ namespace Kostki
 
                 id.IsJoker = bool.Parse(prop[2]);
                 id.Blocked = bool.Parse(prop[3]);
+                return id;
             }
 
-            
             return null;
         }
 
