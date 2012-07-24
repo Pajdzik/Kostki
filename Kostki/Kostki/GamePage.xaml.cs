@@ -510,8 +510,6 @@ namespace Kostki
         /// <param name="e"> Paramery routingu.</param>
         private void PhoneApplicationPageLoaded(object sender, RoutedEventArgs e)
         {
-            return;
-
             AppMemory appMemory = new AppMemory();
             Id[, ,] memBoard = appMemory.LoadGameState();
 
@@ -554,9 +552,9 @@ namespace Kostki
         /// <param name="y"> Pozycja y tej karty</param>
         private void loadRandFromMemory(Id card, int x, int y)
         {
-            if (card.Image == null)
+            if (card == null)
                 return;
-            Image image = card.Image;
+            Image image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
             Point point = controlPanel.GetRandCoordsForMarkRectangle(x + 1, 1);
             ManipulationSettings(image);
             this.canvas.Children.Add(image);
@@ -571,9 +569,9 @@ namespace Kostki
         /// <param name="y"> Pozycja y karty</param>
         private void loadCardsFromMemory(Id card, int x, int y)
         {
-            if (card.Image == null)
+            if (card == null)
                 return;
-            Image image = card.Image;
+            Image image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
             Point point = controlPanel.GetGridCoordsForMarkRectangle(x + 1, y + 1);
             ManipulationSettings(image);
             this.canvas.Children.Add(image);
@@ -592,8 +590,8 @@ namespace Kostki
             Image joker = controlPanel.GetJoker();
             jokers[x] = joker;
             Point jokerPoint = controlPanel.GetJokerCoordsForMarkRectangle(x + 1, 1);
-            ManipulationSettings(image);
-            this.canvas.Children.Add(joker);
+            ManipulationSettings(joker);
+            canvas.Children.Add(joker);
             SettingCanvasTranslate(joker, jokerPoint);
             game.AddJoker(joker, x);
         }
