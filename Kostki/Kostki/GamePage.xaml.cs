@@ -48,6 +48,18 @@ namespace Kostki
         }
 
         /// <summary>
+        /// Metoda dodająca manipulation eventy 
+        /// </summary>
+        /// <param name="element"> Element, do którego mają zostać 
+        /// dodane te eventy</param>
+        public void ManipulationSettings(UIElement element)
+        {
+            element.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
+            element.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
+            element.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+        }
+
+        /// <summary>
         /// Metoda odpowiedzialna za ustawianie obiektów na planszy.
         /// </summary>
         /// <param name="element"> Referencja na obiekt</param>
@@ -162,9 +174,7 @@ namespace Kostki
                 canvas.Children.Add(jokers[i]);
                 jokerPoint = controlPanel.GetJokerCoordsForMarkRectangle(i + 1, 1);
                 SettingCanvasTranslate(jokers[i], jokerPoint);
-                jokers[i].ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                jokers[i].ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                jokers[i].ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                ManipulationSettings(jokers[i]);
                 game.AddJoker(jokers[i], i);
             }
         }
@@ -303,9 +313,7 @@ namespace Kostki
                         if (game.GetJokerOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1)))
                         {
                             forSwapFirst = controlPanel.GetJoker();
-                            forSwapFirst.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                            forSwapFirst.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                            forSwapFirst.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                            ManipulationSettings(forSwapFirst);
                             game.SetImageOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1), forSwapFirst);
                             canvas.Children.Add(forSwapFirst);
                             SettingCanvasOrigin(forSwapFirst, startPoint);
@@ -314,9 +322,7 @@ namespace Kostki
                         {
                             Id id = game.GetBoardField(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1));
                             forSwapFirst = controlPanel.GetImageByColorAndId(id.Figure, id.Color);
-                            forSwapFirst.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                            forSwapFirst.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                            forSwapFirst.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                            ManipulationSettings(forSwapFirst);
                             game.SetImageOnCoords(startPlaceType, (int)(startCoords.X - 1), (int)(startCoords.Y - 1), forSwapFirst);
                             canvas.Children.Add(forSwapFirst);
                             SettingCanvasOrigin(forSwapFirst, startPoint);
@@ -326,9 +332,7 @@ namespace Kostki
                     if (game.GetJokerOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1)))
                     {
                         forSwapSecond = controlPanel.GetJoker();
-                        forSwapSecond.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                        forSwapSecond.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                        forSwapSecond.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        ManipulationSettings(forSwapSecond);
                         game.SetImageOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1), forSwapSecond);
                         canvas.Children.Add(forSwapSecond);
                         SettingCanvasTranslate(forSwapSecond, new Point(Canvas.GetLeft(this.opacityRect),
@@ -340,9 +344,7 @@ namespace Kostki
                     {
                         Id id = game.GetBoardField(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1));
                         forSwapSecond = controlPanel.GetImageByColorAndId(id.Figure, id.Color);
-                        forSwapSecond.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                        forSwapSecond.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                        forSwapSecond.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+                        ManipulationSettings(forSwapSecond);
                         game.SetImageOnCoords(endPlaceType, (int)(endCoords.X - 1), (int)(endCoords.Y - 1), forSwapSecond);
                         canvas.Children.Add(forSwapSecond);
                         SettingCanvasTranslate(forSwapSecond, new Point(Canvas.GetLeft(this.opacityRect),
@@ -455,17 +457,11 @@ namespace Kostki
 
                 for (int i = 0; i < cardImage.Count(); i++)
                 {
-                    if (cardImage[i] == null)
+                    if (cardImage[i] != null)
                     {
                         break;
                     }
-
-                    // dodanie eventów do nowych kafelków na belce rand
-                    cardImage[i].image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-                    cardImage[i].image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-                    cardImage[i].image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
-
-                    // wyświetlenie kafelków na belce
+                    ManipulationSettings(cardImage[i].image);
                     this.canvas.Children.Add(cardImage[i].image);
                     point = controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
                     SettingCanvasTranslate(cardImage[i].image, point);
@@ -562,9 +558,7 @@ namespace Kostki
                 return;
             Image image = card.Image;
             Point point = controlPanel.GetRandCoordsForMarkRectangle(x + 1, 1);
-            image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-            image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-            image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+            ManipulationSettings(image);
             this.canvas.Children.Add(image);
             SettingCanvasTranslate(image, point);
         }
@@ -581,9 +575,7 @@ namespace Kostki
                 return;
             Image image = card.Image;
             Point point = controlPanel.GetGridCoordsForMarkRectangle(x + 1, y + 1);
-            image.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-            image.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-            image.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+            ManipulationSettings(image);
             this.canvas.Children.Add(image);
             SettingCanvasTranslate(image, point);
         }
@@ -600,9 +592,7 @@ namespace Kostki
             Image joker = controlPanel.GetJoker();
             jokers[x] = joker;
             Point jokerPoint = controlPanel.GetJokerCoordsForMarkRectangle(x + 1, 1);
-            joker.ManipulationStarted += new EventHandler<ManipulationStartedEventArgs>(ManipulationStarted);
-            joker.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(ManipulationDelta);
-            joker.ManipulationCompleted += new EventHandler<ManipulationCompletedEventArgs>(ManipulationCompleted);
+            ManipulationSettings(image);
             this.canvas.Children.Add(joker);
             SettingCanvasTranslate(joker, jokerPoint);
             game.AddJoker(joker, x);
