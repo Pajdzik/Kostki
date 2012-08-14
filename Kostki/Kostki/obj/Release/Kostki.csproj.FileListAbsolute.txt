@@ -1,0 +1,16 @@
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\ApplicationIcon.png
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Background.png
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Kostki.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Kostki.pdb
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\AppManifest.xaml
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Kostki.xap
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Microsoft.Phone.Controls.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\Bin\Release\Microsoft.Phone.Controls.xml
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\ResolveAssemblyReference.cache
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\App.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\MainPage.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\GamePage.g.i.cs
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\Kostki.g.resources
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\Kostki.dll
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\Kostki.pdb
+C:\Users\T520\Microsoft\Kostki\Kostki\Kostki\Kostki\obj\Release\XapCacheFile.xml

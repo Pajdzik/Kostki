@@ -130,7 +130,7 @@ namespace Kostki.Class
                     leftCross = null;
                     break;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true && 
+                else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true &&
                     !this.gameBoard[(int)PlaceType.Grid, i,i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i,i].IsJokerBlocked)
                 {
                     howMuchBlocked++;
@@ -277,7 +277,7 @@ namespace Kostki.Class
                 {
                     return null;
                 }
-                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true && 
+                else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true &&
                     !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
                 {
                     howMuchBlocked++;

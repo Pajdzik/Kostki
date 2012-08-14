@@ -29,7 +29,7 @@ namespace Kostki.Class
         Green,
         Red,
         Yellow,
-        Null
+        Joker
     }
 
     public enum PlaceType
@@ -46,7 +46,7 @@ namespace Kostki.Class
         Diamond,
         Heart,
         Spade,
-        Null
+        Joker
     }
 
     public class ControlPanel

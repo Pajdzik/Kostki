@@ -445,10 +445,20 @@ namespace Kostki
                     }
                     if (game.GetBoardField(PlaceType.Grid, i, j) != null)
                     {
-                        game.GetBoardField(PlaceType.Grid, i, j).IsJoker = false;
+                        if (game.GetBoardField(PlaceType.Grid, i, j).IsJoker == true ||
+                            game.GetBoardField(PlaceType.Grid, i, j).Figure == Figures.Joker)
+                        {
+                            game.GetBoardField(PlaceType.Grid, i, j).IsJoker = true;
+                        }
+                        else
+                        {
+                            game.GetBoardField(PlaceType.Grid, i, j).IsJoker = false;
+                        }
                     }
                 }
             }
+            Debug.WriteLine(pop);
+
             if (pop == true)                // sprawdzenie czy cała plansza jest zajęta (wg mnie niepotrzebnie)
             // Moim też, niedługo to wyjebiemy :)
             {
@@ -457,7 +467,7 @@ namespace Kostki
 
                 for (int i = 0; i < cardImage.Count(); i++)
                 {
-                    if (cardImage[i] != null)
+                    if (cardImage[i] == null)
                     {
                         break;
                     }
@@ -512,6 +522,7 @@ namespace Kostki
         {
             AppMemory appMemory = new AppMemory();
             Id[, ,] memBoard = appMemory.LoadGameState();
+            Image imageToLoad;
 
             for (int i = 0; i < 4; i++)
             {
@@ -523,7 +534,8 @@ namespace Kostki
                         {
                             if (k == (int)PlaceType.Grid)
                             {
-                                loadCardsFromMemory(memBoard[k, i, j], i, j);
+                                imageToLoad = loadCardsFromMemory(memBoard[k, i, j], i, j);
+                                memBoard[k, i, j].Image = imageToLoad;
                             }
                             else if (k == (int)PlaceType.Joker)
                             {
@@ -531,7 +543,8 @@ namespace Kostki
                             }
                             else if (k == (int)PlaceType.Rand)
                             {
-                                loadRandFromMemory(memBoard[k, i, j], i, j);
+                                imageToLoad = loadRandFromMemory(memBoard[k, i, j], i, j);
+                                memBoard[k, i, j].Image = imageToLoad;
                             }
                             else
                             {
@@ -550,15 +563,18 @@ namespace Kostki
         /// <param name="card"> Karta, którą należy załadować</param>
         /// <param name="x"> Pozycja x tej karty</param>
         /// <param name="y"> Pozycja y tej karty</param>
-        private void loadRandFromMemory(Id card, int x, int y)
+        private Image loadRandFromMemory(Id card, int x, int y)
         {
             if (card == null)
-                return;
+                return null;
             Image image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
             Point point = controlPanel.GetRandCoordsForMarkRectangle(x + 1, 1);
             ManipulationSettings(image);
             this.canvas.Children.Add(image);
             SettingCanvasTranslate(image, point);
+
+            return image;
+
         }
 
         /// <summary>
@@ -567,15 +583,31 @@ namespace Kostki
         /// <param name="card"> Karta, którą nalezy załadować</param>
         /// <param name="x"> Pozycja x karty</param>
         /// <param name="y"> Pozycja y karty</param>
-        private void loadCardsFromMemory(Id card, int x, int y)
+        private Image loadCardsFromMemory(Id card, int x, int y)
         {
+            Image image;
             if (card == null)
-                return;
-            Image image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
+                return null;
+
+            if (card.Figure != Figures.Joker)
+            {
+                image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
+            }
+            else 
+            {
+                Debug.WriteLine("Catch");
+                image = controlPanel.GetJoker();
+            }
             Point point = controlPanel.GetGridCoordsForMarkRectangle(x + 1, y + 1);
-            ManipulationSettings(image);
+
+            if (card.Blocked == false)
+            {
+                ManipulationSettings(image);
+            }
             this.canvas.Children.Add(image);
             SettingCanvasTranslate(image, point);
+
+            return image;
         }
 
 

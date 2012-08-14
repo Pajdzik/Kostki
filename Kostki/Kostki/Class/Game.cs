@@ -236,7 +236,7 @@ namespace Kostki.Class
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)PlaceType.Grid, x, y] = new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)PlaceType.Grid, x, y] = new Id(Figures.Joker, CardColors.Joker);
                 GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
             }
         }
@@ -249,7 +249,7 @@ namespace Kostki.Class
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)place, x, y] = new Id(Figures.Null, CardColors.Null);
+                GameBoard[(int)place, x, y] = new Id(Figures.Joker, CardColors.Joker);
                 GameBoard[(int)place, x, y].IsJoker = true;
             }
         }
@@ -263,7 +263,7 @@ namespace Kostki.Class
         {
             if (GameBoard[(int)end, endX, endY] == null)
             {
-                if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
+                if (GameBoard[(int)start, startX, startY].Figure == Figures.Joker)
                 {
                     GameBoard[(int)end, endX, endY] = GameBoard[(int)start, startX, startY];
                     GameBoard[(int)start, startX, startY] = null;
@@ -276,7 +276,7 @@ namespace Kostki.Class
             }
             else
             {
-                if (GameBoard[(int)start, startX, startY].Figure == Figures.Null)
+                if (GameBoard[(int)start, startX, startY].Figure == Figures.Joker)
                 {
                     GameBoard[(int)end, endX, endY].IsJoker = true;
                     GameBoard[(int)start, startX, startY] = null;
@@ -291,7 +291,7 @@ namespace Kostki.Class
 
         public void AddJoker(Image image, int x)
         {
-            GameBoard[(int)PlaceType.Joker, x, 0] = new Id(Figures.Null, CardColors.Null);
+            GameBoard[(int)PlaceType.Joker, x, 0] = new Id(Figures.Joker, CardColors.Joker);
             GameBoard[(int)PlaceType.Joker, x, 0].Image = image;
             GameBoard[(int)PlaceType.Joker, x, 0].IsJoker = true;
         }
