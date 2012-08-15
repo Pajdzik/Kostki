@@ -26,7 +26,6 @@ namespace Kostki
 
         public Id[,,] LoadGameState()
         {
-            Debug.WriteLine("WCZYTUJE:");
             Id[,,] gameBoard = new Id[4, 4, 4];
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())

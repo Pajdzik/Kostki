@@ -33,7 +33,7 @@
             <shell:ApplicationBarIconButton IconUri="/img/icons/next.png" Text="roll" Click="NextAndAccept" />
             <shell:ApplicationBarIconButton IconUri="/img/icons/cancel.png" Text="cancel" Click="BackToPanorama"/>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="New game"/>
+                <shell:ApplicationBarMenuItem Text="New game" Click="ResetGameState"/>
                 <shell:ApplicationBarMenuItem Text="Options"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>

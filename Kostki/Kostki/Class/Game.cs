@@ -110,6 +110,7 @@ namespace Kostki.Class
                     cardImage.SetImage(this.controlPanel.GetImageByColorAndId(figureType, cardColor));
                     randImages[i] = cardImage;
                     this.gameBoard[(int)PlaceType.Rand, i, 0] = new Id((Figures)figureType, (CardColors)cardColor);
+                    this.gameBoard[(int)PlaceType.Rand, i, 0].Image = cardImage.image;
                 }
                 return randImages;
             }
@@ -217,7 +218,6 @@ namespace Kostki.Class
 
         public Image GetImageOnCoords(PlaceType place, int x, int y)
         {
-            Debug.WriteLine("Pobieram Image z coordsów - " + x + " " + y + " place type " + place);
             return this.gameBoard[(int)place, x, y].Image;
         }
 

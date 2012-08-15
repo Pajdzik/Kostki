@@ -724,131 +724,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="Game.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/15/2012 12:08:36</timestamp>
-      <milliseconds>604</milliseconds>
-    </settings>
-    <timestamp>08/15/2012 12:26:11</timestamp>
-    <milliseconds>276</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The class must have a documentation header.</context>
-        <line>17</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The field must have a documentation header.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The field must have a documentation header.</context>
-        <line>20</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The constructor must have a documentation header.</context>
-        <line>22</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>28</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>33</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>38</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>43</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>59</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>71</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>87</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustBeginWithLowerCaseLetter" ruleCheckId="SA1306">
-        <context>Variable names and private field names must start with a lower-case letter: HowMuch.</context>
-        <line>90</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>118</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>151</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeadersMustNotBeFollowedByBlankLine" ruleCheckId="SA1506">
-        <context>A documentation header line must not be followed by a blank line.</context>
-        <line>182</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeadersMustNotBeFollowedByBlankLine" ruleCheckId="SA1506">
-        <context>A documentation header line must not be followed by a blank line.</context>
-        <line>196</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>208</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>213</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>218</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>224</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>231</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>244</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>257</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
   <sourcecode name="Calculate.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/15/2012 12:08:36</timestamp>
@@ -1199,17 +1074,142 @@
       </violation>
     </violations>
   </sourcecode>
+  <sourcecode name="Game.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/15/2012 12:08:36</timestamp>
+      <milliseconds>604</milliseconds>
+    </settings>
+    <timestamp>08/15/2012 13:10:36</timestamp>
+    <milliseconds>929</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The class must have a documentation header.</context>
+        <line>17</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>20</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The constructor must have a documentation header.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>28</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>33</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>38</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>43</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>59</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>71</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>87</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustBeginWithLowerCaseLetter" ruleCheckId="SA1306">
+        <context>Variable names and private field names must start with a lower-case letter: HowMuch.</context>
+        <line>90</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>119</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>152</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeadersMustNotBeFollowedByBlankLine" ruleCheckId="SA1506">
+        <context>A documentation header line must not be followed by a blank line.</context>
+        <line>183</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeadersMustNotBeFollowedByBlankLine" ruleCheckId="SA1506">
+        <context>A documentation header line must not be followed by a blank line.</context>
+        <line>197</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>209</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>214</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>219</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>225</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>232</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>245</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>258</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="GamePage.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/15/2012 12:08:36</timestamp>
       <milliseconds>604</milliseconds>
     </settings>
-    <timestamp>08/15/2012 12:30:24</timestamp>
-    <milliseconds>688</milliseconds>
+    <timestamp>08/15/2012 13:40:06</timestamp>
+    <milliseconds>991</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
         <context>The code must not contain multiple blank lines in a row.</context>
-        <line>615</line>
+        <line>621</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
@@ -1429,57 +1429,17 @@
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>163</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>168</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>173</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>173</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>174</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>175</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>176</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>176</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>177</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>177</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>178</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
@@ -1493,26 +1453,6 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>200</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>200</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>202</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>202</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to isItJoker must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>205</line>
         <warning>False</warning>
@@ -1533,47 +1473,12 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>209</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>210</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>210</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>222</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>229</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>229</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>230</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>230</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>243</line>
         <warning>False</warning>
       </violation>
@@ -1585,36 +1490,6 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>243</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>246</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>247</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>248</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>248</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>244</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>244</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
@@ -1623,8 +1498,23 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>252</line>
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>244</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>244</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>245</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>245</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
@@ -1638,32 +1528,22 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>254</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>254</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>254</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>255</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>255</line>
+        <line>254</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>250</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>250</line>
         <warning>False</warning>
       </violation>
@@ -1672,444 +1552,424 @@
         <line>250</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
-        <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>277</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>273</line>
+        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>258</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>280</line>
+        <line>258</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>291</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>291</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>287</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>287</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>288</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>288</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>289</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>289</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>302</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>302</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>302</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>302</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>309</line>
+        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>259</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>315</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>316</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>317</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>317</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>317</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>317</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>319</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>319</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>313</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>313</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>313</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>313</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>323</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>323</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>323</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>323</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>324</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>325</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>326</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>326</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>326</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>326</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>328</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>328</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>311</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>311</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>311</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>311</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>334</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>335</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>336</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>336</line>
+        <line>260</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>336</line>
+        <line>260</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>336</line>
+        <line>260</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>261</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to opacityRect must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>261</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>256</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to isItJoker must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>256</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
+        <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>283</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>279</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>286</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>297</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>297</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>293</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>293</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>294</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>294</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>295</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>295</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>308</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>308</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>308</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>315</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>323</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>323</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>323</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>325</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>319</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>319</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>319</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>329</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>329</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>329</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>332</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>332</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>332</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>334</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>317</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>317</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>317</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>340</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>341</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>342</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>342</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>342</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>342</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>344</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>338</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>338</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>338</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>338</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>332</line>
+        <line>351</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>332</line>
+        <line>351</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>332</line>
+        <line>351</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>332</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>345</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>345</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>345</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>345</line>
+        <line>351</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>346</line>
+        <line>352</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>347</line>
+        <line>353</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>348</line>
+        <line>354</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endPlaceType must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>348</line>
+        <line>354</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>348</line>
+        <line>354</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to endCoords must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>348</line>
+        <line>354</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>350</line>
+        <line>356</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to isItJoker must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>285</line>
+        <line>291</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>367</line>
+        <line>373</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>367</line>
+        <line>373</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>374</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>374</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>380</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>380</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>386</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasOrigin must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>388</line>
+        <line>394</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to startPoint must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>388</line>
+        <line>394</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
         <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>418</line>
+        <line>424</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustBeginWithLowerCaseLetter" ruleCheckId="SA1306">
         <context>Variable names and private field names must start with a lower-case letter: Index.</context>
-        <line>412</line>
+        <line>418</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to ManipulationStarted must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>442</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationDelta must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>443</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to ManipulationCompleted must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>444</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>451</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>448</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <context>The call to ManipulationDelta must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
         <line>449</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to ManipulationCompleted must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>450</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>457</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>454</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
@@ -2119,132 +1979,147 @@
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>446</line>
+        <line>461</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>452</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>474</line>
+        <line>480</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>476</line>
+        <line>482</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>477</line>
+        <line>483</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>485</line>
+        <line>491</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>500</line>
+        <line>507</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="DocumentationTextMustContainWhitespace" ruleCheckId="SA1630">
         <context>The documentation text within the param tag does not contain any whitespace between words, indicating that it most likely does not follow a proper grammatical structure required for documentation text.</context>
-        <line>507</line>
+        <line>514</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>510</line>
+        <line>517</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to LoadJokerFromMemory must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>542</line>
+        <line>549</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to game must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>557</line>
+        <line>564</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsMustNotBeOmitted" ruleCheckId="SA1503">
         <context>The body of the if statement must be wrapped in opening and closing curly brackets.</context>
-        <line>570</line>
+        <line>577</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>571</line>
+        <line>578</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>572</line>
+        <line>579</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsMustNotBeOmitted" ruleCheckId="SA1503">
         <context>The body of the if statement must be wrapped in opening and closing curly brackets.</context>
-        <line>592</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>596</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>601</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>603</line>
+        <line>599</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>623</line>
+        <line>629</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>624</line>
+        <line>630</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to jokers must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>625</line>
+        <line>631</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
-        <line>626</line>
+        <line>632</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>653</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>656</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to ManipulationSettings must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>673</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to controlPanel must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>675</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SettingCanvasTranslate must begin with the 'this.', 'base.', 'object.' or 'GamePage.' prefix to indicate the intended method call. </context>
+        <line>676</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="StatementMustNotBeOnSingleLine" ruleCheckId="SA1501">
         <context>A statement containing curly brackets must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>652</line>
+        <line>699</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="StatementMustNotBeOnSingleLine" ruleCheckId="SA1501">
         <context>A statement containing curly brackets must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>664</line>
+        <line>711</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="StatementMustNotBeOnSingleLine" ruleCheckId="SA1501">
         <context>A statement containing curly brackets must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>677</line>
+        <line>724</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="StatementMustNotBeOnSingleLine" ruleCheckId="SA1501">
         <context>A statement containing curly brackets must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>689</line>
+        <line>736</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="StatementMustNotBeOnSingleLine" ruleCheckId="SA1501">
         <context>A statement containing curly brackets must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>703</line>
+        <line>750</line>
         <warning>False</warning>
       </violation>
     </violations>

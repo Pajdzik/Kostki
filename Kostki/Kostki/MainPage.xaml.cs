@@ -30,14 +30,10 @@ namespace Kostki
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(App.MainMenuItemModel.IsDataLoaded.ToString());
             if (App.MainMenuItemModel.IsDataLoaded == false)
             {
-             //   Debug.WriteLine("IsDataLoDed = false");
                 App.MainMenuItemModel.LoadData();
-            }
-
-           // NavigationService.Navigate(new Uri("/GamePage.xaml", UriKind.Relative));
+            } 
         }
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)

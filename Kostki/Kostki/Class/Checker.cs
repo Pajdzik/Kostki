@@ -289,8 +289,6 @@ namespace Kostki.Class
                 return null;
             }
 
-            Debug.WriteLine("I on przechodzi");
-
             return result;
         }
 
