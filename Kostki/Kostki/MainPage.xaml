@@ -36,10 +36,10 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
                                     <!--Replace rectangle with image-->
-                                    <Rectangle Height="50" Width="50" Fill="{Binding color}" Margin="12,0,9,0"/>
+                                    <Rectangle Height="50" Width="50" Fill="{Binding Color}" Margin="12,0,9,0"/>
                                     <StackPanel Width="311">
-                                        <TextBlock Text="{Binding firstItem}" Name="firstItem" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                        <TextBlock Text="{Binding secondItem}" Name="secondItem" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                        <TextBlock Text="{Binding FirstItem}" Name="FirstItem" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                        <TextBlock Text="{Binding SecondItem}" Name="SecondItem" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>

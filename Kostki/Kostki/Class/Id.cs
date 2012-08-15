@@ -21,32 +21,32 @@ namespace Kostki.Class
 
         public Boolean IsJoker
         {
-            get { return isJoker; }
-            set { isJoker = value; }
+            get { return this.isJoker; }
+            set { this.isJoker = value; }
         }
 
         public Boolean Blocked
         {
-            get { return blocked; }
-            set { blocked = value; }
+            get { return this.blocked; }
+            set { this.blocked = value; }
         }
 
         public Figures Figure
         {
-            get { return figure; }
-            set { figure = value; }
+            get { return this.figure; }
+            set { this.figure = value; }
         }
 
         public CardColors Color
         {
-            get { return color; }
-            set { color = value; }
+            get { return this.color; }
+            set { this.color = value; }
         }
 
         public Image Image
         {
-            get { return image; }
-            set { image = value; }
+            get { return this.image; }
+            set { this.image = value; }
         }
 
         public Id(Figures figure, CardColors color)
@@ -60,7 +60,7 @@ namespace Kostki.Class
 
         public override string ToString()
         {
-            return figure.ToString() + ' ' + color.ToString() + ' ' + isJoker.ToString() + ' ' + Blocked.ToString();
+            return this.figure.ToString() + ' ' + this.color.ToString() + ' ' + this.isJoker.ToString() + ' ' + this.Blocked.ToString();
         }
     }
 }

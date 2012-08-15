@@ -25,7 +25,6 @@ namespace Kostki
         /// A static ViewModel used by the views to bind against.
         /// </summary>
         /// <returns>The MainMenuItemModel object.</returns>
-        /// 
         public static MainMenuItemModel MainMenuItemModel
         {
             get
@@ -51,7 +50,7 @@ namespace Kostki
         public App()
         {
             // Global handler for uncaught exceptions. 
-            UnhandledException += Application_UnhandledException;
+            UnhandledException += this.Application_UnhandledException;
 
             // Standard Silverlight initialization
             InitializeComponent();
@@ -66,11 +65,11 @@ namespace Kostki
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // Show the areas of the app that are being redrawn in each frame.
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
+                // Application.Current.Host.Settings.EnableRedrawRegions = true;
 
                 // Enable non-production analysis visualization mode, 
                 // which shows areas of a page that are handed off to GPU with a colored overlay.
-                //Application.Current.Host.Settings.EnableCacheVisualization = true;
+                // Application.Current.Host.Settings.EnableCacheVisualization = true;
 
                 // Disable the application idle detection by setting the UserIdleDetectionMode property of the
                 // application's PhoneApplicationService object to Disabled.
@@ -145,7 +144,7 @@ namespace Kostki
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
             RootFrame = new PhoneApplicationFrame();
-            RootFrame.Navigated += CompleteInitializePhoneApplication;
+            RootFrame.Navigated += this.CompleteInitializePhoneApplication;
 
             // Handle navigation failures
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;

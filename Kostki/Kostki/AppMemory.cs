@@ -9,19 +9,19 @@ namespace Kostki
 {
     public class AppMemory
     {
-        private const string folderName = "GameState";
-        private const string fileName = "GameBoard";
+        private const string FolderName = "GameState";
+        private const string FileName = "GameBoard";
 
         public string PlayerName
         {
-            get { return GetValueOrDefault<string>("playerName", "Player"); }
-            set { SaveValue("playerName", value); }
+            get { return this.GetValueOrDefault<string>("playerName", "Player"); }
+            set { this.SaveValue("playerName", value); }
         }
 
         public uint HighScore
         {
-            get { return GetValueOrDefault<uint>("highScore", 0); }
-            set { SaveValue("highScore", value); }
+            get { return this.GetValueOrDefault<uint>("highScore", 0); }
+            set { this.SaveValue("highScore", value); }
         }
 
         public Id[,,] LoadGameState()
@@ -31,7 +31,7 @@ namespace Kostki
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                string filePath = System.IO.Path.Combine(folderName, fileName);
+                string filePath = System.IO.Path.Combine(FolderName, FileName);
 
                 if (isf.FileExists(filePath))
                 {
@@ -48,7 +48,7 @@ namespace Kostki
                                 {
                                     string temp = reader.ReadLine();
 
-                                    gameBoard[(int) PlaceType.Grid, j, i] = Read(temp);
+                                    gameBoard[(int)PlaceType.Grid, j, i] = this.Read(temp);
                                 }
                             }
 
@@ -56,12 +56,12 @@ namespace Kostki
                             for (int i = 0; i < 4; i++)
                             {
                                 string temp = reader.ReadLine();
-                                gameBoard[(int) PlaceType.Rand, i, 0] = Read(temp);
+                                gameBoard[(int)PlaceType.Rand, i, 0] = this.Read(temp);
                             }
 
                             // joker
-                            gameBoard[(int)PlaceType.Joker, 0, 0] = Read(reader.ReadLine());
-                            gameBoard[(int)PlaceType.Joker, 1, 0] = Read(reader.ReadLine());
+                            gameBoard[(int)PlaceType.Joker, 0, 0] = this.Read(reader.ReadLine());
+                            gameBoard[(int)PlaceType.Joker, 1, 0] = this.Read(reader.ReadLine());
                             
                             reader.Close();
                         }
@@ -83,8 +83,8 @@ namespace Kostki
             {
                 string[] prop = s.Split(' ');
 
-                Figures figure = (Figures) Enum.Parse(typeof (Figures), prop[0], true);
-                CardColors color = (CardColors) Enum.Parse(typeof (CardColors), prop[1], true);
+                Figures figure = (Figures)Enum.Parse(typeof(Figures), prop[0], true);
+                CardColors color = (CardColors)Enum.Parse(typeof(CardColors), prop[1], true);
 
                 Id id = new Id(figure, color);
 
@@ -102,10 +102,10 @@ namespace Kostki
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                if (!isf.DirectoryExists(folderName))
-                    isf.CreateDirectory(folderName);
+                if (!isf.DirectoryExists(FolderName))
+                    isf.CreateDirectory(FolderName);
 
-                string filePath = System.IO.Path.Combine(folderName, fileName);
+                string filePath = System.IO.Path.Combine(FolderName, FileName);
                 isf.DeleteFile(filePath);       // usuinięcie/wyczyszczenie pliku przed zapisem
 
                 using (IsolatedStorageFileStream rawStream = isf.CreateFile(filePath))
@@ -117,8 +117,7 @@ namespace Kostki
                     {
                         for (int j = 0; j < 4; j++)
                         {
-                            //sw.WriteLine(Write(gameBoard[(int) PlaceType.Grid, j, i]));
-                            result.AppendLine(Write(gameBoard[(int) PlaceType.Grid, j, i]));
+                            result.AppendLine(this.Write(gameBoard[(int)PlaceType.Grid, j, i]));
                         }
                     }
 
@@ -126,15 +125,14 @@ namespace Kostki
                     // zapisanie randa
                     for (int i = 0; i < 4; i++)
                     {
-                        //sw.WriteLine(Write(gameBoard[(int) PlaceType.Rand, i, 0]));
-                        result.AppendLine(Write(gameBoard[(int) PlaceType.Rand, i, 0]));
+                        result.AppendLine(this.Write(gameBoard[(int)PlaceType.Rand, i, 0]));
                     }
 
                     // zapisanie jokerów
-                    //sw.WriteLine(gameBoard[(int)PlaceType.Joker, 0, 0]);
-                    //sw.WriteLine(gameBoard[(int)PlaceType.Joker, 1, 0]);
-                    result.AppendLine(Write(gameBoard[(int) PlaceType.Joker, 0, 0]));
-                    result.AppendLine(Write(gameBoard[(int) PlaceType.Joker, 0, 0]));
+                    // sw.WriteLine(gameBoard[(int)PlaceType.Joker, 0, 0]);
+                    // sw.WriteLine(gameBoard[(int)PlaceType.Joker, 1, 0]);
+                    result.AppendLine(this.Write(gameBoard[(int)PlaceType.Joker, 0, 0]));
+                    result.AppendLine(this.Write(gameBoard[(int)PlaceType.Joker, 0, 0]));
 
                     sw.Write(result.ToString());
                     sw.Close();
@@ -147,13 +145,13 @@ namespace Kostki
             if (id != null)
                 return id.ToString();
             else
-                return "";
+                return string.Empty;
         }
 
         public T GetValueOrDefault<T>(string key, T defaultValue)
         {
             if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
-                return (T) IsolatedStorageSettings.ApplicationSettings[key];
+                return (T)IsolatedStorageSettings.ApplicationSettings[key];
             else
                 return defaultValue;
         }

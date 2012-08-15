@@ -16,28 +16,28 @@ namespace Kostki.Class
 {
     public class Game
     {
-        private Id[,,] GameBoard;
+        private Id[,,] gameBoard;
         private ControlPanel controlPanel;
 
         public Game(ControlPanel controlPanel)
         {
             this.controlPanel = controlPanel;
-            this.GameBoard = new Id[4, 4, 4];
+            this.gameBoard = new Id[4, 4, 4];
         }
 
         public Id GetBoardField(PlaceType place, int x, int y)
         {
-            return GameBoard[(int)place, x, y];
+            return this.gameBoard[(int)place, x, y];
         }
 
         public Id[,,] GetGameBoard() 
         {
-            return this.GameBoard;
+            return this.gameBoard;
         }
 
-        public void SetGameBoard(Id[, ,] newGameBoard)
+        public void SetGameBoard(Id[,,] newGameBoard)
         {
-            this.GameBoard = newGameBoard;
+            this.gameBoard = newGameBoard;
         }
 
         private void ClearBoards()
@@ -46,21 +46,21 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    this.GameBoard[(int)PlaceType.Grid,i, j] = null;
+                    this.gameBoard[(int)PlaceType.Grid, i, j] = null;
                 }
             }
 
             for (int i = 0; i < 4; i++)
             {
-                this.GameBoard[(int)PlaceType.Rand, i, 0] = null;
+                this.gameBoard[(int)PlaceType.Rand, i, 0] = null;
             }
         }
 
-        public Boolean IsRandBoardClear() //tymczasowo public
+        public Boolean IsRandBoardClear() // tymczasowo public
         {
             for (int i = 0; i < 4; i++)
             {
-                if (this.GameBoard[(int)PlaceType.Rand,i, 0] != null)
+                if (this.gameBoard[(int)PlaceType.Rand, i, 0] != null)
                 {
                     return false;
                 }
@@ -75,7 +75,7 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (this.GameBoard[(int)PlaceType.Grid, i, j] == null)
+                    if (this.gameBoard[(int)PlaceType.Grid, i, j] == null)
                     {
                         result++;
                     }
@@ -89,7 +89,7 @@ namespace Kostki.Class
             CardImage[] randImages = new CardImage[4];
             int HowMuch = this.HowMuchFreeSpaceOnGameBoard();
             Random random = new Random();
-            int FigureType, CardColor;
+            int figureType, cardColor;
 
             if (!this.IsRandBoardClear())
             {
@@ -102,14 +102,14 @@ namespace Kostki.Class
                     randImages[i] = null;
                 }
 
-                for (int i = 0; i < Math.Min(HowMuch,4); i++)
+                for (int i = 0; i < Math.Min(HowMuch, 4); i++)
                 {
-                    FigureType = random.Next(4);
-                    CardColor = random.Next(4);
-                    CardImage cardImage = new CardImage(FigureType, CardColor);
-                    cardImage.SetImage(this.controlPanel.GetImageByColorAndId(FigureType, CardColor));
+                    figureType = random.Next(4);
+                    cardColor = random.Next(4);
+                    CardImage cardImage = new CardImage(figureType, cardColor);
+                    cardImage.SetImage(this.controlPanel.GetImageByColorAndId(figureType, cardColor));
                     randImages[i] = cardImage;
-                    this.GameBoard[(int)PlaceType.Rand, i, 0] = new Id((Figures)FigureType, (CardColors)CardColor);
+                    this.gameBoard[(int)PlaceType.Rand, i, 0] = new Id((Figures)figureType, (CardColors)cardColor);
                 }
                 return randImages;
             }
@@ -122,7 +122,7 @@ namespace Kostki.Class
 
             if (placeType == PlaceType.Grid && !(x > 3 || x < 0 || y > 3 || y < 0))
             {
-                if (this.GameBoard[(int)PlaceType.Grid,x, y] != null)
+                if (this.gameBoard[(int)PlaceType.Grid, x, y] != null)
                 {
                     return false;
                 }
@@ -133,7 +133,7 @@ namespace Kostki.Class
             }
             else if (placeType == PlaceType.Rand && !(x > 3 || x < 0 || y != 0))
             {
-                if (this.GameBoard[(int)PlaceType.Rand,x,y] != null)
+                if (this.gameBoard[(int)PlaceType.Rand, x, y] != null)
                 {
                     return false;
                 }
@@ -152,7 +152,7 @@ namespace Kostki.Class
         {
             try
             {
-                if (this.GameBoard[(int)end, endX, endY] != null)
+                if (this.gameBoard[(int)end, endX, endY] != null)
                 {
                     throw new AlreadyTakenException();
                 }
@@ -166,16 +166,16 @@ namespace Kostki.Class
                 throw new AlreadyTakenException();
             }
 
-            Id id = this.GameBoard[(int)start, startX, startY];
+            Id id = this.gameBoard[(int)start, startX, startY];
             if (start == PlaceType.Rand)
             {
-                this.GameBoard[(int)start, startX, startY] = null;
+                this.gameBoard[(int)start, startX, startY] = null;
             }
             else
             {
-                this.GameBoard[(int)start, startX, startY] = null;
+                this.gameBoard[(int)start, startX, startY] = null;
             }
-            this.GameBoard[(int)end, endX, endY] = id;
+            this.gameBoard[(int)end, endX, endY] = id;
             return;
         }
 
@@ -189,7 +189,7 @@ namespace Kostki.Class
         {
             if (x < 4 && y < 4)
             {
-                this.GameBoard[(int) PlaceType.Grid, x, y].Blocked = true;
+                this.gameBoard[(int)PlaceType.Grid, x, y].Blocked = true;
             }
         }
 
@@ -202,29 +202,29 @@ namespace Kostki.Class
 
         public Boolean IsFieldBlocked(int x, int y)
         {
-            return this.GameBoard[(int) PlaceType.Grid, x, y].Blocked;
+            return this.gameBoard[(int)PlaceType.Grid, x, y].Blocked;
         }
 
         public void SetImageOnCoords(PlaceType place, int x, int y, Image image)
         {
-            this.GameBoard[(int)place, x, y].Image = image;
+            this.gameBoard[(int)place, x, y].Image = image;
         }
 
         public Image GetImageOnCoords(int x, int y)
         {
-            return this.GameBoard[(int)PlaceType.Grid, x, y].Image;
+            return this.gameBoard[(int)PlaceType.Grid, x, y].Image;
         }
 
-        public Image GetImageOnCoords(PlaceType place,int x, int y)
+        public Image GetImageOnCoords(PlaceType place, int x, int y)
         {
             Debug.WriteLine("Pobieram Image z coordsów - " + x + " " + y + " place type " + place);
-            return this.GameBoard[(int)place, x, y].Image;
+            return this.gameBoard[(int)place, x, y].Image;
         }
 
         public Image DeleteImageOnCoords(int x, int y)
         {
-            Image image = this.GameBoard[(int)PlaceType.Grid, x, y].Image;
-            this.GameBoard[(int)PlaceType.Grid, x, y] = null;
+            Image image = this.gameBoard[(int)PlaceType.Grid, x, y].Image;
+            this.gameBoard[(int)PlaceType.Grid, x, y] = null;
             return image;
         }
 
@@ -232,12 +232,12 @@ namespace Kostki.Class
         {
             try
             {
-                GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+                this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)PlaceType.Grid, x, y] = new Id(Figures.Joker, CardColors.Joker);
-                GameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
+                this.gameBoard[(int)PlaceType.Grid, x, y] = new Id(Figures.Joker, CardColors.Joker);
+                this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker = true;
             }
         }
 
@@ -245,62 +245,90 @@ namespace Kostki.Class
         {
             try
             {
-                GameBoard[(int)place, x, y].IsJoker = true; 
+                this.gameBoard[(int)place, x, y].IsJoker = true; 
             }
             catch (NullReferenceException)
             {
-                GameBoard[(int)place, x, y] = new Id(Figures.Joker, CardColors.Joker);
-                GameBoard[(int)place, x, y].IsJoker = true;
+                this.gameBoard[(int)place, x, y] = new Id(Figures.Joker, CardColors.Joker);
+                this.gameBoard[(int)place, x, y].IsJoker = true;
             }
         }
 
         public Boolean GetJokerOnCoords(PlaceType place, int x, int y)
         {
-            return GameBoard[(int)place, x, y].IsJoker;
+            return this.gameBoard[(int)place, x, y].IsJoker;
         }
 
+        /// <summary>
+        /// Metoda pozwalająca panować nad przesuwaniem jokerów. Jest kilka sytuacji,
+        /// jakie mogą wystapić, wszystkie one muszą zostać sprawdzone, by aplikacja
+        /// działała poprawnie. Jednym z przypadków jest taki, kiedy przekładamy jokera
+        /// na miejsce, które jest puste. Reszta przypadków okomentowana jest w kodzie.
+        /// </summary>
+        /// <param name="start"> Typ miejsca początkowego</param>
+        /// <param name="startX"> Wpółrzędna x startu</param>
+        /// <param name="startY"> Współrzędna y startu</param>
+        /// <param name="end"> Typ miejsca końcowego</param>
+        /// <param name="endX"> Współrzędna x końca</param>
+        /// <param name="endY"> Współrzędna y końca</param>
         public void MoveJoker(PlaceType start, int startX, int startY, PlaceType end, int endX, int endY)
         {
-            if (GameBoard[(int)end, endX, endY] == null)
+            // Jeśli miejsce, na które przeciągamy jokera jest puste
+            if (this.gameBoard[(int)end, endX, endY] == null)
             {
-                if (GameBoard[(int)start, startX, startY].Figure == Figures.Joker)
+                // Jeśli przeciągamy bezpośrednio jokera
+                if (this.gameBoard[(int)start, startX, startY].Figure == Figures.Joker)
                 {
-                    GameBoard[(int)end, endX, endY] = GameBoard[(int)start, startX, startY];
-                    GameBoard[(int)start, startX, startY] = null;
+                    this.gameBoard[(int)end, endX, endY] = this.gameBoard[(int)start, startX, startY];
+                    this.gameBoard[(int)start, startX, startY] = null;
                 }
+                // Jeśli joker leży (przykrywa) inną kartę.
                 else
                 {
-                    GameBoard[(int)start, startX, startY].IsJoker = false;
-                    SetJokerOnCoords(end,endX, endY);
+                    this.gameBoard[(int)start, startX, startY].IsJoker = false;
+                    this.SetJokerOnCoords(end, endX, endY);
                 }
             }
+            // Jeśli miejsce, na które przeciągamy jokera na miejsce z jakąś kartą
             else
             {
-                if (GameBoard[(int)start, startX, startY].Figure == Figures.Joker)
+                // Jeśli przeciągamy bezpośrednio jokera
+                if (this.gameBoard[(int)start, startX, startY].Figure == Figures.Joker)
                 {
-                    GameBoard[(int)end, endX, endY].IsJoker = true;
-                    GameBoard[(int)start, startX, startY] = null;
+                    this.gameBoard[(int)end, endX, endY].IsJoker = true;
+                    this.gameBoard[(int)start, startX, startY] = null;
                 }
+                // Jeśli joker leży (przykrywa) inną kartę.
                 else
                 {
-                    GameBoard[(int)start, startX, startY].IsJoker = false;
-                    GameBoard[(int)end, endX, endY].IsJoker = true;
+                    this.gameBoard[(int)start, startX, startY].IsJoker = false;
+                    this.gameBoard[(int)end, endX, endY].IsJoker = true;
                 }
             }
         }
 
+        /// <summary>
+        /// Dodanie jokera na pozycję x w miejscu dla Jokerów.
+        /// </summary>
+        /// <param name="image"> Obrazek, który należy wyświetlić</param>
+        /// <param name="x"> Miejsce (index), w którym ma zostać wyświetlony obrazek</param>
         public void AddJoker(Image image, int x)
         {
-            GameBoard[(int)PlaceType.Joker, x, 0] = new Id(Figures.Joker, CardColors.Joker);
-            GameBoard[(int)PlaceType.Joker, x, 0].Image = image;
-            GameBoard[(int)PlaceType.Joker, x, 0].IsJoker = true;
+            this.gameBoard[(int)PlaceType.Joker, x, 0] = new Id(Figures.Joker, CardColors.Joker);
+            this.gameBoard[(int)PlaceType.Joker, x, 0].Image = image;
+            this.gameBoard[(int)PlaceType.Joker, x, 0].IsJoker = true;
         }
 
+        /// <summary>
+        /// Sprawdzenie czy jest jakiś Joker na planszy
+        /// </summary>
+        /// <returns> True jeśli nie ma żadnych Jokerów, false, jeśli
+        /// jest inaczej</returns>
         public Boolean NoJokerOnBoard()
         {
             for (int i = 0; i < 2; i++)
             {
-                if (GameBoard[(int)PlaceType.Joker, i, 0] != null)
+                if (this.gameBoard[(int)PlaceType.Joker, i, 0] != null)
                 {
                     return false;
                 }

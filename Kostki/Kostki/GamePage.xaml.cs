@@ -38,13 +38,13 @@ namespace Kostki
 
         public GamePage()
         {
-            calculate = new Calculate();
-            checker = new Checker();
-            controlPanel = new ControlPanel();
-            game = new Game(controlPanel);
+            this.calculate = new Calculate();
+            this.checker = new Checker();
+            this.controlPanel = new ControlPanel();
+            this.game = new Game(this.controlPanel);
             InitializeComponent();
-            ShowRectangle();
-            CreateTextBlockForResult();
+            this.ShowRectangle();
+            this.CreateTextBlockForResult();
         }
 
         /// <summary>
@@ -110,12 +110,12 @@ namespace Kostki
         /// </summary>
         public void ShowRectangleForJoker()
         {
-            currentPosition = startPosition = controlPanel.GetTopJoker();
+            currentPosition = startPosition = this.controlPanel.GetTopJoker();
             for (int j = 0; j < 2; j++)
             {
-                Rectangle rect = controlPanel.GetRectangle();
+                Rectangle rect = this.controlPanel.GetRectangle();
                 this.canvas.Children.Add(rect);
-                SettingCanvasOrigin(rect, currentPosition);
+                this.SettingCanvasOrigin(rect, currentPosition);
                 currentPosition.X += 100;
             }
         }
@@ -125,14 +125,14 @@ namespace Kostki
         /// </summary>
         public void ShowRectangleForGrid()
         {
-            currentPosition = startPosition = controlPanel.GetTopGrid();
+            currentPosition = startPosition = this.controlPanel.GetTopGrid();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    Rectangle rect = controlPanel.GetRectangle();
+                    Rectangle rect = this.controlPanel.GetRectangle();
                     this.canvas.Children.Add(rect);
-                    SettingCanvasOrigin(rect, currentPosition);
+                    this.SettingCanvasOrigin(rect, currentPosition);
                     currentPosition.X += 100;
                 }
                 currentPosition.X = startPosition.X;
@@ -145,12 +145,12 @@ namespace Kostki
         /// </summary>
         public void ShowRectangleForRand()
         {
-            currentPosition = startPosition = controlPanel.GetTopRand();
+            currentPosition = startPosition = this.controlPanel.GetTopRand();
             for (int j = 0; j < 4; j++)
             {
-                Rectangle rect = controlPanel.GetRectangle();
+                Rectangle rect = this.controlPanel.GetRectangle();
                 this.canvas.Children.Add(rect);
-                SettingCanvasOrigin(rect, currentPosition);
+                this.SettingCanvasOrigin(rect, currentPosition);
                 currentPosition.X += 100;
             }
         }
@@ -183,7 +183,7 @@ namespace Kostki
         /// Metoda przeciązająca akcje po wciśnięciu na dany UIelement
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Sender object</param>
         private void ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
             Image image = (Image)sender;
@@ -197,17 +197,17 @@ namespace Kostki
 
             //testowy fragment kodu
             PlaceType place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) +
-                (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+                (controlPanel.CardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.CardSize * 1.3) / 2));
             this.startCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) +
-                (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+                (controlPanel.CardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.CardSize * 1.3) / 2), place);
             this.startPlaceType = place;
 
             isItJoker = game.GetJokerOnCoords(place, (int)(startCoords.X - 1), (int)(startCoords.Y - 1));
 
             Canvas.SetZIndex((UIElement)sender, 1);        // ustawienie z-indeksu trzymanego obrazka na wierzch                          
 
-            image.Opacity = controlPanel.opacityCoefficient;                    // ustawienie półprzezroczystości
-            image.Height = image.Width = controlPanel.cardSize * controlPanel.resizeCoefficient;       // zwiększenie rozmiaru
+            image.Opacity = controlPanel.OpacityCoefficient;                    // ustawienie półprzezroczystości
+            image.Height = image.Width = controlPanel.CardSize * controlPanel.ResizeCoefficient;       // zwiększenie rozmiaru
 
         }
 
@@ -215,7 +215,7 @@ namespace Kostki
         /// Metoda wywoływana podczas przeciągania danego UIelementu.
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Sender object</param>
         private void ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
             Image image = (Image)sender;
@@ -226,8 +226,8 @@ namespace Kostki
             PlaceType place;
             try
             {
-                place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
-                this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2), place);
+                place = this.controlPanel.RecognizePlace(new Point(Canvas.GetLeft(image) + (controlPanel.CardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.CardSize * 1.3) / 2));
+                this.endCoords = this.controlPanel.GetCoordsFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.CardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.CardSize * 1.3) / 2), place);
                 this.endPlaceType = place;
             }
             catch (OutOfBoardException)
@@ -240,7 +240,7 @@ namespace Kostki
             try
             {
                 canvas.Children.Remove(this.opacityRect);
-                Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.cardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.cardSize * 1.3) / 2));
+                Point point = controlPanel.GetViewportPointFromActualPoint(new Point(Canvas.GetLeft(image) + (controlPanel.CardSize * 1.3) / 2, Canvas.GetTop(image) + (controlPanel.CardSize * 1.3) / 2));
                 if (this.game.IsFieldFree((int)endCoords.X, (int)endCoords.Y, this.endPlaceType) == true || isItJoker == true)            // wyłączenie podświetlenia kafelka gdy jest zajęty
                 {
                     this.opacityRect = controlPanel.GetMarkRectangle();
@@ -265,7 +265,7 @@ namespace Kostki
         /// Metoda wywoływana, kiedy akcja na UIelemencie została zakończona.
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Sender object</param>
         private void ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
             Image image = (Image)sender;
@@ -277,7 +277,7 @@ namespace Kostki
             //Canvas.SetTop(image, (double)((int)(Canvas.GetTop(image) + 0.15 * image.Width)));
 
             image.Opacity = 1.0;                    // ustawienie pełnej widoczności z powrotem
-            image.Height = image.Width = controlPanel.cardSize;     // ustawienie rozmiarów z powrotem
+            image.Height = image.Width = controlPanel.CardSize;     // ustawienie rozmiarów z powrotem
             Canvas.SetZIndex((UIElement)sender, 0);         // przesunięcie kafelka wartstwę niżej
 
             if (this.opacityRect != null)
@@ -400,7 +400,7 @@ namespace Kostki
         ///         i są puste miejsca w gridzie)
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Sender object</param>
         private void NextAndAccept(object sender, EventArgs e)
         {
             Boolean pop = false;
@@ -411,15 +411,15 @@ namespace Kostki
             List<CheckerType> infoCollection = this.checker.GetCollectionInfo();
             List<int> Index = new List<int>();
 
-            calculate.ListOfCards = collection;
+            this.calculate.ListOfCards = collection;
 
-            calculate.GetActResult();
+            this.calculate.GetActResult();
 
-            AddJoker();
+            // this.AddJoker();
 
             for (int i = 0; i < collection.Count; i++)
             {
-                if (calculate.CalculateFourResult(collection[i]) >= 100)
+                if (this.calculate.CalculateFourResult(collection[i]) >= 100)
                 {
                     Index.Add(i);
                 }
@@ -427,7 +427,7 @@ namespace Kostki
 
             for (int i = 0; i < Index.Count; i++)
             {
-                ClearFour(infoCollection[Index[i]].x, infoCollection[Index[i]].y, infoCollection[Index[i]].fourcardtype);
+                this.ClearFour(infoCollection[Index[i]].x, infoCollection[Index[i]].y, infoCollection[Index[i]].fourcardtype);
             }
 
             for (int i = 0; i < 4; i++)             // zablokowanie wszystkich kafelków po położeniu i wciśnięciu przycisku
@@ -435,9 +435,9 @@ namespace Kostki
                 for (int j = 0; j < 4; j++)
                 {
                     // TODO: zmiana na i i j
-                    if (game.IsFieldFree(i + 1, j + 1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
+                    if (this.game.IsFieldFree(i + 1, j + 1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
                     {
-                        game.BlockField(i, j);
+                        this.game.BlockField(i, j);
                         Image imageTemp = this.game.GetImageOnCoords(i, j);
                         imageTemp.ManipulationStarted -= ManipulationStarted;
                         imageTemp.ManipulationDelta -= ManipulationDelta;
@@ -479,7 +479,7 @@ namespace Kostki
             }
 
             Int64 tempResult = Convert.ToInt64(this.textblock.Text);
-            tempResult = calculate.GlobalResult;
+            tempResult = this.calculate.GlobalResult;
             this.textblock.Text = Convert.ToString(tempResult);
 
             if (this.game.HowMuchFreeSpaceOnGameBoard() == 0 && game.NoJokerOnBoard())
@@ -492,7 +492,7 @@ namespace Kostki
         /// Metoda wywoływana podczas powrotu do widoku Panoramy.
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e"> Sender object</param>
         private void BackToPanorama(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
@@ -503,7 +503,7 @@ namespace Kostki
         /// <summary>
         /// Metoda wywoływana podczas przyciśnięcia przycisku wstecz.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> e </param>
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             AppMemory appMemory = new AppMemory();
@@ -521,7 +521,7 @@ namespace Kostki
         private void PhoneApplicationPageLoaded(object sender, RoutedEventArgs e)
         {
             AppMemory appMemory = new AppMemory();
-            Id[, ,] memBoard = appMemory.LoadGameState();
+            Id[,,] memBoard = appMemory.LoadGameState();
             Image imageToLoad;
 
             for (int i = 0; i < 4; i++)
@@ -534,16 +534,16 @@ namespace Kostki
                         {
                             if (k == (int)PlaceType.Grid)
                             {
-                                imageToLoad = loadCardsFromMemory(memBoard[k, i, j], i, j);
+                                imageToLoad = this.LoadCardsFromMemory(memBoard[k, i, j], i, j);
                                 memBoard[k, i, j].Image = imageToLoad;
                             }
                             else if (k == (int)PlaceType.Joker)
                             {
-                                loadJokerFromMemory(i, j);
+                                LoadJokerFromMemory(i, j);
                             }
                             else if (k == (int)PlaceType.Rand)
                             {
-                                imageToLoad = loadRandFromMemory(memBoard[k, i, j], i, j);
+                                imageToLoad = this.LoadRandFromMemory(memBoard[k, i, j], i, j);
                                 memBoard[k, i, j].Image = imageToLoad;
                             }
                             else
@@ -563,15 +563,16 @@ namespace Kostki
         /// <param name="card"> Karta, którą należy załadować</param>
         /// <param name="x"> Pozycja x tej karty</param>
         /// <param name="y"> Pozycja y tej karty</param>
-        private Image loadRandFromMemory(Id card, int x, int y)
+        /// <returns> Image that's load from Memory</returns>
+        private Image LoadRandFromMemory(Id card, int x, int y)
         {
             if (card == null)
                 return null;
             Image image = controlPanel.GetImageByColorAndId(card.Figure, card.Color);
             Point point = controlPanel.GetRandCoordsForMarkRectangle(x + 1, 1);
-            ManipulationSettings(image);
+            this.ManipulationSettings(image);
             this.canvas.Children.Add(image);
-            SettingCanvasTranslate(image, point);
+            this.SettingCanvasTranslate(image, point);
 
             return image;
 
@@ -583,7 +584,8 @@ namespace Kostki
         /// <param name="card"> Karta, którą nalezy załadować</param>
         /// <param name="x"> Pozycja x karty</param>
         /// <param name="y"> Pozycja y karty</param>
-        private Image loadCardsFromMemory(Id card, int x, int y)
+        /// <returns> Image that's load from Memory</returns>
+        private Image LoadCardsFromMemory(Id card, int x, int y)
         {
             Image image;
             if (card == null)
@@ -602,10 +604,10 @@ namespace Kostki
 
             if (card.Blocked == false)
             {
-                ManipulationSettings(image);
+                this.ManipulationSettings(image);
             }
             this.canvas.Children.Add(image);
-            SettingCanvasTranslate(image, point);
+            this.SettingCanvasTranslate(image, point);
 
             return image;
         }
@@ -616,16 +618,16 @@ namespace Kostki
         /// </summary>
         /// <param name="x"> Pozycja x Jokera</param>
         /// <param name="y"> Pozycja y Jokera</param>
-        private void loadJokerFromMemory(int x, int y)
+        private void LoadJokerFromMemory(int x, int y)
         {
             jokers = new Image[2];
             Image joker = controlPanel.GetJoker();
             jokers[x] = joker;
             Point jokerPoint = controlPanel.GetJokerCoordsForMarkRectangle(x + 1, 1);
-            ManipulationSettings(joker);
+            this.ManipulationSettings(joker);
             canvas.Children.Add(joker);
-            SettingCanvasTranslate(joker, jokerPoint);
-            game.AddJoker(joker, x);
+            this.SettingCanvasTranslate(joker, jokerPoint);
+            this.game.AddJoker(joker, x);
         }
 
         /// <summary>

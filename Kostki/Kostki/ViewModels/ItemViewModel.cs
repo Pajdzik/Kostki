@@ -11,51 +11,51 @@ namespace Kostki.ViewModels
     {
         private string _firstItem;
 
-        public string firstItem
+        public string FirstItem
         {
             get
             {
-                return _firstItem;
+                return this._firstItem;
             }
             set
             {
-                if (value != _firstItem)
+                if (value != this._firstItem)
                 {
-                    _firstItem = value;
+                    this._firstItem = value;
                 }
             }
         }
 
         private string _secondItem;
 
-        public string secondItem
+        public string SecondItem
         {
             get
             {
-                return _secondItem;
+                return this._secondItem;
             }
             set
             {
-                if (value != _secondItem)
+                if (value != this._secondItem)
                 {
-                    _secondItem = value;
+                    this._secondItem = value;
                 }
             }
         }
 
         private string _color;
 
-        public string  color
+        public string Color
         {
             get
             {
-                return _color;
+                return this._color;
             }
             set
             {
-                if (value != _color)
+                if (value != this._color)
                 {
-                    _color = value;
+                    this._color = value;
                 }
             }
         }

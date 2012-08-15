@@ -51,64 +51,64 @@ namespace Kostki.Class
 
     public class ControlPanel
     {
-        private BitmapImage[,] cards;
-        private BitmapImage Joker;
+        public readonly int AddPanel = 60;
+        public readonly int LeftAndRight = 42;
+        public readonly int CardSize = 86;
+        public readonly int BorderSize = 3;
+        public readonly int SpaceSize = 4;
+        public readonly double OpacityCoefficient = 0.5;
+        public readonly double ResizeCoefficient = 1.3;
+        public readonly Point NewCardGrid;
+        public readonly Point Grid4x4;
 
-        public readonly int addPanel = 60;
-        public readonly int leftAndRight = 42;
-        public readonly int cardSize = 86;
-        public readonly int borderSize = 3;
-        public readonly int spaceSize = 4;
-        public readonly double opacityCoefficient = 0.5;
-        public readonly double resizeCoefficient = 1.3;
-        public readonly Point newCardGrid;
-        public readonly Point grid4x4;
+        private BitmapImage[,] cards;
+        private BitmapImage joker;
 
         public ControlPanel()
         {
-            cards = new BitmapImage[4, 4];
-            newCardGrid = new Point(45, 565);
-            grid4x4 = new Point(45, 153);
+            this.cards = new BitmapImage[4, 4];
+            this.NewCardGrid = new Point(45, 565);
+            this.Grid4x4 = new Point(45, 153);
 
             this.LoadCards();
         }
 
         private void LoadCards()
         {
-            cards[(int) Figures.Club, (int) CardColors.Blue] = new BitmapImage(new Uri("/img/clubs/blue.png", UriKind.Relative));
-            cards[(int) Figures.Club, (int) CardColors.Green] = new BitmapImage(new Uri("/img/clubs/green.png", UriKind.Relative));
-            cards[(int) Figures.Club, (int) CardColors.Red] = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
-            cards[(int) Figures.Club, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/clubs/yellow.png", UriKind.Relative));
+            this.cards[(int)Figures.Club, (int)CardColors.Blue] = new BitmapImage(new Uri("/img/clubs/blue.png", UriKind.Relative));
+            this.cards[(int)Figures.Club, (int)CardColors.Green] = new BitmapImage(new Uri("/img/clubs/green.png", UriKind.Relative));
+            this.cards[(int)Figures.Club, (int)CardColors.Red] = new BitmapImage(new Uri("/img/clubs/red.png", UriKind.Relative));
+            this.cards[(int)Figures.Club, (int)CardColors.Yellow] = new BitmapImage(new Uri("/img/clubs/yellow.png", UriKind.Relative));
 
-            cards[(int) Figures.Diamond, (int) CardColors.Blue] = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
-            cards[(int) Figures.Diamond, (int) CardColors.Green] = new BitmapImage(new Uri("/img/diamond/green.png", UriKind.Relative));
-            cards[(int) Figures.Diamond, (int) CardColors.Red] = new BitmapImage(new Uri("/img/diamond/red.png", UriKind.Relative));
-            cards[(int) Figures.Diamond, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/diamond/yellow.png", UriKind.Relative));
+            this.cards[(int)Figures.Diamond, (int)CardColors.Blue] = new BitmapImage(new Uri("/img/diamond/blue.png", UriKind.Relative));
+            this.cards[(int)Figures.Diamond, (int)CardColors.Green] = new BitmapImage(new Uri("/img/diamond/green.png", UriKind.Relative));
+            this.cards[(int)Figures.Diamond, (int)CardColors.Red] = new BitmapImage(new Uri("/img/diamond/red.png", UriKind.Relative));
+            this.cards[(int)Figures.Diamond, (int)CardColors.Yellow] = new BitmapImage(new Uri("/img/diamond/yellow.png", UriKind.Relative));
 
-            cards[(int) Figures.Heart, (int) CardColors.Blue] = new BitmapImage(new Uri("/img/heart/blue.png", UriKind.Relative));
-            cards[(int) Figures.Heart, (int) CardColors.Green] = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
-            cards[(int) Figures.Heart, (int) CardColors.Red] = new BitmapImage(new Uri("/img/heart/red.png", UriKind.Relative));
-            cards[(int) Figures.Heart, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/heart/yellow.png", UriKind.Relative));
+            this.cards[(int)Figures.Heart, (int)CardColors.Blue] = new BitmapImage(new Uri("/img/heart/blue.png", UriKind.Relative));
+            this.cards[(int)Figures.Heart, (int)CardColors.Green] = new BitmapImage(new Uri("/img/heart/green.png", UriKind.Relative));
+            this.cards[(int)Figures.Heart, (int)CardColors.Red] = new BitmapImage(new Uri("/img/heart/red.png", UriKind.Relative));
+            this.cards[(int)Figures.Heart, (int)CardColors.Yellow] = new BitmapImage(new Uri("/img/heart/yellow.png", UriKind.Relative));
 
-            cards[(int) Figures.Spade, (int) CardColors.Blue]= new BitmapImage(new Uri("/img/spade/blue.png", UriKind.Relative));
-            cards[(int) Figures.Spade, (int) CardColors.Green ] = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
-            cards[(int) Figures.Spade, (int) CardColors.Red] = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
-            cards[(int) Figures.Spade, (int) CardColors.Yellow] = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
+            this.cards[(int)Figures.Spade, (int)CardColors.Blue] = new BitmapImage(new Uri("/img/spade/blue.png", UriKind.Relative));
+            this.cards[(int)Figures.Spade, (int)CardColors.Green] = new BitmapImage(new Uri("/img/spade/green.png", UriKind.Relative));
+            this.cards[(int)Figures.Spade, (int)CardColors.Red] = new BitmapImage(new Uri("/img/spade/red.png", UriKind.Relative));
+            this.cards[(int)Figures.Spade, (int)CardColors.Yellow] = new BitmapImage(new Uri("/img/spade/yellow.png", UriKind.Relative));
 
-            Joker = new BitmapImage(new Uri("/img/jokers/joker_violet.png", UriKind.Relative));
+            this.joker = new BitmapImage(new Uri("/img/jokers/joker_violet.png", UriKind.Relative));
         }
 
         public int GetFieldSize()
         {
-            return this.cardSize + this.borderSize * 2 ;
+            return this.CardSize + this.BorderSize * 2;
         }
 
         public Image GetJoker()
         {
             Image image = new Image();
-            image.Source = this.Joker;
-            image.Height = this.cardSize;
-            image.Width = this.cardSize;
+            image.Source = this.joker;
+            image.Height = this.CardSize;
+            image.Width = this.CardSize;
             return image;
         }
 
@@ -116,8 +116,8 @@ namespace Kostki.Class
         {
             Image image = new Image();
             image.Source = this.cards[(int)figure, (int)cardColor];
-            image.Height = this.cardSize;
-            image.Width = this.cardSize;
+            image.Height = this.CardSize;
+            image.Width = this.CardSize;
             return image;
         }
 
@@ -125,14 +125,14 @@ namespace Kostki.Class
         {
             Image image = new Image();
             image.Source = this.cards[figure, cardColor];
-            image.Height = this.cardSize;
-            image.Width = this.cardSize;
+            image.Height = this.CardSize;
+            image.Width = this.CardSize;
             return image;
         }
 
         public Point GetTopJoker()
         {
-            return new Point((double)this.leftAndRight,(double)this.addPanel + 4);
+            return new Point((double)this.LeftAndRight, (double)this.AddPanel + 4);
         }
 
         public Point GetTopGrid()
@@ -210,11 +210,11 @@ namespace Kostki.Class
         {
             if (x == 0)
             {
-                return new Point(GetTopJoker().X, GetTopJoker().Y);
+                return new Point(this.GetTopJoker().X, this.GetTopJoker().Y);
             }
             else
             {
-                return new Point(GetTopJoker().X + 100, GetTopJoker().Y);
+                return new Point(this.GetTopJoker().X + 100, this.GetTopJoker().Y);
             }
         }
 
@@ -250,22 +250,22 @@ namespace Kostki.Class
             double top, bottom;
             top = this.GetTopGrid().Y;
             bottom = top + 396;
-            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
-                   this.leftAndRight + 396, current.X))
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
+                   this.LeftAndRight + 396, current.X))
             {
                 return PlaceType.Grid;
             }
             top = this.GetTopRand().Y;
             bottom = top + 96;
-            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
-                this.leftAndRight + 396, current.X))
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
+                this.LeftAndRight + 396, current.X))
             {
                 return PlaceType.Rand;
             }
             top = this.GetTopJoker().Y;
             bottom = top + 96;
-            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.leftAndRight,
-                this.leftAndRight + 188, current.X))
+            if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
+                this.LeftAndRight + 188, current.X))
             {
                 return PlaceType.Joker;
             }
@@ -278,7 +278,7 @@ namespace Kostki.Class
         {
             Point point = new Point();
             point.Y = this.CalculateGridRowAndColumn((int)(current.Y - top));
-            point.X = this.CalculateGridRowAndColumn((int)(current.X - this.leftAndRight));
+            point.X = this.CalculateGridRowAndColumn((int)(current.X - this.LeftAndRight));
             return point;
         }
 

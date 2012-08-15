@@ -23,13 +23,13 @@ namespace Kostki.ViewModels
         {
             get
             {
-                return _isDataLoaded;
+                return this._isDataLoaded;
             }
             set
             {
-                if (value != _isDataLoaded)
+                if (value != this._isDataLoaded)
                 {
-                    _isDataLoaded = value;
+                    this._isDataLoaded = value;
                 }
             }
         }
@@ -42,8 +42,8 @@ namespace Kostki.ViewModels
 
         public void LoadData()
         {
-            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Prosty Poziom", color = "Red" });
-            this.Items1.Add(new ItemViewModel() { firstItem = "Zagraj w gre", secondItem = "Trudny Poziom", color = "Green" });
+            this.Items1.Add(new ItemViewModel() { FirstItem = "Zagraj w gre", SecondItem = "Prosty Poziom", Color = "Red" });
+            this.Items1.Add(new ItemViewModel() { FirstItem = "Zagraj w gre", SecondItem = "Trudny Poziom", Color = "Green" });
             this.IsDataLoaded = true;
         }
     }

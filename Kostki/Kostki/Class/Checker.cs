@@ -17,12 +17,12 @@ namespace Kostki.Class
     public class Checker
     {
 
-        private Id[, ,] gameBoard;
+        private Id[,,] gameBoard;
 
-        public Id[, ,] GameBoard
+        public Id[,,] GameBoard
         {
-            get { return gameBoard; }
-            set { gameBoard = value; }
+            get { return this.gameBoard; }
+            set { this.gameBoard = value; }
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Kostki.Class
             List<List<Id>> resultList = new List<List<Id>>();
             List<List<Id>> tempList = new List<List<Id>>();
 
-            tempList = GetFourInRows();
+            tempList = this.GetFourInRows();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -46,7 +46,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourInColumns();
+            tempList = this.GetFourInColumns();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -56,7 +56,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourRectangle();
+            tempList = this.GetFourRectangle();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -66,7 +66,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourCross();
+            tempList = this.GetFourCross();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -76,9 +76,9 @@ namespace Kostki.Class
                 }
             }
 
-            if (GetCorners() != null)
+            if (this.GetCorners() != null)
             {
-                resultList.Add(GetCorners());
+                resultList.Add(this.GetCorners());
             }
 
             return resultList;
@@ -99,7 +99,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -131,7 +131,7 @@ namespace Kostki.Class
                     break;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, i,i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i,i].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, i, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -146,14 +146,14 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                rightCross.Add(this.gameBoard[(int)PlaceType.Grid, 3-i, i]);
-                if (this.gameBoard[(int)PlaceType.Grid, 3-i, i] == null)
+                rightCross.Add(this.gameBoard[(int)PlaceType.Grid, 3 - i, i]);
+                if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i] == null)
                 {
                     rightCross = null;
                     break;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJoker)// !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJokerBlocked == false)
+                    !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -186,7 +186,7 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    inside = GetFourRectangle(i, j);
+                    inside = this.GetFourRectangle(i, j);
                     if (inside != null)
                     {
                         result.Add(inside);
@@ -213,13 +213,13 @@ namespace Kostki.Class
             {
                 for (int j = y; j < y + 2; j++)
                 {
-                    result.Add(this.gameBoard[(int)PlaceType.Grid, i,j]);
+                    result.Add(this.gameBoard[(int)PlaceType.Grid, i, j]);
                     if (this.gameBoard[(int)PlaceType.Grid, i, j] == null)
                     {
                         return null;
                     }
                     else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true &&
-                        !this.gameBoard[(int)PlaceType.Grid, i,j].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i,j].IsJokerBlocked)
+                        !this.gameBoard[(int)PlaceType.Grid, i, j].IsJoker)
                     {
                         howMuchBlocked++;
                     }
@@ -248,7 +248,7 @@ namespace Kostki.Class
             for (int i = 0; i < 4; i++)
             {
                 List<Id> insideList = new List<Id>();
-                insideList = GetFourInRow(i);
+                insideList = this.GetFourInRow(i);
                 if (insideList != null)
                 {
                     result.Add(insideList);
@@ -278,7 +278,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -307,7 +307,7 @@ namespace Kostki.Class
             for (int i = 0; i < 4; i++)
             {
                 List<Id> insideList = new List<Id>();
-                insideList = GetFourInColumn(i);
+                insideList = this.GetFourInColumn(i);
                 if (insideList != null)
                 {
                     result.Add(insideList);
@@ -337,7 +337,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -351,19 +351,18 @@ namespace Kostki.Class
             return result;
         }
 
-
+        /// <summary>
         /// Poniższe funkcje robią dokładnie to samo co te wyżej, jednak w wnynikiu zwracją 
         /// zmienną typu Checkertype, która informuje co to jest za zaznaczony fragment 
         /// i gdzie on się zacyzna. Wystarczy wyifować (:
-        /// Czyli pobieramy GetCollection i getCollectionInfo i mamy (:
-
-
+        /// Czyli pobieramy GetCollection i getCollectionInfo i mamy (: </summary>
+        /// <returns> List of checker type object</returns>
         public List<CheckerType> GetCollectionInfo()
         {
             List<CheckerType> resultList = new List<CheckerType>();
             List<CheckerType> tempList = new List<CheckerType>();
 
-            tempList = GetFourInRowsInfo();
+            tempList = this.GetFourInRowsInfo();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -373,7 +372,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourInColumnsInfo();
+            tempList = this.GetFourInColumnsInfo();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -383,7 +382,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourRectangleInfo();
+            tempList = this.GetFourRectangleInfo();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -393,7 +392,7 @@ namespace Kostki.Class
                 }
             }
 
-            tempList = GetFourCrossInfo();
+            tempList = this.GetFourCrossInfo();
 
             for (int i = 0; i < tempList.Count; i++)
             {
@@ -403,9 +402,9 @@ namespace Kostki.Class
                 }
             }
 
-            if (GetCornersInfo() != null)
+            if (this.GetCornersInfo() != null)
             {
-                resultList.Add(GetCornersInfo());
+                resultList.Add(this.GetCornersInfo());
             }
 
             return resultList;
@@ -424,7 +423,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, x, y].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, x, y].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, x, y].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -441,7 +440,7 @@ namespace Kostki.Class
         public List<CheckerType> GetFourCrossInfo()
         {
             List<CheckerType> result = new List<CheckerType>();
-            CheckerType leftCross = new CheckerType(0, 0, FourcardType.Cross) ;
+            CheckerType leftCross = new CheckerType(0, 0, FourcardType.Cross);
             CheckerType rightCross = new CheckerType(3, 0, FourcardType.Cross);
             int howMuchBlocked = 0;
 
@@ -453,7 +452,7 @@ namespace Kostki.Class
                     break;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, i, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, i, i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, i].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, i, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -474,7 +473,7 @@ namespace Kostki.Class
                     break;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, 3 - i, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, 3-i,i].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, 3-i,i].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, 3 - i, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -500,7 +499,7 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    inside = GetFourRectangleInfo(i, j);
+                    inside = this.GetFourRectangleInfo(i, j);
                     if (inside != null)
                     {
                         result.Add(inside);
@@ -525,7 +524,7 @@ namespace Kostki.Class
                         return null;
                     }
                     else if (this.gameBoard[(int)PlaceType.Grid, i, j].Blocked == true &&
-                        !this.gameBoard[(int)PlaceType.Grid, i, j].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, j].IsJokerBlocked)
+                        !this.gameBoard[(int)PlaceType.Grid, i, j].IsJoker)
                     {
                         howMuchBlocked++;
                     }
@@ -537,7 +536,7 @@ namespace Kostki.Class
                 return null;
             }
 
-            return new CheckerType(x, y, FourcardType.Rectangle); ;
+            return new CheckerType(x, y, FourcardType.Rectangle);
         }
 
         public List<CheckerType> GetFourInRowsInfo()
@@ -548,7 +547,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                insideList = GetFourInRowInfo(i);
+                insideList = this.GetFourInRowInfo(i);
                 if (insideList != null)
                 {
                     result.Add(insideList);
@@ -570,7 +569,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, i, id].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)//!this.gameBoard[(int)PlaceType.Grid, i, id].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, i, id].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -591,7 +590,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                insideList = GetFourInColumnInfo(i);
+                insideList = this.GetFourInColumnInfo(i);
                 if (insideList != null)
                 {
                     result.Add(insideList);
@@ -612,7 +611,7 @@ namespace Kostki.Class
                     return null;
                 }
                 else if (this.gameBoard[(int)PlaceType.Grid, id, i].Blocked == true &&
-                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)//this.gameBoard[(int)PlaceType.Grid, id, i].IsJokerBlocked)
+                    !this.gameBoard[(int)PlaceType.Grid, id, i].IsJoker)
                 {
                     howMuchBlocked++;
                 }
@@ -623,7 +622,7 @@ namespace Kostki.Class
                 return null;
             }
 
-            return new CheckerType(id, 0, FourcardType.Column); ;
+            return new CheckerType(id, 0, FourcardType.Column);
         }
     }
 }

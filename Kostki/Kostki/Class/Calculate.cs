@@ -22,20 +22,20 @@ namespace Kostki.Class
 
         public List<List<Id>> ListOfCards
         {
-            get { return listOfCards; }
-            set { listOfCards = value; }
+            get { return this.listOfCards; }
+            set { this.listOfCards = value; }
         }
 
         public Int64 GlobalResult
         {
-            get { return globalResult; }
-            set { globalResult = value; }
+            get { return this.globalResult; }
+            set { this.globalResult = value; }
         }
         /// pomyśleć czy konstruktor jest w ogóle potrzebny 
         public Calculate()
         {
-            system = new Boolean[5, 5];
-            globalResult = 0;
+            this.system = new Boolean[5, 5];
+            this.globalResult = 0;
         }
         /// <summary>
         /// Zwraca ilość punktów za rozkład na całej planszy
@@ -46,23 +46,23 @@ namespace Kostki.Class
             Int64 result = 0;
             Boolean isJoker = false;
 
-            for (int i = 0; i < listOfCards.Count; i++)
+            for (int i = 0; i < this.listOfCards.Count; i++)
             {
                 isJoker = false;
-                for (int j = 0; j < listOfCards[i].Count; j++)
+                for (int j = 0; j < this.listOfCards[i].Count; j++)
                 {
-                    if (listOfCards[i][j].IsJoker == true)
+                    if (this.listOfCards[i][j].IsJoker == true)
                     {
                         isJoker = true;
                     }
                 }
                 if (isJoker)
                 {
-                    result += GetEveryFourResult(listOfCards[i]);
+                    result += this.GetEveryFourResult(this.listOfCards[i]);
                 }
                 else
                 {
-                    result += GetFourResult(listOfCards[i]);
+                    result += this.GetFourResult(this.listOfCards[i]);
                 }
             }
 
@@ -84,11 +84,11 @@ namespace Kostki.Class
             }
             if (isJoker)
             {
-                result += GetEveryFourResult(list);
+                result += this.GetEveryFourResult(list);
             }
             else
             {
-                result += GetFourResult(list);
+                result += this.GetFourResult(list);
             }
             return result;
         }
@@ -120,7 +120,7 @@ namespace Kostki.Class
                     {
                         tempId = new Id((Figures)i, (CardColors)j);
                         newList.Add(tempId);
-                        tempResult = GetFourResult(newList);
+                        tempResult = this.GetFourResult(newList);
                         if (tempResult > result)
                         {
                             result = tempResult;
@@ -143,7 +143,7 @@ namespace Kostki.Class
                             {
                                 tempIdSecond = new Id((Figures)k, (CardColors)l);
                                 newList.Add(tempIdSecond);
-                                tempResult = GetFourResult(newList);
+                                tempResult = this.GetFourResult(newList);
                                 if (tempResult > result)
                                 {
                                     result = tempResult;
@@ -166,37 +166,37 @@ namespace Kostki.Class
         /// <returns>Ilość punktów za konfiguracji</returns>
         public Int64 GetFourResult(List<Id> list)
         {
-            ClearSystem();
+            this.ClearSystem();
             Int64 result = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                system[(int)list[i].Figure, (int)list[i].Color] = true;
+                this.system[(int)list[i].Figure, (int)list[i].Color] = true;
             }
 
             for (int i = 0; i < 4; i++)
             {
-                result += GetRowOrColumnCount(i, true);
+                result += this.GetRowOrColumnCount(i, true);
             }
 
-            //same figure, same color
+            // same figure, same color
             if (result == 1)
             {
                 return 400;
             }
 
-            //same figure, each color
+            // same figure, each color
             for (int i = 0; i < 4; i++)
             {
-                if (GetRowOrColumnCount(i, false) == 4)
+                if (this.GetRowOrColumnCount(i, false) == 4)
                 {
                     return 300;
                 }
             }
 
-            //same color, each figure
+            // same color, each figure
             for (int i = 0; i < 4; i++)
             {
-                if (GetRowOrColumnCount(i, true) == 4)
+                if (this.GetRowOrColumnCount(i, true) == 4)
                 {
                     return 200;
                 }
@@ -206,15 +206,15 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                if (GetRowOrColumnCount(i, true) != 1) notCross = true;
+                if (this.GetRowOrColumnCount(i, true) != 1) notCross = true;
             }
 
             for (int i = 0; i < 4; i++)
             {
-                if (GetRowOrColumnCount(i, false) != 1) notCross = true;
+                if (this.GetRowOrColumnCount(i, false) != 1) notCross = true;
             }
 
-            //each color, each figure
+            // each color, each figure
             if (!notCross)
             {
                 return 100;
@@ -225,7 +225,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                colors[i] = (GetRowOrColumnCount(i, true) > 0) ? true : false;
+                colors[i] = (this.GetRowOrColumnCount(i, true) > 0) ? true : false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -233,7 +233,7 @@ namespace Kostki.Class
                 howMuchRowsNotClear += (colors[i]) ? 1 : 0;
             }
 
-            //same color
+            // same color
             if (howMuchRowsNotClear == 1)
             {
                 return 60;
@@ -244,7 +244,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                figures[i] = (GetRowOrColumnCount(i, false) > 0) ? true : false;
+                figures[i] = (this.GetRowOrColumnCount(i, false) > 0) ? true : false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -252,7 +252,7 @@ namespace Kostki.Class
                 howMuchColumnsNotClear += (figures[i]) ? 1 : 0;
             }
 
-            //same figure
+            // same figure
             if (howMuchColumnsNotClear == 1)
             {
                 return 50;
@@ -263,7 +263,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                figures[i] = (GetRowOrColumnCount(i, false) > 0) ? true : false;
+                figures[i] = (this.GetRowOrColumnCount(i, false) > 0) ? true : false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -271,7 +271,7 @@ namespace Kostki.Class
                 howMuchFigures += (figures[i]) ? 1 : 0;
             }
 
-            //each figure
+            // each figure
             if (howMuchFigures == 4)
             {
                 return 40;
@@ -282,7 +282,7 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                colors[i] = (GetRowOrColumnCount(i, true) > 0) ? true : false;
+                colors[i] = (this.GetRowOrColumnCount(i, true) > 0) ? true : false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -290,7 +290,7 @@ namespace Kostki.Class
                 howMuchColors += (colors[i]) ? 1 : 0;
             }
 
-            //each color
+            // each color
             if (howMuchColors == 4)
             {
                 return 30;
@@ -305,8 +305,8 @@ namespace Kostki.Class
 
             for (int i = 0; i < 4; i++)
             {
-                result += (system[i, id] && rowOrColumn) ? 1 : 0;
-                result += (system[id, i] && !rowOrColumn) ? 1 : 0;
+                result += (this.system[i, id] && rowOrColumn) ? 1 : 0;
+                result += (this.system[id, i] && !rowOrColumn) ? 1 : 0;
             }
 
             return result;
@@ -318,7 +318,7 @@ namespace Kostki.Class
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    system[i, j] = false;
+                    this.system[i, j] = false;
                 }
             }
         }
