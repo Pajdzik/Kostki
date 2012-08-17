@@ -419,7 +419,11 @@ namespace Kostki
 
             this.calculate.GetActResult();
 
-            // this.AddJoker();
+            if (this.calculate.LastJokerPromotion > 1000)
+            {
+                this.calculate.LastJokerPromotion -= 1000;
+                this.AddJoker();
+            }
 
             for (int i = 0; i < collection.Count; i++)
             {

@@ -19,6 +19,13 @@ namespace Kostki.Class
         private List<List<Id>> listOfCards;
         private Int64 globalResult;
         private Boolean[,] system;
+        private Int64 lastJokerPromotion;
+
+        public Int64 LastJokerPromotion
+        {
+            get { return this.lastJokerPromotion; }
+            set { this.lastJokerPromotion = value; }
+        }
 
         public List<List<Id>> ListOfCards
         {
@@ -65,6 +72,8 @@ namespace Kostki.Class
                     result += this.GetFourResult(this.listOfCards[i]);
                 }
             }
+            
+            this.lastJokerPromotion += result;
 
             this.globalResult += result;
 
