@@ -53,12 +53,29 @@
                 <!--Double line list with image placeholder and text wrapping-->
                 <ListBox Margin="0,0,-12,0">
                     <ListBox.Items>
-                        <TextBlock Text="Text" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                        <TextBlock Text="Text" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <TextBlock Text="Aim" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                        <TextBlock Text="Aim of the game is to place four randomized tiles on four by four grid. Almost every combination is rewarded, but only several vanish." 
+                                   TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+
+                        <TextBlock Text="Points" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                        
+                        <TextBlock Text="Combinations vanishing" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <Image Source="/img/clubs/blue.png" Height="100" /> <Image Source="/img/clubs/blue.png" Height="100" />
+
+
+
+                        <TextBlock Text="Combinations not vanishing" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                     </ListBox.Items> 
                 </ListBox>
             </controls:PanoramaItem>
 
+            <controls:PanoramaItem Header="Options">
+                <Grid>
+                    <Button Content="Save" Height="72" HorizontalAlignment="Left" Margin="149,406,0,0" Name="saveButton" VerticalAlignment="Top" Width="160" />
+                    <TextBox Height="72" HorizontalAlignment="Left" Margin="19,16,0,0" Name="nameBox" Text="Player" VerticalAlignment="Top" Width="385" />
+                </Grid>
+      
+            </controls:PanoramaItem>
 
             <controls:PanoramaItem Header="Credits">
                 <!--Double line list with image placeholder and text wrapping-->
@@ -83,8 +100,7 @@
                 </ListBox>
             </controls:PanoramaItem>
 
-
-
         </controls:Panorama>
+        
     </Grid>
 </phone:PhoneApplicationPage>
