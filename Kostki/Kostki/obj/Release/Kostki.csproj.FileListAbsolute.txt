@@ -30,3 +30,6 @@ I:\Programowanie\Kostki\Kostki\Kostki\obj\Release\Kostki.g.resources
 I:\Programowanie\Kostki\Kostki\Kostki\obj\Release\Kostki.dll
 I:\Programowanie\Kostki\Kostki\Kostki\obj\Release\Kostki.pdb
 I:\Programowanie\Kostki\Kostki\Kostki\obj\Release\XapCacheFile.xml
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Release\Microsoft.Phone.Controls.Toolkit.dll
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Release\Microsoft.Phone.Controls.Toolkit.pdb
+I:\Programowanie\Kostki\Kostki\Kostki\Bin\Release\Microsoft.Phone.Controls.Toolkit.xml
