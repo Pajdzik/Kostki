@@ -46,9 +46,12 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
             </controls:PanoramaItem>
- 
-            <!--Panorama item two-->
-            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+
+            <controls:PanoramaItem Header="Statistics">
+                <TextBlock Text="Best scores" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+  
+            </controls:PanoramaItem> 
+
             <controls:PanoramaItem Header="Rules">
                 <!--Double line list with image placeholder and text wrapping-->
                 <ListBox Margin="0,0,-12,0">
@@ -71,12 +74,10 @@
 
             <controls:PanoramaItem Header="Options">
                 <Grid>
-                    <TextBox Height="72" HorizontalAlignment="Left" Margin="8,13,0,0" Name="nameBox" Text="Player" VerticalAlignment="Top" Width="385" />
-                    <toolkit:ToggleSwitch Header="Guest mode" Height="111" HorizontalAlignment="Left" Margin="9,99,0,0" Name="guestModeToggleSwitch" VerticalAlignment="Top" Width="391" />
-                    <toolkit:ToggleSwitch Header="Sounds" Height="111" HorizontalAlignment="Left" Margin="9,179,0,0" Name="soundsToggleSwitch" VerticalAlignment="Top" Width="391" />
-
-                    <Button Content="Save" Height="72" HorizontalAlignment="Left" Margin="149,406,0,0" Name="saveButton" VerticalAlignment="Top" Width="160" />
-                    
+                    <TextBox Height="72" HorizontalAlignment="Left" Margin="8,13,0,0" Name="nameBox" Text="Player" VerticalAlignment="Top" Width="385" KeyDown="NameBoxKeyDown" MouseEnter="nameBoxMouseEnter" />
+                    <toolkit:ToggleSwitch Header="Sounds" Height="111" HorizontalAlignment="Left" Margin="17,213,0,0"  Name="soundsToggleSwitch" VerticalAlignment="Top" Width="391" Checked="SoundsChecked" Unchecked="SoundsUnchecked" />
+                    <toolkit:ToggleSwitch Header="Guest mode" Height="111" HorizontalAlignment="Left" Margin="17,284,0,0" Name="guestModeToggleSwitch" VerticalAlignment="Top" Width="391" Checked="GuestModeChecked" Unchecked="GuestModeUnchecked" />
+                    <toolkit:ListPicker Height="100" HorizontalAlignment="Left" Margin="20,99,0,0" Name="skinList" VerticalAlignment="Top" Width="361" Header="Skin" />
                 </Grid>
       
             </controls:PanoramaItem>

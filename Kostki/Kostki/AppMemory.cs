@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Text;
@@ -24,9 +23,9 @@ namespace Kostki
             set { this.SaveValue("highScore", value); }
         }
 
-        public Id[,,] LoadGameState()
+        public Id[, ,] LoadGameState()
         {
-            Id[,,] gameBoard = new Id[4, 4, 4];
+            Id[, ,] gameBoard = new Id[4, 4, 4];
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -39,7 +38,7 @@ namespace Kostki
                         using (IsolatedStorageFileStream fileStream = isf.OpenFile(filePath, System.IO.FileMode.Open))
                         {
                             StreamReader reader = new StreamReader(fileStream);
-                            
+
                             // wczytanie grida
                             for (int i = 0; i < 4; i++)
                             {
@@ -61,13 +60,13 @@ namespace Kostki
                             // joker
                             gameBoard[(int)PlaceType.Joker, 0, 0] = this.Read(reader.ReadLine());
                             gameBoard[(int)PlaceType.Joker, 1, 0] = this.Read(reader.ReadLine());
-                            
+
                             reader.Close();
                         }
                     }
                     catch (Exception)
                     {
-                        
+
                         throw;
                     }
                 }
@@ -95,7 +94,7 @@ namespace Kostki
             return null;
         }
 
-        public void SaveGameState(Id[,,] gameBoard)
+        public void SaveGameState(Id[, ,] gameBoard)
         {
             StringBuilder result = new StringBuilder();
 
@@ -120,7 +119,7 @@ namespace Kostki
                         }
                     }
 
-                   
+
                     // zapisanie randa
                     for (int i = 0; i < 4; i++)
                     {
@@ -155,7 +154,7 @@ namespace Kostki
                 return defaultValue;
         }
 
-        private void SaveValue(string key, object value)
+        public void SaveValue(string key, object value)
         {
             IsolatedStorageSettings.ApplicationSettings[key] = value;
             IsolatedStorageSettings.ApplicationSettings.Save();
