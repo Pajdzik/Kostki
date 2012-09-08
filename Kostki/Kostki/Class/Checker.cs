@@ -6,7 +6,6 @@ namespace Kostki.Class
     {
 
         private Id[,,] gameBoard;
-
         public Id[,,] GameBoard
         {
             get { return this.gameBoard; }

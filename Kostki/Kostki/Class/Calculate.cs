@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Collections.Generic;
-using Kostki.Class;
-using System.Diagnostics;
 
 namespace Kostki.Class
 {
     public class Calculate
     {
         private List<List<Id>> listOfCards;
-        private Int64 globalResult;
+        private Int64 globalResult;             // wynik
         private Boolean[,] system;
         private Int64 lastJokerPromotion;
+
+        public Calculate()
+        {
+            // TODO: pomyśleć czy konstruktor jest w ogóle potrzebny 
+            this.system = new Boolean[5, 5];
+            this.globalResult = 0;
+        }
 
         public Int64 LastJokerPromotion
         {
@@ -38,12 +34,7 @@ namespace Kostki.Class
             get { return this.globalResult; }
             set { this.globalResult = value; }
         }
-        /// pomyśleć czy konstruktor jest w ogóle potrzebny 
-        public Calculate()
-        {
-            this.system = new Boolean[5, 5];
-            this.globalResult = 0;
-        }
+
         /// <summary>
         /// Zwraca ilość punktów za rozkład na całej planszy
         /// </summary>
@@ -99,6 +90,7 @@ namespace Kostki.Class
             {
                 result += this.GetFourResult(list);
             }
+
             return result;
         }
 

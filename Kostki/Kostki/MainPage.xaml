@@ -74,7 +74,7 @@
 
             <controls:PanoramaItem Header="Options">
                 <Grid>
-                    <TextBox Height="72" HorizontalAlignment="Left" Margin="8,13,0,0" Name="nameBox" Text="Player" VerticalAlignment="Top" Width="385" KeyDown="NameBoxKeyDown" MouseEnter="nameBoxMouseEnter" />
+                    <TextBox Height="72" HorizontalAlignment="Left" Margin="8,13,0,0" Name="nameBox" Text="Player" VerticalAlignment="Top" Width="385" KeyDown="NameBoxKeyDown" MouseEnter="NameBoxMouseEnter" />
                     <toolkit:ToggleSwitch Header="Sounds" Height="111" HorizontalAlignment="Left" Margin="17,213,0,0"  Name="soundsToggleSwitch" VerticalAlignment="Top" Width="391" Checked="SoundsChecked" Unchecked="SoundsUnchecked" />
                     <toolkit:ToggleSwitch Header="Guest mode" Height="111" HorizontalAlignment="Left" Margin="17,284,0,0" Name="guestModeToggleSwitch" VerticalAlignment="Top" Width="391" Checked="GuestModeChecked" Unchecked="GuestModeUnchecked" />
                     <toolkit:ListPicker Height="100" HorizontalAlignment="Left" Margin="20,99,0,0" Name="skinList" VerticalAlignment="Top" Width="361" Header="Skin" />

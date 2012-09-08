@@ -23,9 +23,11 @@ namespace Kostki
             set { this.SaveValue("highScore", value); }
         }
 
-        public Id[, ,] LoadGameState()
+        public Id[, ,] LoadGameState(ref Int64 score)
         {
             Id[, ,] gameBoard = new Id[4, 4, 4];
+
+            score = GetValueOrDefault<Int64>("score", 0);      // wczytanie wyniku
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -66,7 +68,7 @@ namespace Kostki
                     }
                     catch (Exception)
                     {
-
+                        
                         throw;
                     }
                 }
@@ -94,9 +96,11 @@ namespace Kostki
             return null;
         }
 
-        public void SaveGameState(Id[, ,] gameBoard)
+        public void SaveGameState(Id[, ,] gameBoard, Int64 score)
         {
             StringBuilder result = new StringBuilder();
+
+            SaveValue("score", score);          // zapisanie wyniku
 
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -104,7 +108,7 @@ namespace Kostki
                     isf.CreateDirectory(FolderName);
 
                 string filePath = System.IO.Path.Combine(FolderName, FileName);
-                isf.DeleteFile(filePath);       // usuinięcie/wyczyszczenie pliku przed zapisem
+                isf.DeleteFile(filePath);       // usunięcie/wyczyszczenie pliku przed zapisem
 
                 using (IsolatedStorageFileStream rawStream = isf.CreateFile(filePath))
                 {
@@ -127,8 +131,6 @@ namespace Kostki
                     }
 
                     // zapisanie jokerów
-                    // sw.WriteLine(gameBoard[(int)PlaceType.Joker, 0, 0]);
-                    // sw.WriteLine(gameBoard[(int)PlaceType.Joker, 1, 0]);
                     result.AppendLine(this.Write(gameBoard[(int)PlaceType.Joker, 0, 0]));
                     result.AppendLine(this.Write(gameBoard[(int)PlaceType.Joker, 0, 0]));
 
@@ -149,9 +151,9 @@ namespace Kostki
         public T GetValueOrDefault<T>(string key, T defaultValue)
         {
             if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
-                return (T)IsolatedStorageSettings.ApplicationSettings[key];
-            else
-                return defaultValue;
+                return (T) IsolatedStorageSettings.ApplicationSettings[key];
+
+            return defaultValue;
         }
 
         public void SaveValue(string key, object value)

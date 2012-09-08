@@ -20,7 +20,7 @@ namespace Kostki
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
 
             loadSettings();
-            initializeSkins();
+            InitializeSkins();
         }
 
         // Load data for the ViewModel Items
@@ -50,7 +50,7 @@ namespace Kostki
         /// <summary>
         /// Funkcja dodaje do listy w opcjach skórki, które znajdzie w folderze
         /// </summary>
-        private void initializeSkins()
+        private void InitializeSkins()
         {
             List<string> skins = new List<string>();
 
@@ -108,7 +108,7 @@ namespace Kostki
         /// <summary>
         /// Metoda uruchamiająca się w momencia aktywowania kontrolki nameBox. Zaznacza tekst znajdujący się w text boksie.
         /// </summary>
-        private void nameBoxMouseEnter(object sender, MouseEventArgs e)
+        private void NameBoxMouseEnter(object sender, MouseEventArgs e)
         {
             if (String.IsNullOrEmpty(nameBox.Text) == false)
                 nameBox.SelectAll();
