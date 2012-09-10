@@ -783,6 +783,10 @@ namespace Kostki
             ThreadPool.QueueUserWorkItem((o) =>{_textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = Convert.ToString(_calculate.GlobalResult)));});
         }
 
+        /// <summary>
+        /// Funkcja wyświetlająca w text boksie liczbę punktów jaką zdobył gracz w danym podejściu.
+        /// </summary>
+        /// <param name="reward">Liczba zdobytych punktów nagrody.</param>
         private void PrintReward(Int64 reward)
         {
             if (reward > 0)
