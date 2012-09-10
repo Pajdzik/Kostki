@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Kostki.Class;
@@ -421,7 +422,7 @@ namespace Kostki
             // Obliczenie punktów
             Int64 reward = this._calculate.GetActResult();
             
-            if (this._calculate.LastJokerPromotion > 1000)
+            if (this._calculate.LastJokerPromotion >= 1000)
             {
                 this._calculate.LastJokerPromotion -= 1000;
                 this.AddJoker();
@@ -775,22 +776,23 @@ namespace Kostki
         {
             PrintReward(reward);
 
-            _calculate.GlobalResult += reward;
+            _calculate.ActualizeScore(reward);
 
             CalculateStyleForScore(_calculate.GlobalResult);
-            Dispatcher.BeginInvoke((Action)(() => _textblock.Text = _calculate.GlobalResult.ToString()));
+            _textblock.Text = Convert.ToString(_calculate.GlobalResult);
         }
 
         private void PrintReward(Int64 reward)
         {
             if (reward > 0)
             {
-                // nie pytaj bo nie wiem
                 ThreadPool.QueueUserWorkItem((o) =>
                 {
-                    Dispatcher.BeginInvoke((Action)(() => _textblock.Text = "+" + reward));
+                    _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Foreground = new SolidColorBrush() {Color = Colors.Green} ));
+                    _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = "+" + reward));
                     Thread.Sleep(300);
-                    Dispatcher.BeginInvoke((Action)(() => _textblock.Text = _calculate.GlobalResult.ToString()));
+                    _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Foreground = new SolidColorBrush() { Color = Colors.White }));
+                    _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = Convert.ToString(_calculate.GlobalResult)));
                 });
             }
 
