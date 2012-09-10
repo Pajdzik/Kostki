@@ -777,9 +777,10 @@ namespace Kostki
             PrintReward(reward);
 
             _calculate.ActualizeScore(reward);
-
             CalculateStyleForScore(_calculate.GlobalResult);
-            _textblock.Text = Convert.ToString(_calculate.GlobalResult);
+
+            // Aktualizowanie wyników. Dzięki temu rozwiązaniu powiększony wynik nie pojawia się przed wyświetlaniem nagrody.
+            ThreadPool.QueueUserWorkItem((o) =>{_textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = Convert.ToString(_calculate.GlobalResult)));});
         }
 
         private void PrintReward(Int64 reward)
@@ -790,7 +791,7 @@ namespace Kostki
                 {
                     _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Foreground = new SolidColorBrush() {Color = Colors.Green} ));
                     _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = "+" + reward));
-                    Thread.Sleep(300);
+                    Thread.Sleep(600);
                     _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Foreground = new SolidColorBrush() { Color = Colors.White }));
                     _textblock.Dispatcher.BeginInvoke((Action)(() => _textblock.Text = Convert.ToString(_calculate.GlobalResult)));
                 });
