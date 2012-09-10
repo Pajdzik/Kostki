@@ -99,28 +99,35 @@ namespace Kostki.Class
 
         public Image GetJoker()
         {
-            Image image = new Image();
-            image.Source = this.joker;
-            image.Height = this.CardSize;
-            image.Width = this.CardSize;
+            Image image = new Image
+                              {
+                                  Source = this.joker, 
+                                  Height = this.CardSize, 
+                                  Width = this.CardSize
+                              };
+
             return image;
         }
 
         public Image GetImageByColorAndId(Figures figure, CardColors cardColor)
         {
-            Image image = new Image();
-            image.Source = this.cards[(int)figure, (int)cardColor];
-            image.Height = this.CardSize;
-            image.Width = this.CardSize;
+            Image image = new Image
+                              {
+                                  Source = this.cards[(int) figure, (int) cardColor],
+                                  Height = this.CardSize,
+                                  Width = this.CardSize
+                              };
             return image;
         }
 
         public Image GetImageByColorAndId(int figure, int cardColor)
         {
-            Image image = new Image();
-            image.Source = this.cards[figure, cardColor];
-            image.Height = this.CardSize;
-            image.Width = this.CardSize;
+            Image image = new Image
+                              {
+                                  Source = this.cards[figure, cardColor], 
+                                  Height = this.CardSize, 
+                                  Width = this.CardSize
+                              };
             return image;
         }
 
@@ -143,6 +150,10 @@ namespace Kostki.Class
             return point;
         }
 
+        /// <summary>
+        /// Funkcja zwracająca prostokąt o kolorze szarym (Colors.Gray)
+        /// </summary>
+        /// <returns>Szary prostokąt</returns>
         public Rectangle GetRectangle()
         {
             Rectangle rect = new Rectangle();
@@ -153,13 +164,33 @@ namespace Kostki.Class
             return rect;
         }
 
+        /// <summary>
+        /// Funkcja zwracająca prostokąt o podanym kolorze.
+        /// </summary>
+        /// <param name="color">Kolor prostokąta</param>
+        /// <returns>Prostokąt o podanym kolorze</returns>
+        public Rectangle GetRectangle(Color color)
+        {
+            Rectangle rectangle = new Rectangle
+                                      {
+                                          Fill = new SolidColorBrush(color), 
+                                          Height = CardSize, 
+                                          Width = CardSize
+                                      };
+
+            return rectangle;
+        }
+
         public Rectangle GetMarkRectangle()
         {
-            Rectangle rect = new Rectangle();
-            rect.Fill = new SolidColorBrush(Colors.White);
-            rect.Opacity = 0.35;
-            rect.Height = this.GetFieldSize();
-            rect.Width = this.GetFieldSize();
+            Rectangle rect = new Rectangle
+                                 {
+                                     Fill = new SolidColorBrush(Colors.White),
+                                     Opacity = 0.35,
+                                     Height = this.GetFieldSize(),
+                                     Width = this.GetFieldSize()
+                                 };
+
             return rect;
         }
 
@@ -167,15 +198,15 @@ namespace Kostki.Class
         {
             if (place == PlaceType.Grid)
             {
-                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopGrid().Y);
+                return GetRowAndColumnFromViewportPoint(point, this.GetTopGrid().Y);
             }
             else if (place == PlaceType.Rand)
             {
-                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopRand().Y);
+                return GetRowAndColumnFromViewportPoint(point, this.GetTopRand().Y);
             }
             else
             {
-                return this.GetRowAndColumnFromViewportPoint(point, this.GetTopJoker().Y);
+                return GetRowAndColumnFromViewportPoint(point, this.GetTopJoker().Y);
             }
         }
 
@@ -183,6 +214,7 @@ namespace Kostki.Class
         {
             PlaceType place = this.RecognizePlace(point);
             Point p = new Point();
+
             if (place == PlaceType.Grid)
             {
                 p = this.GetRowAndColumnFromViewportPoint(point, this.GetTopGrid().Y);
@@ -241,23 +273,27 @@ namespace Kostki.Class
 
         public PlaceType RecognizePlace(Point current)
         {
-            double top, bottom;
-            top = this.GetTopGrid().Y;
-            bottom = top + 396;
+            double top = this.GetTopGrid().Y;
+            double bottom = top + 396;
+
             if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
                    this.LeftAndRight + 396, current.X))
             {
                 return PlaceType.Grid;
             }
+
             top = this.GetTopRand().Y;
             bottom = top + 96;
+
             if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
                 this.LeftAndRight + 396, current.X))
             {
                 return PlaceType.Rand;
             }
+
             top = this.GetTopJoker().Y;
             bottom = top + 96;
+
             if (this.InsideRange(top, bottom, current.Y) && this.InsideRange(this.LeftAndRight,
                 this.LeftAndRight + 188, current.X))
             {
@@ -270,9 +306,11 @@ namespace Kostki.Class
 
         public Point GetRowAndColumnFromViewportPoint(Point current, double top)
         {
-            Point point = new Point();
-            point.Y = this.CalculateGridRowAndColumn((int)(current.Y - top));
-            point.X = this.CalculateGridRowAndColumn((int)(current.X - this.LeftAndRight));
+            Point point = new Point
+                              {
+                                  Y = this.CalculateGridRowAndColumn((int) (current.Y - top)),
+                                  X = this.CalculateGridRowAndColumn((int) (current.X - this.LeftAndRight))
+                              };
             return point;
         }
 
@@ -290,7 +328,7 @@ namespace Kostki.Class
 
         public int CalculateGridRowAndColumn(int y)
         {
-            int result = (int)(y / 100);
+            int result = (int) (y / 100);
             return result + 1;
         }
     }

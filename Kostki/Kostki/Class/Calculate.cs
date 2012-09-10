@@ -42,33 +42,34 @@ namespace Kostki.Class
         public Int64 GetActResult()
         {
             Int64 result = 0;
-            Boolean isJoker = false;
 
-            for (int i = 0; i < this.listOfCards.Count; i++)
+            foreach (List<Id> t in this.listOfCards)
             {
-                isJoker = false;
-                for (int j = 0; j < this.listOfCards[i].Count; j++)
+                Boolean isJoker = false;
+
+                foreach (Id t1 in t)
                 {
-                    if (this.listOfCards[i][j].IsJoker == true)
-                    {
+                    if (t1.IsJoker == true)
                         isJoker = true;
-                    }
                 }
+
                 if (isJoker)
                 {
-                    result += this.GetEveryFourResult(this.listOfCards[i]);
+                    result += this.GetEveryFourResult(t);
                 }
                 else
                 {
-                    result += this.GetFourResult(this.listOfCards[i]);
+                    result += this.GetFourResult(t);
                 }
             }
             
-            this.lastJokerPromotion += result;
-
-            this.globalResult += result;
-
             return result;
+        }
+
+        public void ActualizeScore(Int64 reward)
+        {
+            this.lastJokerPromotion += reward;
+            this.globalResult += reward;
         }
 
         public Int64 CalculateFourResult(List<Id> list)

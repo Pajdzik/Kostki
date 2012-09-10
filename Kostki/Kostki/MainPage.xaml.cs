@@ -98,10 +98,7 @@ namespace Kostki
         {
             if (e.Key.Equals(Key.Enter))
             {
-                AppMemory am = new AppMemory();
-                am.SaveValue("playerName", nameBox.Text);
-
-                MessageBox.Show("Player's name successfully changed to \"" + nameBox.Text + "\"");
+                
             }
         }
 
@@ -112,6 +109,19 @@ namespace Kostki
         {
             if (String.IsNullOrEmpty(nameBox.Text) == false)
                 nameBox.SelectAll();
+        }
+
+        private void NameBoxMouseLeave(object sender, MouseEventArgs e)
+        {
+            SaveName(nameBox.Text);
+        }
+
+        private void SaveName(String name)
+        {
+            AppMemory am = new AppMemory();
+            am.SaveValue("playerName", name);
+
+            MessageBox.Show("Player's name successfully changed to \"" + nameBox.Text + "\"");
         }
     }
 }
