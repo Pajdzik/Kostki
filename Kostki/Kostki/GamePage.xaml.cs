@@ -32,6 +32,7 @@ namespace Kostki
         private TextBlock _textblock;
         private Image[] _jokers;
         private Boolean _isItJoker;
+        private Rectangle[,] _rectangles; // tablica przechowująca referencję na prostokąty pod kartami
 
         public GamePage()
         {
@@ -40,6 +41,7 @@ namespace Kostki
             this._controlPanel = new ControlPanel();
             this._game = new Game(this._controlPanel);
             this._scoreCoords = new Point(this._controlPanel.GetTopJoker().X + 220, this._controlPanel.GetTopJoker().Y + 15);
+            this._rectangles = new Rectangle[4, 4];
 
             InitializeComponent();
 
@@ -131,6 +133,8 @@ namespace Kostki
                 for (int j = 0; j < 4; j++)
                 {
                     Rectangle rect = _controlPanel.GetRectangle();
+                    _rectangles[j, i] = rect;
+
                     canvas.Children.Add(rect);
                     SettingCanvasOrigin(rect, _currentPosition);
                     _currentPosition.X += 100;
@@ -395,6 +399,7 @@ namespace Kostki
             }
         }
 
+
         /// <summary>
         /// Metoda wywoływana po wciśnięciu przez użytkownika
         /// przycisku akceptacji, który mówi o tym, że:
@@ -409,13 +414,12 @@ namespace Kostki
         /// <param name="e">Sender object</param>
         private void NextAndAccept(object sender, EventArgs e)
         {
-            Boolean pop = false;
-            pop = this._game.IsRandBoardClear();
+            Boolean pop = this._game.IsRandBoardClear();
 
             this._checker.GameBoard = this._game.GetGameBoard();
             List<List<Id>> collection = this._checker.GetCollection();
             List<CheckerType> infoCollection = this._checker.GetCollectionInfo();
-            List<int> Index = new List<int>();
+            List<int> index = new List<int>();
 
             this._calculate.ListOfCards = collection;
 
@@ -430,16 +434,23 @@ namespace Kostki
 
             UpdateScore(reward);
 
+            foreach (List<Id> list in collection)
+            {
+                foreach (Id id in list)
+                {
+                    Debug.WriteLine(id);
+                }
+            }
 
             for (int i = 0; i < collection.Count; i++)
             {
                 if (this._calculate.CalculateFourResult(collection[i]) >= 100)
                 {
-                    Index.Add(i);
+                    index.Add(i);
                 }
             }
 
-            foreach (int t in Index)
+            foreach (int t in index)
             {
                 this.ClearFour(infoCollection[t].x, infoCollection[t].y, infoCollection[t].fourcardtype);
             }
@@ -452,6 +463,7 @@ namespace Kostki
                     if (this._game.IsFieldFree(i + 1, j + 1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
                     {
                         this._game.BlockField(i, j);
+                        this.ChangeRectangle(i, j, true);       
                         Image imageTemp = this._game.GetImageOnCoords(i, j);
                         imageTemp.ManipulationStarted -= ManipulationStarted;
                         imageTemp.ManipulationDelta -= ManipulationDelta;
@@ -700,6 +712,7 @@ namespace Kostki
                         try
                         {
                             Image image = this._game.DeleteImageOnCoords(3 - i, i);
+                            ChangeRectangle(3 - i, i, false);
                             canvas.Children.Remove(image);
                         }
                         catch (NullReferenceException) { }
@@ -712,6 +725,7 @@ namespace Kostki
                         try
                         {
                             Image image = this._game.DeleteImageOnCoords(i, i);
+                            ChangeRectangle(i, i, false);
                             canvas.Children.Remove(image);
                         }
                         catch (NullReferenceException) { }
@@ -725,6 +739,7 @@ namespace Kostki
                     try
                     {
                         Image image = this._game.DeleteImageOnCoords(x, i);
+                        ChangeRectangle(x, i, false);
                         canvas.Children.Remove(image);
                     }
                     catch (NullReferenceException) { }
@@ -737,6 +752,7 @@ namespace Kostki
                     try
                     {
                         Image image = this._game.DeleteImageOnCoords(i, y);
+                        ChangeRectangle(i, y, false);
                         canvas.Children.Remove(image);
                     }
                     catch (NullReferenceException) { }
@@ -751,6 +767,7 @@ namespace Kostki
                         try
                         {
                             Image image = this._game.DeleteImageOnCoords(i, j);
+                            ChangeRectangle(i, j, false);
                             canvas.Children.Remove(image);
                         }
                         catch (NullReferenceException) { }
@@ -827,6 +844,22 @@ namespace Kostki
             return (uint) 50 - (2 * length);
         }
 
-        
+        /// <summary>
+        /// Funkcja zmienia kolor prostokąta na pozycji (i, j) w zależności od parametry blocked
+        /// </summary>
+        /// <param name="i">Współrzędna x</param>
+        /// <param name="j">Współrzędna y</param>
+        /// <param name="blocked">Czy dany kafelek jest zablokowany</param>
+        private void ChangeRectangle(int i, int j, Boolean blocked)
+        {
+            if (blocked == true)
+            {
+                _rectangles[i, j].Fill = new SolidColorBrush(Colors.Black);
+            } 
+            else
+            {
+                _rectangles[i, j].Fill = new SolidColorBrush(Colors.Gray);
+            }
+        }
     }
 }

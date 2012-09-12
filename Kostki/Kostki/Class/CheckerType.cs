@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace Kostki.Class
 {
     public class CheckerType
@@ -13,6 +15,11 @@ namespace Kostki.Class
             this.x = x;
             this.y = y;
             this.fourcardtype = fourcardtype;
+        }
+
+        public new string ToString()
+        {
+            return Convert.ToString(x) + " " + Convert.ToString(y) + " " + fourcardtype.ToString();
         }
     }
 }

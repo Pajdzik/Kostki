@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using Kostki.Exceptions;
-using Kostki.Class;
-using System.Diagnostics;
 
 namespace Kostki.Class
 {
@@ -27,7 +17,7 @@ namespace Kostki.Class
 
         public Id GetBoardField(PlaceType place, int x, int y)
         {
-            return this.gameBoard[(int)place, x, y];
+            return this.gameBoard[(int) place, x, y];
         }
 
         public Id[,,] GetGameBoard() 
@@ -190,7 +180,7 @@ namespace Kostki.Class
         {
             if (x < 4 && y < 4)
             {
-                this.gameBoard[(int)PlaceType.Grid, x, y].Blocked = true;
+                this.gameBoard[(int) PlaceType.Grid, x, y].Blocked = true;
             }
         }
 
