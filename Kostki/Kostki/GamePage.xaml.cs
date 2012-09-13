@@ -497,6 +497,7 @@ namespace Kostki
                     {
                         break;
                     }
+
                     ManipulationSettings(cardImage[i].image);
                     this.canvas.Children.Add(cardImage[i].image);
                     point = _controlPanel.GetRandCoordsForMarkRectangle(i + 1, 1);
@@ -507,9 +508,20 @@ namespace Kostki
  
             if (this._game.HowMuchFreeSpaceOnGameBoard() == 0 && _game.NoJokerOnBoard())
             {
-                NavigationService.GoBack();
-                this.ClearMemory();
+                EndGame(_calculate.GlobalResult);
             }
+        }
+
+        /// <summary>
+        /// Metoda wywoływana przy kończeniu gry (brak możliwości dalszej gry)
+        /// </summary>
+        private void EndGame(Int64 score)
+        {
+            Statistics stat = new Statistics();
+            stat.SaveScore(score);
+
+            NavigationService.GoBack();
+            this.ClearMemory();
         }
 
         /// <summary>

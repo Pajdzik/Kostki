@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,7 +20,9 @@ namespace Kostki
             DataContext = App.MainMenuItemModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
 
-            loadSettings();
+            LoadSettings();
+            LoadStatistics();
+
             InitializeSkins();
         }
 
@@ -30,6 +33,8 @@ namespace Kostki
             {
                 App.MainMenuItemModel.LoadData();
             }
+
+            LoadStatistics();
         }
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -40,7 +45,10 @@ namespace Kostki
 
         }
 
-        private void loadSettings()
+        /// <summary>
+        /// Metoda odczytuje ustawienia z pamięci
+        /// </summary>
+        private void LoadSettings()
         {
             AppMemory am = new AppMemory();
 
@@ -96,6 +104,8 @@ namespace Kostki
         /// </summary>
         private void NameBoxKeyDown(object sender, KeyEventArgs e)
         {
+            // TODO:
+
             if (e.Key.Equals(Key.Enter))
             {
                 
@@ -118,10 +128,30 @@ namespace Kostki
 
         private void SaveName(String name)
         {
-            AppMemory am = new AppMemory();
-            am.SaveValue("playerName", name);
+            if (name.Length <= 30)
+            {
+                AppMemory am = new AppMemory();
+                am.SaveValue("playerName", name);
 
-            MessageBox.Show("Player's name successfully changed to \"" + nameBox.Text + "\"");
+                MessageBox.Show("Player's name successfully changed to \"" + nameBox.Text + "\"");
+            }
+            else
+            {
+                MessageBox.Show("Player's name is too long. Limit is 30 characters.");
+            }
+        }
+
+        private void LoadStatistics()
+        {
+            Statistics stat = new Statistics();
+            StringBuilder sb = new StringBuilder();
+
+            foreach (KeyValuePair<string, Int64> pair in stat.TopTen)
+            {
+                sb.AppendLine("1. " + pair.Key + "\t" + pair.Value);
+            }
+
+            topTen.Text = sb.ToString();
         }
     }
 }
