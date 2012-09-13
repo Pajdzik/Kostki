@@ -623,12 +623,19 @@ namespace Kostki
             {
                 image = this._controlPanel.GetJoker();
             }
+
             Point point = this._controlPanel.GetGridCoordsForMarkRectangle(x + 1, y + 1);
 
             if (card.Blocked == false)
             {
                 this.ManipulationSettings(image);
+                ChangeRectangle(x, y, false);
             }
+            else
+            {
+                ChangeRectangle(x, y, true);
+            }
+
             this.canvas.Children.Add(image);
             this.SettingCanvasTranslate(image, point);
 
@@ -854,11 +861,11 @@ namespace Kostki
         {
             if (blocked == true)
             {
-                _rectangles[i, j].Fill = new SolidColorBrush(Colors.Black);
+                _rectangles[i, j].Fill = this._controlPanel.BlockedColor;
             } 
             else
             {
-                _rectangles[i, j].Fill = new SolidColorBrush(Colors.Gray);
+                _rectangles[i, j].Fill = this._controlPanel.FreeColor;
             }
         }
     }

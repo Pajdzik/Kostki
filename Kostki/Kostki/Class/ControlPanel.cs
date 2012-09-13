@@ -54,6 +54,8 @@ namespace Kostki.Class
         public readonly double ResizeCoefficient = 1.3;
         public readonly Point NewCardGrid;
         public readonly Point Grid4x4;
+        public readonly SolidColorBrush BlockedColor = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
+        public readonly SolidColorBrush FreeColor = new SolidColorBrush(Color.FromArgb(255, 100, 100, 100));
 
         private BitmapImage[,] cards;
         private BitmapImage joker;
@@ -156,10 +158,12 @@ namespace Kostki.Class
         /// <returns>Szary prostokąt</returns>
         public Rectangle GetRectangle()
         {
-            Rectangle rect = new Rectangle();
-            rect.Fill = new SolidColorBrush(Colors.Gray);
-            rect.Height = 96;
-            rect.Width = 96;
+            Rectangle rect = new Rectangle
+                                 {
+                                     Fill = this.FreeColor, 
+                                     Height = 96, 
+                                     Width = 96
+                                 };
 
             return rect;
         }
