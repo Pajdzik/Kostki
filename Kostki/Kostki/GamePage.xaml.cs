@@ -434,14 +434,6 @@ namespace Kostki
 
             UpdateScore(reward);
 
-            foreach (List<Id> list in collection)
-            {
-                foreach (Id id in list)
-                {
-                    Debug.WriteLine(id);
-                }
-            }
-
             for (int i = 0; i < collection.Count; i++)
             {
                 if (this._calculate.CalculateFourResult(collection[i]) >= 100)
@@ -463,7 +455,8 @@ namespace Kostki
                     if (this._game.IsFieldFree(i + 1, j + 1, PlaceType.Grid) == false)         // jeśli na danym polu leży kafelek
                     {
                         this._game.BlockField(i, j);
-                        this.ChangeRectangle(i, j, true);       
+                        this.ChangeRectangle(i, j, true);    
+   
                         Image imageTemp = this._game.GetImageOnCoords(i, j);
                         imageTemp.ManipulationStarted -= ManipulationStarted;
                         imageTemp.ManipulationDelta -= ManipulationDelta;
