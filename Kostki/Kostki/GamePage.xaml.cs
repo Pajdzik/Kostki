@@ -511,7 +511,12 @@ namespace Kostki
         private void EndGame(Int64 score)
         {
             Statistics stat = new Statistics();
-            stat.SaveScore(score);
+            Boolean hs = stat.SaveScore(score);
+
+            if (hs == true)
+            {
+                MessageBox.Show("Congratulations! New highscore!");
+            }
 
             NavigationService.GoBack();
             this.ClearMemory();

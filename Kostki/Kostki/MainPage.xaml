@@ -59,17 +59,24 @@
                 <ListBox Margin="0,0,-12,0">
                     <ListBox.Items>
                         <TextBlock Text="Aim" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                        <TextBlock Text="Aim of the game is to place four randomized tiles on four by four grid. Almost every combination is rewarded, but only several vanish." 
-                                   TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <TextBlock TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}">
+                            Aim of the game is to place four randomized tiles on four by four grid. Almost every combination is rewarded, but only several vanish.
+                        </TextBlock>
 
                         <TextBlock Text="Points" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                         
-                        <TextBlock Text="Combinations vanishing" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                        <Image Source="/img/clubs/blue.png" Height="100" /> <Image Source="/img/clubs/blue.png" Height="100" />
-
+                        <TextBlock Text="Combinations vanishing" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" />
+                        <TextBlock Text="♥ One pair x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♠ Four of a Kind (four colors) x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♦ Four of a Kind (same color) x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♣ Royal Flush x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
 
 
                         <TextBlock Text="Combinations not vanishing" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                        <TextBlock Text="♥ One Pair x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♠ Two Pairs x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♦ Three of a Kind x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
+                        <TextBlock Text="♣ Straight x points" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
                     </ListBox.Items> 
                 </ListBox>
             </controls:PanoramaItem>
@@ -108,8 +115,5 @@
             </controls:PanoramaItem>
 
         </controls:Panorama>
-        <toolkit:ToggleSwitch Header="ToggleSwitch" Height="111" HorizontalAlignment="Left" Margin="455,401,0,0" Name="toggleSwitch1" VerticalAlignment="Top" Width="456" />
-        <toolkit:MultiselectItem Height="50" HorizontalAlignment="Left" Margin="456,625,0,0" Name="multiselectItem1" VerticalAlignment="Top" Width="100" />
-        
     </Grid>
 </phone:PhoneApplicationPage>
